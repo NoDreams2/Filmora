@@ -1,0 +1,55 @@
+.container {
+  width: 1440px;
+  margin-inline: auto;
+}
+
+.IconButton {
+  margin-right: 5px !important;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+.burger {
+  color: #fff;
+}
+
+.menu {
+  width: 300px;
+}
+
+.listItemButton {
+  text-align: center !important;
+  color: #e9e9e9 !important;
+}
+
+.appBar {
+  background-color: #1c232b !important;
+}
+
+.logo {
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+}
+
+.drawerPaper {
+  background-color: #1c232b !important;
+}
+
+.movieIcon {
+  color: #e9e9e9;
+}
+
+.listItem {
+  transition: background-color 0.2s;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.listItemText {
+  text-transform: uppercase;
+}
