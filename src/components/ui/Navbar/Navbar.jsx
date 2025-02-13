@@ -1,10 +1,10 @@
 import MenuIcon from '@mui/icons-material/Menu';
-import MovieIcon from '@mui/icons-material/Movie';
 import {
   AppBar,
   Box,
   Drawer,
   IconButton,
+  Link,
   List,
   ListItem,
   ListItemButton,
@@ -16,9 +16,15 @@ import {
   useScrollTrigger,
 } from '@mui/material';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
+import { iconComponents, MOVIE_LISTS, TOP_LISTS } from '../../../constans';
 import styles from './NavBar.module.scss';
+
+const Icon = ({ iconName, className }) => {
+  const IconComponent = iconComponents[iconName];
+  return <IconComponent className={className} />;
+};
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,24 +58,62 @@ export default function Navbar() {
             >
               <Box className={styles.menu} onClick={handleDrawerToggle}>
                 <List>
-                  <ListItem className={styles.listItem} disablePadding>
-                    <ListItemButton className={styles.listItemButton}>
-                      <ListItemIcon>
-                        <MovieIcon className={styles.movieIcon} />
-                      </ListItemIcon>
-                      <ListItemText
-                        className={styles.listItemText}
-                        primary="Фильмы"
-                      />
-                    </ListItemButton>
-                  </ListItem>
+                  {TOP_LISTS.map(item => (
+                    <Link
+                      key={item.title}
+                      component={RouterLink}
+                      to={item.url}
+                      className={styles.link}
+                    >
+                      <ListItem className={styles.listItem} disablePadding>
+                        <ListItemButton className={styles.listItemButton}>
+                          <ListItemIcon>
+                            <Icon
+                              iconName={item.icon}
+                              className={styles.movieIcon}
+                            />
+                          </ListItemIcon>
+                          <ListItemText
+                            className={styles.listItemText}
+                            primary={item.title}
+                          />
+                        </ListItemButton>
+                      </ListItem>
+                    </Link>
+                  ))}
+                </List>
+                <div className={styles.line}></div>
+                <List>
+                  {MOVIE_LISTS.map(item => (
+                    <Link
+                      key={item.title}
+                      component={RouterLink}
+                      to={item.url}
+                      className={styles.link}
+                    >
+                      <ListItem className={styles.listItem} disablePadding>
+                        <ListItemButton className={styles.listItemButton}>
+                          <ListItemIcon>
+                            <Icon
+                              iconName={item.icon}
+                              className={styles.movieIcon}
+                            />
+                          </ListItemIcon>
+                          <ListItemText
+                            className={styles.listItemText}
+                            primary={item.title}
+                          />
+                        </ListItemButton>
+                      </ListItem>
+                    </Link>
+                  ))}
                 </List>
               </Box>
             </Drawer>
             <Typography
               variant="h5"
               className={styles.logo}
-              component={Link}
+              component={RouterLink}
               to="/"
             >
               Filmora
