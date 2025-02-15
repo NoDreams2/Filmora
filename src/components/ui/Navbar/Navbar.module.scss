@@ -1,33 +1,37 @@
-.container {
+.navbar {
+  background-color: #1c232b !important;
+}
+
+.navbar__container {
   width: 1440px;
   margin-inline: auto;
 }
 
-.IconButton {
+.navbar__iconButton {
   margin-right: 5px !important;
   &:hover {
     background-color: rgba(255, 255, 255, 0.1) !important;
   }
 }
 
-.burger {
+.navbar__burger {
   color: #fff;
 }
 
-.menu {
+.navbar__drawer {
+  background-color: #1c232b !important;
+}
+
+.navbar__menu {
   width: 400px;
 }
 
-.listItemButton {
+.navbar__listItemButton {
   text-align: center !important;
   color: #e9e9e9 !important;
 }
 
-.appBar {
-  background-color: #1c232b !important;
-}
-
-.logo {
+.navbar__logo {
   color: #fff;
   text-decoration: none;
   text-transform: uppercase;
@@ -35,15 +39,11 @@
   letter-spacing: 2px !important;
 }
 
-.drawerPaper {
-  background-color: #1c232b !important;
-}
-
-.movieIcon {
+.navbar__movieItemIcon {
   color: #e9e9e9;
 }
 
-.listItem {
+.navbar__listItem {
   transition: background-color 0.2s;
 
   &:hover {
@@ -51,17 +51,10 @@
   }
 }
 
-.listItemText {
+.navbar__listItemText {
   text-transform: uppercase;
 }
 
-.link {
+.navbar__link {
   text-decoration: none !important;
-}
-
-.line {
-  content: '';
-  width: 100%;
-  height: 1px;
-  background-color: rgba(255, 255, 255, 0.1);
 }
