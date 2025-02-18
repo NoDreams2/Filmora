@@ -8,7 +8,12 @@ import Navbar from './ui/Navbar';
 export default function Layout() {
   return (
     <div
-      style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+        backgroundColor: '#14191f',
+      }}
     >
       <Navbar />
       <Container fixed sx={{ py: 8, flexGrow: 1 }}>
