@@ -5,7 +5,7 @@ const initialState = {
   genreId: '',
   order: 'NUM_VOTE',
   type: '',
-  yeasr: '',
+  year: '',
   page: 1,
 };
 

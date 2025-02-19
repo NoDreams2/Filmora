@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MOVIE_LISTS, TOP_LISTS } from '../../constans';
+import { MOVIE_LISTS, TOP_LISTS } from '../../constants';
 import ActorDetail from './ActorDetail';
 import MovieDetail from './MovieDetail';
 import Movies from './Movies';

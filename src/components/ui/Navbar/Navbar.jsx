@@ -19,7 +19,7 @@ import {
 import React, { useCallback, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
-import { iconComponents, MOVIE_LISTS, TOP_LISTS } from '../../../constans';
+import { iconComponents, MOVIE_LISTS, TOP_LISTS } from '../../../constants';
 import styles from './NavBar.module.scss';
 
 const Icon = ({ iconName, className }) => {
@@ -39,7 +39,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <Slide appear={false} direction="right" in={!trigger}>
+    <Slide appear={false} direction="down" in={!trigger}>
       <AppBar className={styles.navbar}>
         <div className={styles.navbar__container}>
           <Toolbar>
