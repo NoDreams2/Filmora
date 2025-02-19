@@ -33,46 +33,55 @@ export const TOP_LISTS = [
     title: 'топ 100 популярных фильмов',
     icon: 'AutoAwesome',
     url: '/popular',
+    value: 'TOP_POPULAR_MOVIES',
   },
   {
     title: 'топ 250 лучших фильмов',
     icon: 'Stars',
     url: '/best',
+    value: 'TOP_250_MOVIES',
   },
   {
     title: 'вампиры',
     icon: 'DarkMode',
     url: '/vampire',
+    value: 'VAMPIRE_THEME',
   },
   {
     title: 'комиксы',
     icon: 'AutoStories',
     url: '/comics',
+    value: 'COMICS_THEME',
   },
   {
     title: 'cемейный',
     icon: 'House',
     url: '/family',
+    value: 'FAMILY',
   },
   {
     title: 'романтика',
     icon: 'Favorite',
     url: '/romantic',
+    value: 'LOVE_THEME',
   },
   {
     title: 'зомби',
     icon: 'MoodBad',
     url: '/zombie',
+    value: 'ZOMBIE_THEME',
   },
   {
     title: 'катастрофы',
     icon: 'Pool',
     url: '/catastrophe',
+    value: 'CATASTROPHE_THEME',
   },
   {
     title: 'популярные сериалы',
     icon: 'LiveTv',
     url: '/popular-serials',
+    value: 'POPULAR_SERIES',
   },
 ];
 
