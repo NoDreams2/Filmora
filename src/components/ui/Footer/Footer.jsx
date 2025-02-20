@@ -7,8 +7,10 @@ export default function Footer() {
   return (
     <Stack component="footer" className={styles.footer}>
       <div className={styles.footer__container}>
-        <div className={styles.footer__copyright}>
-          <p>&copy; {new Date().getFullYear()} &laquo;FILMORA&raquo; 18+</p>
+        <div className={styles.footer__copyrightContainer}>
+          <p className={styles.footer__copyright}>
+            &copy; {new Date().getFullYear()} &laquo;FILMORA&raquo; 18+
+          </p>
           <p>Данный сайт создан исключительно в обучающих целях.</p>
           <p>Все права принадлежат правообладателям.</p>
         </div>
