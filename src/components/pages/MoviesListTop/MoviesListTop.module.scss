@@ -1,6 +1,5 @@
 .MoviesListTop__container {
-  display: grid;
-  grid-template-columns: auto 1fr;
+  display: flex;
   align-items: center;
   margin-block-start: 10px;
   margin-block-end: 20px;
@@ -24,4 +23,19 @@
   margin-right: 72px;
   text-transform: uppercase;
   font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .MoviesListTop__title {
+    font-size: 20px;
+    margin: 0;
+  }
+  .MoviesListTop__container {
+    margin-block-start: 4px;
+    flex-direction: column;
+  }
+  .MoviesListTop__button {
+    margin-inline-end: auto;
+    margin-block-end: 12px;
+  }
 }

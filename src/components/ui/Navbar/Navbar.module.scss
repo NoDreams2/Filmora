@@ -41,7 +41,6 @@
 
 .navbar__listItem {
   transition: background-color 0.2s;
-
   &:hover {
     background-color: rgba(72, 87, 105, 0.3);
   }
@@ -53,4 +52,42 @@
 
 .navbar__link {
   text-decoration: none !important;
+}
+
+@media (max-width: 888px) {
+  .navbar__menu {
+    width: 330px;
+  }
+  .navbar__listItemText {
+    & span {
+      font-size: 14px !important;
+    }
+  }
+  .navbar__movieItemIcon {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .navbar__listItemButton {
+    padding-block: 6px !important;
+  }
+}
+
+@media (max-width: 460px) {
+  .navbar__menu {
+    width: 250px;
+  }
+  .navbar__listItemText {
+    & span {
+      font-size: 13px !important;
+    }
+  }
+  .navbar__listItemButton {
+    padding-block: 5px !important;
+  }
+}
+
+@media (max-width: 325px) {
+  .navbar__listItemButton {
+    padding-inline: 10px !important;
+  }
 }
