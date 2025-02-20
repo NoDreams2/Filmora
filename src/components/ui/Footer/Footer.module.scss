@@ -14,9 +14,13 @@
   align-items: center;
 }
 
-.footer__copyright {
+.footer__copyrightContainer {
   color: #aaaaaa;
   font-size: 12px;
+}
+
+.footer__copyright {
+  margin-block-end: 2px;
 }
 
 .footer__logo {
