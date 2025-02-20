@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { TOP_LISTS } from '../../../constants';
 import { useGetFilmsTopQuery } from '../../../services/kinopoiskApi';
@@ -17,6 +17,10 @@ export default function MoviesListTop() {
     type: movieType.value,
     page,
   });
+
+  useEffect(() => {
+    setPage(1);
+  }, [location]);
 
   if (error) return <p>Some error</p>;
 
@@ -39,7 +43,7 @@ export default function MoviesListTop() {
         movies={data.items}
         totalPages={data.totalPages}
         page={page}
-        setPage={setPage}
+        setPage={(_, value) => setPage(value)}
       />
     </>
   );
