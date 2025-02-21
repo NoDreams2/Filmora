@@ -1,20 +1,12 @@
 import { Pagination } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
+import useWindowWidth from '../../../hooks/useWindowWidth';
 import MovieCard from '../MovieCard';
 import styles from './MoviesList.module.scss';
 
 export default function MoviesList({ movies, totalPages, page, setPage }) {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
+  const windowWidth = useWindowWidth();
   const paginationSize = windowWidth <= 446 ? 'small' : 'large';
 
   return (
