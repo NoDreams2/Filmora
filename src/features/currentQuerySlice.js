@@ -13,8 +13,14 @@ export const currentQuerySlice = createSlice({
   name: 'currentQuerySlice',
   initialState,
   reducers: {
-    // TODO add actions
+    setPage: (state, action) => {
+      state.page = action.payload;
+    },
+    resetPage: state => {
+      state.page = 1;
+    },
   },
 });
 
 export default currentQuerySlice.reducer;
+export const { setPage, resetPage } = currentQuerySlice.actions;

@@ -13,7 +13,7 @@ export const kinopoiskApi = createApi({
   }),
   endpoints: builder => ({
     getFilmsTop: builder.query({
-      query: ({ type, page }) =>
+      query: ({ type, page = 1 }) =>
         `/v2.2/films/collections?type=${type}&page=${page}`,
       transformResponse: (response, meta, args) => {
         let items = response.items;
@@ -34,7 +34,18 @@ export const kinopoiskApi = createApi({
         };
       },
     }),
+    getFilms: builder.query({
+      query: ({
+        countries = '',
+        genreId,
+        order = 'NUM_VOTE',
+        type = 'FILM',
+        year,
+        page = 1,
+      }) =>
+        `/v2.2/films?countries=${countries}&genres=${genreId}&order=${order}&type=${type}&year=${year}&page=${page}`,
+    }),
   }),
 });
 
-export const { useGetFilmsTopQuery } = kinopoiskApi;
+export const { useGetFilmsTopQuery, useGetFilmsQuery } = kinopoiskApi;
