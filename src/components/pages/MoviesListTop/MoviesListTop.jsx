@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { TOP_LISTS } from '../../../constants';
 import { resetPage, setPage } from '../../../features/currentQuerySlice';
 import { useGetFilmsTopQuery } from '../../../services/kinopoiskApi';
+import ErrorMessage from '../../ui/ErrorMessage/ErrorMessage';
 import MoviesList from '../../ui/MoviesList';
 import styles from './MoviesListTop.module.scss';
 
@@ -29,7 +30,10 @@ export default function MoviesListTop() {
     dispatch(setPage(value));
   };
 
-  if (error) return <p>Some error</p>;
+  if (error)
+    return (
+      <ErrorMessage message="Не удалось загрузить список фильмов. Проверьте интернет-соединение и попробуйте снова." />
+    );
 
   if (isLoading) return <p>Loading...</p>;
 
