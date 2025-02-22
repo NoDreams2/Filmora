@@ -1,14 +1,14 @@
 .MovieCard__container {
+  transition: transform 0.2s ease;
   max-width: 205px;
   width: 205;
+  animation: cardAppear 0.6s ease forwards;
 }
 
 .MovieCard__imgContainer {
   position: relative;
-}
-
-.MovieCard__imgContainer {
-  transition: transform 0.2s;
+  border-radius: 16px;
+  transition: all 0.2s ease;
   &:hover {
     transform: scale(1.05);
   }
@@ -33,4 +33,15 @@
 .MovieCard__genre {
   font-size: 12px;
   color: #ffffff73;
+}
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
