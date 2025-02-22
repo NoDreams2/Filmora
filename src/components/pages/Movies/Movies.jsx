@@ -10,6 +10,7 @@ import useMoviesQuery from '../../../hooks/useMoviesQuery';
 import RatingBadge from '../../common/RatingBadge';
 import ErrorMessage from '../../ui/ErrorMessage/ErrorMessage';
 import styles from './Movies.module.scss';
+import MoviesSkeleton from './MoviesSkeleton';
 
 export default function Movies() {
   const [activeCarousels, setActiveCarousels] = useState([]);
@@ -94,7 +95,7 @@ export default function Movies() {
     serializeDataForCarousel,
   ]);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <MoviesSkeleton />;
   if (hasError)
     return (
       <ErrorMessage message="Не удалось загрузить список фильмов. Проверьте интернет-соединение и попробуйте снова." />
