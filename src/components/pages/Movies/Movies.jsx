@@ -8,6 +8,7 @@ import { Link as RouterLink } from 'react-router-dom';
 
 import useMoviesQuery from '../../../hooks/useMoviesQuery';
 import RatingBadge from '../../common/RatingBadge';
+import ErrorMessage from '../../ui/ErrorMessage/ErrorMessage';
 import styles from './Movies.module.scss';
 
 export default function Movies() {
@@ -94,7 +95,10 @@ export default function Movies() {
   ]);
 
   if (isLoading) return <p>Loading...</p>;
-  if (hasError) return <p>Error</p>;
+  if (hasError)
+    return (
+      <ErrorMessage message="Не удалось загрузить список фильмов. Проверьте интернет-соединение и попробуйте снова." />
+    );
 
   return (
     <>
