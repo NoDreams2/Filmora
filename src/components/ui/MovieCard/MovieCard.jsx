@@ -1,8 +1,7 @@
-import classNames from 'classnames';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { formatRating, getRatingColor } from '../../../utils/utils';
+import RatingBadge from '../../common/RatingBadge';
 import styles from './MovieCard.module.scss';
 
 export default function MovieCard({ movie }) {
@@ -16,16 +15,7 @@ export default function MovieCard({ movie }) {
             alt={movie.nameRu}
           />
           {movie.ratingKinopoisk && (
-            <p
-              className={classNames(
-                styles.MovieCard__rating,
-                styles[
-                  `MovieCard__rating_${getRatingColor(movie.ratingKinopoisk)}`
-                ],
-              )}
-            >
-              {formatRating(movie.ratingKinopoisk)}
-            </p>
+            <RatingBadge rating={movie.ratingKinopoisk} />
           )}
         </div>
       </Link>

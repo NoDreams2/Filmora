@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import '../../../services/kinopoiskApi';
 
@@ -7,8 +7,11 @@ import BearCarousel, { BearSlideImage } from 'bear-react-carousel';
 import { Link as RouterLink } from 'react-router-dom';
 
 import useMoviesQuery from '../../../hooks/useMoviesQuery';
+import RatingBadge from '../../common/RatingBadge';
+import styles from './Movies.module.scss';
 
 export default function Movies() {
+  const [activeCarousels, setActiveCarousels] = useState([]);
   const {
     isLoading,
     hasError,
@@ -19,51 +22,84 @@ export default function Movies() {
     responseCartoons,
   } = useMoviesQuery();
 
+  useEffect(() => {
+    if (!isLoading && !hasError) {
+      const delays = carouselArr.map((_, index) =>
+        setTimeout(() => {
+          setActiveCarousels(prev => [...prev, index]);
+        }, index * 7000),
+      );
+      return () => delays.forEach(clearTimeout);
+    }
+  }, [isLoading, hasError]);
+
+  const serializeDataForCarousel = useMemo(
+    () => data =>
+      data.map(row => (
+        <RouterLink key={row.id} to={`/movie/${row.kinopoiskId}`}>
+          <BearSlideImage
+            className={styles.Movies__image}
+            imageUrl={row.posterUrlPreview}
+          />
+          {row.ratingKinopoisk && <RatingBadge rating={row.ratingKinopoisk} />}
+        </RouterLink>
+      )),
+    [],
+  );
+
+  const carouselArr = useMemo(() => {
+    if (isLoading || hasError) return [];
+
+    return [
+      {
+        title: 'Популярные фильмы',
+        url: '/popular',
+        data: serializeDataForCarousel(responsePopular.data?.items || []),
+      },
+      {
+        title: 'Лучшие фильмы',
+        url: '/best',
+        data: serializeDataForCarousel(responseBest.data?.items || []),
+      },
+      {
+        title: 'Фильмы',
+        url: '/films',
+        data: serializeDataForCarousel(responseFilms.data?.items || []),
+      },
+      {
+        title: 'Сериалы',
+        url: '/serials',
+        data: serializeDataForCarousel(responseSerials.data?.items || []),
+      },
+      {
+        title: 'Мультфильмы',
+        url: '/cartoons',
+        data: serializeDataForCarousel(responseCartoons.data?.items || []),
+      },
+    ];
+  }, [
+    isLoading,
+    hasError,
+    responsePopular.data,
+    responseBest.data,
+    responseFilms.data,
+    responseSerials.data,
+    responseCartoons.data,
+    serializeDataForCarousel,
+  ]);
+
   if (isLoading) return <p>Loading...</p>;
-
   if (hasError) return <p>Error</p>;
-
-  const serializeDataForCarousel = data =>
-    data.map(row => (
-      <RouterLink key={row.id} to={`/movie/${row.kinopoiskId}`}>
-        <BearSlideImage imageUrl={row.posterUrlPreview} />
-      </RouterLink>
-    ));
-
-  const carouselArr = [
-    {
-      title: 'Популярные фильмы',
-      url: '/popular',
-      data: serializeDataForCarousel(responsePopular.data.items),
-    },
-    {
-      title: 'Лучшие фильмы',
-      url: '/best',
-      data: serializeDataForCarousel(responseBest.data.items),
-    },
-    {
-      title: 'Фильмы',
-      url: '/films',
-      data: serializeDataForCarousel(responseFilms.data.items),
-    },
-    {
-      title: 'Сериалы',
-      url: '/serials',
-      data: serializeDataForCarousel(responseSerials.data.items),
-    },
-    {
-      title: 'Мультфильмы',
-      url: '/cartoons',
-      data: serializeDataForCarousel(responseCartoons.data.items),
-    },
-  ];
-  console.log('Cartoons response:', responseCartoons.data?.items?.[0]?.genres);
 
   return (
     <>
-      {carouselArr.map(carousel => (
-        <div key={carousel.title}>
-          <Link component={RouterLink} to={carousel.url}>
+      {carouselArr.map((carousel, index) => (
+        <div className={styles.movies__container} key={carousel.title}>
+          <Link
+            className={styles.movies__title}
+            component={RouterLink}
+            to={carousel.url}
+          >
             {carousel.title}
           </Link>
           <BearCarousel
@@ -72,18 +108,15 @@ export default function Movies() {
             slidesPerGroup={3}
             isEnableNavButton
             isEnableLoop
-            isEnableAutoPlay
-            autoPlayTime={6000}
+            isEnableAutoPlay={activeCarousels.includes(index)}
+            autoPlayTime={11000}
+            spaceBetween={14}
             breakpoints={{
-              375: {
-                autoPlayTime: 0,
-              },
-              500: {
-                slidesPerView: 4,
-              },
-              768: {
-                slidesPerView: 5,
-              },
+              0: { slidesPerView: 1 },
+              375: { autoPlayTime: 0 },
+              500: { slidesPerView: 3 },
+              618: { slidesPerView: 4 },
+              900: { slidesPerView: 5 },
             }}
           />
         </div>
