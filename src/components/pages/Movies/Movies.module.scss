@@ -39,3 +39,38 @@
     opacity: 1;
   }
 }
+
+@media (max-width: 1199px) {
+  .Movies__rating {
+    font-size: 13px;
+    padding: 2px 6px;
+    transform: scale(0.8);
+    transform-origin: left bottom;
+    bottom: 8px;
+    left: 8px;
+  }
+  .movies__title {
+    font-size: 21px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .Movies__rating {
+    transform: scale(0.7);
+  }
+  .movies__title {
+    font-size: 18px !important;
+  }
+  .movies__container {
+    gap: 6px;
+  }
+}
+
+@media (max-width: 618px) {
+  .Movies__rating {
+    transform: scale(0.8);
+  }
+  .movies__title {
+    font-size: 14px !important;
+  }
+}

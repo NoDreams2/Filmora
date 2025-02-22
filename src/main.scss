@@ -53,3 +53,25 @@ h6 {
     border: 3px solid #00b3ff !important;
   }
 }
+
+@media (max-width: 1199px) {
+  .bear-react-carousel__nav-button {
+    width: 34px !important;
+    height: 34px !important;
+  }
+  .bear-react-carousel__nav-icon {
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .bear-react-carousel__nav-button {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  .bear-react-carousel__nav-icon {
+    width: 14px !important;
+    height: 14px !important;
+  }
+}

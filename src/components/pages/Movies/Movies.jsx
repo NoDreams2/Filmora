@@ -41,7 +41,12 @@ export default function Movies() {
             className={styles.Movies__image}
             imageUrl={row.posterUrlPreview}
           />
-          {row.ratingKinopoisk && <RatingBadge rating={row.ratingKinopoisk} />}
+          {row.ratingKinopoisk && (
+            <RatingBadge
+              className={styles.Movies__rating}
+              rating={row.ratingKinopoisk}
+            />
+          )}
         </RouterLink>
       )),
     [],
@@ -112,8 +117,8 @@ export default function Movies() {
             autoPlayTime={11000}
             spaceBetween={14}
             breakpoints={{
-              0: { slidesPerView: 1 },
-              375: { autoPlayTime: 0 },
+              1: { autoPlayTime: 0 },
+              375: { slidesPerView: 2 },
               500: { slidesPerView: 3 },
               618: { slidesPerView: 4 },
               900: { slidesPerView: 5 },
