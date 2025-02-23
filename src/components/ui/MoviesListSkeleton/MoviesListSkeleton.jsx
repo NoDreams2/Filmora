@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './MoviesListTopSkeleton.module.scss';
+import styles from './MoviesListSkeleton.module.scss';
 
 export default function MoviesListTopSkeleton() {
   return (
