@@ -8,6 +8,7 @@ import { useGetFilmsTopQuery } from '../../../services/kinopoiskApi';
 import ErrorMessage from '../../ui/ErrorMessage/ErrorMessage';
 import MoviesList from '../../ui/MoviesList';
 import styles from './MoviesListTop.module.scss';
+import MoviesListTopSkeleton from './MoviesListTopSkeleton';
 
 export default function MoviesListTop() {
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ export default function MoviesListTop() {
       <ErrorMessage message="Не удалось загрузить список фильмов. Проверьте интернет-соединение и попробуйте снова." />
     );
 
-  if (isLoading) return <p>Loading...</p>;
+  if (!isLoading) return <MoviesListTopSkeleton></MoviesListTopSkeleton>;
 
   return (
     <>
@@ -48,12 +49,14 @@ export default function MoviesListTop() {
         </button>
         <h2 className={styles.MoviesListTop__title}>{movieType.title}</h2>
       </div>
-      <MoviesList
-        movies={data.items}
-        totalPages={data.totalPages}
-        page={page}
-        setPage={handlePageChange}
-      />
+      {data && (
+        <MoviesList
+          movies={data.items}
+          totalPages={data.totalPages}
+          page={page}
+          setPage={handlePageChange}
+        />
+      )}
     </>
   );
 }
