@@ -1,0 +1,81 @@
+.select__container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 20px 0;
+  position: relative;
+  padding: 14px;
+  background: #1c232b;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 161, 231, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: slideIn 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: capitalize;
+}
+
+.select__inputLabel {
+  color: #cbd5e1 !important;
+}
+
+:global {
+  .MuiOutlinedInput-root {
+    color: #cbd5e1;
+    border-radius: 8px !important;
+
+    .MuiOutlinedInput-notchedOutline {
+      border-color: rgba(0, 161, 231, 0.3) !important;
+    }
+
+    &:hover .MuiOutlinedInput-notchedOutline {
+      border-color: rgba(0, 161, 231, 0.5) !important;
+    }
+
+    &.Mui-focused .MuiOutlinedInput-notchedOutline {
+      border-color: #00a1e7 !important;
+    }
+  }
+  .MuiSelect-icon {
+    color: #cbd5e1 !important;
+  }
+  .MuiPopover-paper {
+    background: #1c232b !important;
+    border: 1px solid rgba(0, 161, 231, 1) !important;
+    border-radius: 0px !important;
+  }
+  .MuiSelect-select {
+    color: #70b0ff !important;
+  }
+  .MuiMenuItem-root {
+    color: #cbd5e1 !important;
+    font-size: 14px !important;
+    min-height: 40px !important;
+    padding: 8px 16px !important;
+    transition: all 0.2s ease !important;
+    text-transform: capitalize;
+
+    &:hover {
+      background: rgba(72, 87, 105, 0.2) !important;
+    }
+
+    &.Mui-selected {
+      background: rgba(72, 87, 105, 0.3) !important;
+      color: #00a1e7 !important;
+    }
+
+    &.Mui-focusVisible {
+      background: rgba(72, 87, 105, 0.25) !important;
+    }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
