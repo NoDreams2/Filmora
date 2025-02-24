@@ -4,6 +4,7 @@ import React from 'react';
 import '.././../common/button.scss';
 
 import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 import { resetQuery, selectQuery } from '../../../features/currentQuerySlice';
 import styles from './SelectMovies.module.scss';
@@ -17,6 +18,9 @@ export default function SelectMovies({
   countries,
 }) {
   const dispatch = useDispatch();
+  const location = useLocation();
+
+  const isCartoonsPage = location.pathname === '/cartoons';
 
   const ordersList = [
     { title: 'По рейтингу', value: 'RATING' },
@@ -64,22 +68,24 @@ export default function SelectMovies({
           ))}
         </Select>
       </FormControl>
-      <FormControl fullWidth size="small">
-        <InputLabel className={styles.select__inputLabel}>Жанр</InputLabel>
-        <Select
-          label="Жанр"
-          value={genreId}
-          onChange={e => {
-            dispatch(selectQuery({ genreId: e.target.value }));
-          }}
-        >
-          {genresList.map(genre => (
-            <MenuItem key={genre.id} value={genre.id}>
-              {genre.genre}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+      {!isCartoonsPage && (
+        <FormControl fullWidth size="small">
+          <InputLabel className={styles.select__inputLabel}>Жанр</InputLabel>
+          <Select
+            label="Жанр"
+            value={genreId}
+            onChange={e => {
+              dispatch(selectQuery({ genreId: e.target.value }));
+            }}
+          >
+            {genresList.map(genre => (
+              <MenuItem key={genre.id} value={genre.id}>
+                {genre.genre}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      )}
       <FormControl fullWidth size="small">
         <InputLabel className={styles.select__inputLabel}>Год</InputLabel>
         <Select
