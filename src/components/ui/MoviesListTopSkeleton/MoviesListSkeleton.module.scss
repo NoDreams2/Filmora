@@ -2,20 +2,7 @@
   padding-block-start: 20px;
 }
 
-.skeleton__header {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
 .skeleton__title {
-  width: 100%;
-  height: 60px;
-  background-color: #2a2e35;
-  border-radius: 12px;
-}
-
-.skeleton__forms {
   width: 100%;
   height: 60px;
   background-color: #2a2e35;
@@ -68,7 +55,7 @@
   margin-bottom: 8px;
 }
 
-.skeleton__pagintaion {
+.skeleton__pagination {
   width: 100%;
   height: 37px;
   background-color: #2a2e35;
@@ -83,13 +70,13 @@
   }
 }
 
+.skeleton__button,
 .skeleton__title,
-.skeleton__forms,
 .skeleton__image,
 .skeleton__rating,
 .skeleton__textLine,
 .skeleton__textLineShort,
-.skeleton__pagintaion {
+.skeleton__pagination {
   position: relative;
   overflow: hidden;
   &::after {
@@ -106,11 +93,5 @@
       transparent
     );
     animation: shimmer 1.5s infinite;
-  }
-}
-
-@media (max-width: 900px) {
-  .skeleton__forms {
-    height: 306px;
   }
 }

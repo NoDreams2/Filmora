@@ -6,7 +6,11 @@ import '.././../common/button.scss';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
-import { resetQuery, selectQuery } from '../../../features/currentQuerySlice';
+import {
+  resetPage,
+  resetQuery,
+  selectQuery,
+} from '../../../features/currentQuerySlice';
 import styles from './SelectMovies.module.scss';
 
 export default function SelectMovies({
@@ -32,6 +36,11 @@ export default function SelectMovies({
     value: new Date().getFullYear() - index,
   }));
 
+  const handleFilterChange = (key, value) => {
+    dispatch(resetPage());
+    dispatch(selectQuery({ [key]: value }));
+  };
+
   return (
     <div className={styles.select__container}>
       <FormControl fullWidth size="small">
@@ -41,9 +50,7 @@ export default function SelectMovies({
         <Select
           label="Сортировка"
           value={order}
-          onChange={e => {
-            dispatch(selectQuery({ order: e.target.value }));
-          }}
+          onChange={e => handleFilterChange('order', e.target.value)}
         >
           {ordersList.map(order => (
             <MenuItem key={order.value} value={order.value}>
@@ -57,9 +64,7 @@ export default function SelectMovies({
         <Select
           label="Страна"
           value={countries}
-          onChange={e => {
-            dispatch(selectQuery({ countries: e.target.value }));
-          }}
+          onChange={e => handleFilterChange('countries', e.target.value)}
         >
           {countriesList.map(country => (
             <MenuItem key={country.id} value={country.id}>
@@ -74,9 +79,7 @@ export default function SelectMovies({
           <Select
             label="Жанр"
             value={genreId}
-            onChange={e => {
-              dispatch(selectQuery({ genreId: e.target.value }));
-            }}
+            onChange={e => handleFilterChange('genreId', e.target.value)}
           >
             {genresList.map(genre => (
               <MenuItem key={genre.id} value={genre.id}>
@@ -91,9 +94,7 @@ export default function SelectMovies({
         <Select
           label="Год"
           value={year}
-          onChange={e => {
-            dispatch(selectQuery({ year: e.target.value }));
-          }}
+          onChange={e => handleFilterChange('year', e.target.value)}
         >
           {yearsList.map(year => (
             <MenuItem key={year.value} value={year.value}>
