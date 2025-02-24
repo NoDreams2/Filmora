@@ -9,6 +9,7 @@ import ErrorMessage from '../../ui/ErrorMessage/ErrorMessage';
 import MoviesList from '../../ui/MoviesList';
 import MoviesListSkeleton from '../../ui/MoviesListSkeleton/MoviesListSkeleton';
 import MoviesListTitle from '../../ui/MoviesListTitle';
+import SelectMovies from '../../ui/SelectMovies';
 
 export default function MoviesListMain() {
   const dispatch = useDispatch();
@@ -52,6 +53,7 @@ export default function MoviesListMain() {
   return (
     <>
       <MoviesListTitle title={movieType.title} />
+      <SelectMovies />
       {data && (
         <MoviesList
           movies={data.items}
