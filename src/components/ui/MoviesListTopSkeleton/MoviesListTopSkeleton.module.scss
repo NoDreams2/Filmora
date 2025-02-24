@@ -13,23 +13,6 @@
   height: 60px;
   background-color: #2a2e35;
   border-radius: 12px;
-}
-
-.skeleton__forms {
-  width: 100%;
-  height: 60px;
-  background-color: #2a2e35;
-  border-radius: 12px;
-}
-
-@keyframes shimmer {
-  100% {
-    left: 200%;
-  }
-}
-
-.skeleton__title,
-.skeleton__forms {
   position: relative;
   overflow: hidden;
   &::after {
@@ -49,8 +32,8 @@
   }
 }
 
-@media (max-width: 900px) {
-  .skeleton__forms {
-    height: 306px;
+@keyframes shimmer {
+  100% {
+    left: 200%;
   }
 }
