@@ -21,7 +21,7 @@ export default function MovieCard({ movie }) {
       </Link>
       <div>
         <h4 className={styles.MovieCard__title}>
-          {movie.nameRu ? movie.nameRu : movie.nameEn}
+          {movie.nameRu || movie.nameEn || movie.nameOriginal}
         </h4>
         {movie.genres && movie.genres.length > 0 && (
           <p className={styles.MovieCard__genre}>
