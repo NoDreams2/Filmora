@@ -11,7 +11,6 @@ import {
 import ErrorMessage from '../../ui/ErrorMessage/ErrorMessage';
 import MoviesList from '../../ui/MoviesList';
 import MoviesListMainSkeleton from '../../ui/MoviesListMainSkeleton/MoviesListMainSkeleton';
-import MoviesListSkeleton from '../../ui/MoviesListSkeleton/MoviesListSkeleton';
 import MoviesListTitle from '../../ui/MoviesListTitle';
 import SelectMovies from '../../ui/SelectMovies';
 
@@ -28,6 +27,7 @@ export default function MoviesListMain() {
   if (!movieType) {
     return <ErrorMessage message="Некорректный URL адрес" />;
   }
+
   const page = useSelector(state => state.currentQuery.page);
 
   const responseFilms = useGetFilmsQuery({
@@ -58,7 +58,6 @@ export default function MoviesListMain() {
     return (
       <>
         <MoviesListMainSkeleton />
-        <MoviesListSkeleton />
       </>
     );
 
