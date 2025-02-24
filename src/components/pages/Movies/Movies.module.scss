@@ -59,6 +59,16 @@
   }
 }
 
+:global {
+  .bear-react-carousel__nav-button {
+    opacity: 1 !important;
+    background-color: #29333d !important;
+    border: none;
+    border-radius: 8px !important;
+    border: 1.6px solid rgba(0, 161, 231, 1) !important;
+  }
+}
+
 @keyframes slideIn {
   from {
     opacity: 0;
