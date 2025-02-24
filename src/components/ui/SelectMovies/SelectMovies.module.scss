@@ -79,3 +79,10 @@
     transform: translateY(0);
   }
 }
+
+@media (max-width: 900px) {
+  .select__container {
+    flex-direction: column;
+    align-items: start;
+  }
+}

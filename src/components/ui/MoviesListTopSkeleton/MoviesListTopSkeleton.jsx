@@ -1,13 +1,12 @@
 import React from 'react';
 
-import styles from './MoviesListMainSkeleton.module.scss';
+import styles from './MoviesListSkeleton.module.scss';
 
-export default function MoviesListMainSkeleton() {
+export default function MoviesListTopSkeleton() {
   return (
     <div className={styles.skeleton__container}>
       <div className={styles.skeleton__header}>
         <div className={styles.skeleton__title}></div>
-        <div className={styles.skeleton__forms}></div>
       </div>
       <div className={styles.skeleton__grid}>
         {[...Array(20)].map((_, index) => (
@@ -21,7 +20,7 @@ export default function MoviesListMainSkeleton() {
           </div>
         ))}
       </div>
-      <div className={styles.skeleton__pagintaion}></div>
+      <div className={styles.skeleton__pagination}></div>
     </div>
   );
 }
