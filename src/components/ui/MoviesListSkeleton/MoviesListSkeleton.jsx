@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './MoviesListSkeleton.module.scss';
 
-export default function MoviesListTopSkeleton() {
+export default function MoviesListSkeleton() {
   return (
     <div className={styles.skeleton__container}>
       <div className={styles.skeleton__header}>

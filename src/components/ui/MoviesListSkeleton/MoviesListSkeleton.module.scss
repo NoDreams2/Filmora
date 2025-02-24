@@ -1,20 +1,5 @@
 .skeleton__container {
-  padding-block-start: 35px;
-  padding-block-end: 45px;
-}
-
-.skeleton__header {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 30px;
-}
-
-.skeleton__button {
-  width: 80px;
-  height: 37px;
-  background-color: #2a2e35;
-  border-radius: 12px;
+  padding-block-start: 20px;
 }
 
 .skeleton__title {
@@ -29,6 +14,7 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
+  padding-block-start: 20px;
 }
 
 .skeleton__card {
