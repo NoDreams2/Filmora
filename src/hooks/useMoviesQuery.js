@@ -47,7 +47,6 @@ export default function useMoviesQuery() {
     year,
     page,
   });
-  console.log(responseCartoons.data);
 
   const isLoading =
     responsePopular.isFetching ||

@@ -52,8 +52,20 @@ export const kinopoiskApi = createApi({
         type = 'FILM',
         year,
         page = 1,
-      }) =>
-        `/v2.2/films?countries=${countries}&genres=${genreId}&order=${order}&type=${type}&yearFrom=${year}&yearTo=${year}&page=${page}`,
+      }) => {
+        const params = new URLSearchParams({
+          countries,
+          genres: genreId,
+          order,
+          type,
+          page,
+        });
+        if (year) {
+          params.append('yearFrom', year);
+          params.append('yearTo', year);
+        }
+        return `/v2.2/films?${params.toString()}`;
+      },
     }),
     getGenresAndCountries: builder.query({
       query: () => `/v2.2/films/filters`,

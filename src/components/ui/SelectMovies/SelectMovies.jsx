@@ -23,7 +23,7 @@ export default function SelectMovies({
     { title: 'По голосам', value: 'NUM_VOTE' },
   ];
 
-  const yearsList = new Array(600).fill(null).map((_, index) => ({
+  const yearsList = new Array(60).fill(null).map((_, index) => ({
     title: new Date().getFullYear() - index,
     value: new Date().getFullYear() - index,
   }));
