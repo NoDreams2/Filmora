@@ -6,11 +6,11 @@ import styles from './MoviesListTitle.module.scss';
 export default function MoviesListTitle({ title }) {
   const navigate = useNavigate();
   return (
-    <div className={styles.MoviesListTop__container}>
+    <div className={styles.MoviesListTitle__container}>
       <button className="button" onClick={() => navigate(-1)}>
         Назад
       </button>
-      <h2 className={styles.MoviesListTop__title}>{title}</h2>
+      <h2 className={styles.MoviesListTitle__title}>{title}</h2>
     </div>
   );
 }
