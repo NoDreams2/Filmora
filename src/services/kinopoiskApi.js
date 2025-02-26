@@ -1,16 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+import { EXCLUDE_GENRES } from '../constants';
+
 const kinopoiskApiKey = import.meta.env.VITE_KINOPOISK_KEY;
-const excludeGenres = [
-  '',
-  'новости',
-  'концерт',
-  'для взрослых',
-  'церемония',
-  'реальное ТВ',
-  'игра',
-  'ток-шоу',
-];
 
 export const kinopoiskApi = createApi({
   reducerPath: 'kinopoiskApi',
@@ -68,13 +60,22 @@ export const kinopoiskApi = createApi({
       },
     }),
     getGenresAndCountries: builder.query({
-      query: () => `/v2.2/films/filters`,
-      transformResponse: response => ({
-        ...response,
-        genres: response.genres.filter(
-          ({ genre }) => !excludeGenres.includes(genre),
-        ),
-      }),
+      query: () => '/v2.2/films/filters',
+      transformResponse: (response, meta, args) => {
+        const excludeCartoons = args?.excludeCartoons || false;
+
+        const excludedGenres = [...EXCLUDE_GENRES];
+        if (excludeCartoons) {
+          excludedGenres.push('мультфильм');
+        }
+
+        return {
+          ...response,
+          genres: response.genres.filter(
+            ({ genre }) => !excludedGenres.includes(genre),
+          ),
+        };
+      },
     }),
   }),
 });
