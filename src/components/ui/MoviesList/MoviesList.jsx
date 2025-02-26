@@ -13,19 +13,15 @@ export default function MoviesList({ movies, totalPages, page, setPage }) {
 
   const location = useLocation();
 
-  const filteredMovies = movies.filter(movie => {
-    const hasAnimeGenre = movie.genres.some(genre => genre.genre === 'аниме');
-
-    return (
+  const filteredMovies = movies.filter(
+    movie =>
       movie.year !== null &&
-      (hasAnimeGenre ||
-        movie.genres.every(genre =>
-          location.pathname !== '/films'
-            ? !EXCLUDE_GENRES.includes(genre.genre)
-            : ![...EXCLUDE_GENRES, 'мультфильм'].includes(genre.genre),
-        ))
-    );
-  });
+      movie.genres.every(genre =>
+        location.pathname !== '/films'
+          ? !EXCLUDE_GENRES.includes(genre.genre)
+          : ![...EXCLUDE_GENRES, 'мультики'].includes(genre.genre),
+      ),
+  );
 
   return (
     <>
