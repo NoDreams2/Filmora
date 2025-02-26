@@ -10,9 +10,9 @@ import {
 } from '../../../services/kinopoiskApi';
 import ErrorMessage from '../../ui/ErrorMessage/ErrorMessage';
 import MoviesList from '../../ui/MoviesList';
-import MoviesListMainSkeleton from '../../ui/MoviesListMainSkeleton/MoviesListMainSkeleton';
 import MoviesListTitle from '../../ui/MoviesListTitle';
 import SelectMovies from '../../ui/SelectMovies';
+import MoviesListMainSkeleton from './MoviesListMainSkeleton';
 
 export default function MoviesListMain() {
   const dispatch = useDispatch();
@@ -39,7 +39,9 @@ export default function MoviesListMain() {
     page,
   });
 
-  const responseGenresAndCountries = useGetGenresAndCountriesQuery();
+  const responseGenresAndCountries = useGetGenresAndCountriesQuery({
+    excludeCartoons: location.pathname === '/films',
+  });
 
   useEffect(() => {
     dispatch(resetPage());

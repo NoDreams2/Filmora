@@ -1,6 +1,8 @@
 import { Pagination } from '@mui/material';
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 
+import { EXCLUDE_GENRES } from '../../../constants';
 import useWindowWidth from '../../../hooks/useWindowWidth';
 import MovieCard from '../MovieCard';
 import styles from './MoviesList.module.scss';
@@ -9,7 +11,17 @@ export default function MoviesList({ movies, totalPages, page, setPage }) {
   const windowWidth = useWindowWidth();
   const paginationSize = windowWidth <= 446 ? 'small' : 'large';
 
-  const filteredMovies = movies.filter(movie => movie.year !== null);
+  const location = useLocation();
+
+  const filteredMovies = movies.filter(
+    movie =>
+      movie.year !== null &&
+      movie.genres.every(genre =>
+        location.pathname !== '/films'
+          ? !EXCLUDE_GENRES.includes(genre.genre)
+          : ![...EXCLUDE_GENRES, 'мультики'].includes(genre.genre),
+      ),
+  );
 
   return (
     <>

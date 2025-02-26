@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MoviesListSkeleton from '../MoviesListSkeleton/MoviesListSkeleton';
+import MoviesListSkeleton from '../../ui/MoviesListSkeleton/MoviesListSkeleton';
 import styles from './MoviesListMainSkeleton.module.scss';
 
 export default function MoviesListMainSkeleton() {

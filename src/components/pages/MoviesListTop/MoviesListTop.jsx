@@ -8,7 +8,7 @@ import { useGetFilmsTopQuery } from '../../../services/kinopoiskApi';
 import ErrorMessage from '../../ui/ErrorMessage/ErrorMessage';
 import MoviesList from '../../ui/MoviesList';
 import MoviesListTitle from '../../ui/MoviesListTitle';
-import MoviesListTopSkeleton from '../../ui/MoviesListTopSkeleton';
+import MoviesListTopSkeleton from './MoviesListTopSkeleton';
 
 export default function MoviesListTop() {
   const dispatch = useDispatch();
