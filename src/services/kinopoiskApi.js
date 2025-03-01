@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { EXCLUDE_GENRES } from '../constants';
+import { EXCLUDE_GENRES, INCLUDE_COUNTRIES } from '../constants';
 
 const kinopoiskApiKey = import.meta.env.VITE_KINOPOISK_KEY;
 
@@ -69,10 +69,15 @@ export const kinopoiskApi = createApi({
           excludedGenres.push('мультфильм');
         }
 
+        const includedCountries = [...INCLUDE_COUNTRIES];
+
         return {
           ...response,
           genres: response.genres.filter(
             ({ genre }) => !excludedGenres.includes(genre),
+          ),
+          countries: response.countries.filter(({ country }) =>
+            includedCountries.includes(country),
           ),
         };
       },
