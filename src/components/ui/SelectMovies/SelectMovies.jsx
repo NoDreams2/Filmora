@@ -1,4 +1,3 @@
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import React from 'react';
 
 import '.././../common/button.scss';
@@ -31,7 +30,7 @@ export default function SelectMovies({
     { title: 'По голосам', value: 'NUM_VOTE' },
   ];
 
-  const yearsList = new Array(60).fill(null).map((_, index) => ({
+  const yearsList = new Array(40).fill(null).map((_, index) => ({
     title: new Date().getFullYear() - index,
     value: new Date().getFullYear() - index,
   }));
@@ -43,66 +42,64 @@ export default function SelectMovies({
 
   return (
     <div className={styles.select__container}>
-      <FormControl fullWidth size="small">
-        <InputLabel className={styles.select__inputLabel}>
-          Сортировка
-        </InputLabel>
-        <Select
-          label="Сортировка"
+      <div className={styles.select__group}>
+        <label className={styles.select__label}>Сортировка</label>
+        <select
+          className={styles.select__input}
           value={order}
           onChange={e => handleFilterChange('order', e.target.value)}
         >
           {ordersList.map(order => (
-            <MenuItem key={order.value} value={order.value}>
+            <option key={order.value} value={order.value}>
               {order.title}
-            </MenuItem>
+            </option>
           ))}
-        </Select>
-      </FormControl>
-      <FormControl fullWidth size="small">
-        <InputLabel className={styles.select__inputLabel}>Страна</InputLabel>
-        <Select
-          label="Страна"
+        </select>
+      </div>
+      <div className={styles.select__group}>
+        <label className={styles.select__label}>Страна</label>
+        <select
+          className={styles.select__input}
           value={countries}
           onChange={e => handleFilterChange('countries', e.target.value)}
         >
           {countriesList.map(country => (
-            <MenuItem key={country.id} value={country.id}>
+            <option key={country.id} value={country.id}>
               {country.country}
-            </MenuItem>
+            </option>
           ))}
-        </Select>
-      </FormControl>
+        </select>
+      </div>
       {!isCartoonsPage && (
-        <FormControl fullWidth size="small">
-          <InputLabel className={styles.select__inputLabel}>Жанр</InputLabel>
-          <Select
-            label="Жанр"
+        <div className={styles.select__group}>
+          <label className={styles.select__label}>Жанр</label>
+          <select
+            className={styles.select__input}
             value={genreId}
             onChange={e => handleFilterChange('genreId', e.target.value)}
           >
             {genresList.map(genre => (
-              <MenuItem key={genre.id} value={genre.id}>
+              <option key={genre.id} value={genre.id}>
                 {genre.genre}
-              </MenuItem>
+              </option>
             ))}
-          </Select>
-        </FormControl>
+          </select>
+        </div>
       )}
-      <FormControl fullWidth size="small">
-        <InputLabel className={styles.select__inputLabel}>Год</InputLabel>
-        <Select
-          label="Год"
+      <div className={styles.select__group}>
+        <label className={styles.select__label}>Год</label>
+        <select
+          className={styles.select__input}
           value={year}
           onChange={e => handleFilterChange('year', e.target.value)}
         >
           {yearsList.map(year => (
-            <MenuItem key={year.value} value={year.value}>
+            <option key={year.value} value={year.value}>
               {year.title}
-            </MenuItem>
+            </option>
           ))}
-        </Select>
-      </FormControl>
+        </select>
+      </div>
       <div>
         <button className="button" onClick={() => dispatch(resetQuery())}>
           Сбросить
