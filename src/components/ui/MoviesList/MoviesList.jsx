@@ -19,7 +19,7 @@ export default function MoviesList({ movies, totalPages, page, setPage }) {
       movie.genres.every(genre =>
         location.pathname !== '/films'
           ? !EXCLUDE_GENRES.includes(genre.genre)
-          : ![...EXCLUDE_GENRES, 'мультики'].includes(genre.genre),
+          : ![...EXCLUDE_GENRES, 'мультфильм'].includes(genre.genre),
       ),
   );
 

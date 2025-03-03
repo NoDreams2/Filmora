@@ -1,5 +1,5 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import '.././../common/button.scss';
 
@@ -23,6 +23,10 @@ export default function SelectMovies({
 }) {
   const dispatch = useDispatch();
   const location = useLocation();
+  const [isSortOpen, setSortOpen] = useState(false);
+  const [isCountryOpen, setCountryOpen] = useState(false);
+  const [isGenreOpen, setGenreOpen] = useState(false);
+  const [isYearOpen, setYearOpen] = useState(false);
 
   const isCartoonsPage = location.pathname === '/cartoons';
 
@@ -41,6 +45,23 @@ export default function SelectMovies({
     dispatch(selectQuery({ [key]: value }));
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isSortOpen || isCountryOpen || isGenreOpen || isYearOpen) {
+        setSortOpen(false),
+          setCountryOpen(false),
+          setGenreOpen(false),
+          setYearOpen(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isSortOpen, isCountryOpen, isGenreOpen, isYearOpen]);
+
   return (
     <div className={styles.select__container}>
       <FormControl fullWidth size="small">
@@ -50,6 +71,9 @@ export default function SelectMovies({
         <Select
           label="Сортировка"
           value={order}
+          open={isSortOpen}
+          onOpen={() => setSortOpen(true)}
+          onClose={() => setSortOpen(false)}
           onChange={e => handleFilterChange('order', e.target.value)}
         >
           {ordersList.map(order => (
@@ -64,6 +88,9 @@ export default function SelectMovies({
         <Select
           label="Страна"
           value={countries}
+          open={isCountryOpen}
+          onOpen={() => setCountryOpen(true)}
+          onClose={() => setCountryOpen(false)}
           onChange={e => handleFilterChange('countries', e.target.value)}
         >
           {countriesList.map(country => (
@@ -79,6 +106,9 @@ export default function SelectMovies({
           <Select
             label="Жанр"
             value={genreId}
+            open={isGenreOpen}
+            onOpen={() => setGenreOpen(true)}
+            onClose={() => setGenreOpen(false)}
             onChange={e => handleFilterChange('genreId', e.target.value)}
           >
             {genresList.map(genre => (
@@ -94,6 +124,9 @@ export default function SelectMovies({
         <Select
           label="Год"
           value={year}
+          open={isYearOpen}
+          onOpen={() => setYearOpen(true)}
+          onClose={() => setYearOpen(false)}
           onChange={e => handleFilterChange('year', e.target.value)}
         >
           {yearsList.map(year => (
