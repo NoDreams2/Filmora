@@ -36,6 +36,7 @@ export const kinopoiskApi = createApi({
         };
       },
     }),
+
     getFilms: builder.query({
       query: ({
         countries = '',
@@ -59,6 +60,7 @@ export const kinopoiskApi = createApi({
         return `/v2.2/films?${params.toString()}`;
       },
     }),
+
     getGenresAndCountries: builder.query({
       query: () => '/v2.2/films/filters',
       transformResponse: (response, meta, args) => {
@@ -82,6 +84,24 @@ export const kinopoiskApi = createApi({
         };
       },
     }),
+
+    getDataFilm: builder.query({
+      query: id => `/v2.2/films/${id}`,
+    }),
+
+    getSequelsAndPrequels: builder.query({
+      query: id => `/v2.1/films/${id}/sequels_and_prequels`,
+      transformResponse: response =>
+        response.map(el => ({ ...el, kinopoiskId: el.filmId })),
+    }),
+
+    getStaff: builder.query({
+      query: id => `/v1/staff?filmId=${id}`,
+    }),
+
+    getBudgetAndFees: builder.query({
+      query: id => `/v2.2/films/${id}/box_office`,
+    }),
   }),
 });
 
@@ -89,4 +109,8 @@ export const {
   useGetFilmsTopQuery,
   useGetFilmsQuery,
   useGetGenresAndCountriesQuery,
+  useGetDataFilmQuery,
+  useGetSequelsAndPrequelsQuery,
+  useGetStaffQuery,
+  useGetBudgetAndFeesQuery,
 } = kinopoiskApi;

@@ -1,0 +1,99 @@
+.MovieDetail__container {
+  display: flex;
+  padding-block-start: 40px;
+  gap: 30px;
+  color: #cbd5e1;
+}
+
+.MovieDetail__leftPart {
+  padding-inline: 9px;
+}
+
+.MovieDetail__leftPartPoster {
+  width: 222px;
+  height: 333px;
+  object-fit: cover;
+}
+
+.MovieDetail__rightPart {
+  width: 100%;
+}
+
+.MovieDetail__rightPartMainTitle {
+  margin-block-end: 48px;
+  display: flex;
+}
+
+.MovieDetail__rightPartTitleDesc {
+  width: 600px;
+  padding-inline: 9px;
+}
+
+.MovieDetail__rightPartTitle {
+  font-size: 40px;
+  margin-block-end: 16px;
+}
+
+.MovieDetail__rightPartdescription {
+  font-size: 15px;
+}
+
+.MovieDetail__rightPartRating {
+  padding-inline-end: 9px;
+  padding-inline-start: 50px;
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+}
+
+.MovieDetail__rightPartRatingKinopoisk {
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.MovieDetail__rightPartNoRatingKinopoisk {
+  font-size: 20px;
+  display: inline-block;
+}
+
+.MovieDetail__rightPartVoteCount {
+  font-size: 11px;
+}
+
+.MovieDetail__rightPartAboutFilm {
+  display: flex;
+}
+
+.MovieDetail__rightPartAboutFilmContainer {
+  width: 600px;
+  padding-inline: 9px;
+}
+
+.MovieDetail__rightPartTitleAbout {
+  font-size: 22px;
+  margin-block-end: 9px;
+}
+
+.MovieDetail__rightPartAboutContainer {
+  padding-block: 8px;
+  font-size: 11px;
+  display: flex;
+}
+
+.MovieDetail__rightPartKey {
+  color: #94a3b8;
+  display: inline-block;
+  min-width: 160px;
+}
+
+.MovieDetail__rightPartValue {
+  line-height: 18px;
+}
+
+.MovieDetail__rightPartActorsContainer {
+  padding-inline-start: 50px;
+  padding-inline-end: 9px;
+  padding-block-start: 43px;
+  width: 240px;
+  font-size: 12px;
+}
