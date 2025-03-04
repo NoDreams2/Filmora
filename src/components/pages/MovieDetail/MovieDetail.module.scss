@@ -25,7 +25,7 @@
 }
 
 .MovieDetail__rightPartTitleDesc {
-  width: 582px;
+  width: 600px;
   padding-inline: 9px;
 }
 
@@ -60,6 +60,15 @@
   font-size: 11px;
 }
 
+.MovieDetail__rightPartAboutFilm {
+  display: flex;
+}
+
+.MovieDetail__rightPartAboutFilmContainer {
+  width: 600px;
+  padding-inline: 9px;
+}
+
 .MovieDetail__rightPartTitleAbout {
   font-size: 22px;
   margin-block-end: 9px;
@@ -79,4 +88,12 @@
 
 .MovieDetail__rightPartValue {
   line-height: 18px;
+}
+
+.MovieDetail__rightPartActorsContainer {
+  padding-inline-start: 50px;
+  padding-inline-end: 9px;
+  padding-block-start: 43px;
+  width: 240px;
+  font-size: 12px;
 }

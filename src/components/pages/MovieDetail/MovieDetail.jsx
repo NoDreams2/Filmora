@@ -7,7 +7,7 @@ import {
   useGetSequelsAndPrequelsQuery,
   useGetStaffQuery,
 } from '../../../services/kinopoiskApi';
-import { formatRating } from '../../../utils/utils';
+import { formatRating, getRatingText } from '../../../utils/utils';
 import ErrorMessage from '../../ui/ErrorMessage';
 import styles from './MovieDetail.module.scss';
 
@@ -90,186 +90,217 @@ export default function MovieDetail() {
                 {responseDataFilm.data.ratingKinopoiskVoteCount.toLocaleString(
                   'ru-RU',
                 )}{' '}
-                оценок
+                {getRatingText(responseDataFilm.data.ratingKinopoiskVoteCount)}
               </span>
             )}
           </div>
         </div>
-        <h3 className={styles.MovieDetail__rightPartTitleAbout}>О фильме</h3>
-        {responseDataFilm.data.year && (
-          <div className={styles.MovieDetail__rightPartAboutContainer}>
-            <span className={styles.MovieDetail__rightPartKey}>
-              Год Производства
-            </span>
-            <span className={styles.MovieDetail__rightPartValue}>
-              {responseDataFilm.data.year}
-            </span>
+        <div className={styles.MovieDetail__rightPartAboutFilm}>
+          <div className={styles.MovieDetail__rightPartAboutFilmContainer}>
+            <h3 className={styles.MovieDetail__rightPartTitleAbout}>
+              О фильме
+            </h3>
+            {responseDataFilm.data.year && (
+              <div className={styles.MovieDetail__rightPartAboutContainer}>
+                <span className={styles.MovieDetail__rightPartKey}>
+                  Год Производства
+                </span>
+                <span className={styles.MovieDetail__rightPartValue}>
+                  {responseDataFilm.data.year}
+                </span>
+              </div>
+            )}
+            {responseDataFilm.data.countries && (
+              <div className={styles.MovieDetail__rightPartAboutContainer}>
+                <span className={styles.MovieDetail__rightPartKey}>Страна</span>
+                <span className={styles.MovieDetail__rightPartValue}>
+                  {responseDataFilm.data.countries
+                    .map(country => country.country)
+                    .join(', ')}
+                </span>
+              </div>
+            )}
+            {responseDataFilm.data.genres && (
+              <div className={styles.MovieDetail__rightPartAboutContainer}>
+                <span className={styles.MovieDetail__rightPartKey}>Жанр</span>
+                <span className={styles.MovieDetail__rightPartValue}>
+                  {responseDataFilm.data.genres
+                    .map(genre => genre.genre)
+                    .join(', ')}
+                </span>
+              </div>
+            )}
+            {responseDataFilm.data.slogan && (
+              <div className={styles.MovieDetail__rightPartAboutContainer}>
+                <span className={styles.MovieDetail__rightPartKey}>Слоган</span>
+                <span className={styles.MovieDetail__rightPartValue}>
+                  {responseDataFilm.data.slogan}
+                </span>
+              </div>
+            )}
+            {responseStaff.data.some(el => el.professionKey === 'DIRECTOR') && (
+              <div className={styles.MovieDetail__rightPartAboutContainer}>
+                <span className={styles.MovieDetail__rightPartKey}>
+                  Режиссер
+                </span>
+                <span className={styles.MovieDetail__rightPartValue}>
+                  {staffSlice(
+                    responseStaff.data.filter(
+                      el => el.professionKey === 'DIRECTOR',
+                    ),
+                  )}
+                </span>
+              </div>
+            )}
+            {responseStaff.data.some(el => el.professionKey === 'WRITER') && (
+              <div className={styles.MovieDetail__rightPartAboutContainer}>
+                <span className={styles.MovieDetail__rightPartKey}>
+                  Сценарий
+                </span>
+                <span className={styles.MovieDetail__rightPartValue}>
+                  {staffSlice(
+                    responseStaff.data.filter(
+                      el => el.professionKey === 'WRITER',
+                    ),
+                  )}
+                </span>
+              </div>
+            )}
+            {responseStaff.data.some(el => el.professionKey === 'PRODUCER') && (
+              <div className={styles.MovieDetail__rightPartAboutContainer}>
+                <span className={styles.MovieDetail__rightPartKey}>
+                  Продюсер
+                </span>
+                <span className={styles.MovieDetail__rightPartValue}>
+                  {staffSlice(
+                    responseStaff.data.filter(
+                      el => el.professionKey === 'PRODUCER',
+                    ),
+                  )}
+                </span>
+              </div>
+            )}
+            {responseStaff.data.some(el => el.professionKey === 'OPERATOR') && (
+              <div className={styles.MovieDetail__rightPartAboutContainer}>
+                <span className={styles.MovieDetail__rightPartKey}>
+                  Оператор
+                </span>
+                <span className={styles.MovieDetail__rightPartValue}>
+                  {staffSlice(
+                    responseStaff.data.filter(
+                      el => el.professionKey === 'OPERATOR',
+                    ),
+                  )}
+                </span>
+              </div>
+            )}
+            {responseStaff.data.some(el => el.professionKey === 'COMPOSER') && (
+              <div className={styles.MovieDetail__rightPartAboutContainer}>
+                <span className={styles.MovieDetail__rightPartKey}>
+                  Композитор
+                </span>
+                <span className={styles.MovieDetail__rightPartValue}>
+                  {staffSlice(
+                    responseStaff.data.filter(
+                      el => el.professionKey === 'COMPOSER',
+                    ),
+                  )}
+                </span>
+              </div>
+            )}
+            {responseStaff.data.some(el => el.professionKey === 'DESIGN') && (
+              <div className={styles.MovieDetail__rightPartAboutContainer}>
+                <span className={styles.MovieDetail__rightPartKey}>
+                  Художник
+                </span>
+                <span className={styles.MovieDetail__rightPartValue}>
+                  {staffSlice(
+                    responseStaff.data.filter(
+                      el => el.professionKey === 'DESIGN',
+                    ),
+                  )}
+                </span>
+              </div>
+            )}
+            {responseStaff.data.some(el => el.professionKey === 'EDITOR') && (
+              <div className={styles.MovieDetail__rightPartAboutContainer}>
+                <span className={styles.MovieDetail__rightPartKey}>Монтаж</span>
+                <span className={styles.MovieDetail__rightPartValue}>
+                  {staffSlice(
+                    responseStaff.data.filter(
+                      el => el.professionKey === 'EDITOR',
+                    ),
+                  )}
+                </span>
+              </div>
+            )}
+            {responseBudgetAndFees.data.items.some(
+              el => el.type === 'BUDGET',
+            ) && (
+              <div className={styles.MovieDetail__rightPartAboutContainer}>
+                <span className={styles.MovieDetail__rightPartKey}>Бюджет</span>
+                <span className={styles.MovieDetail__rightPartValue}>
+                  $
+                  {responseBudgetAndFees.data.items
+                    .find(el => el.type === 'BUDGET')
+                    .amount.toLocaleString('ru-RU')}
+                </span>
+              </div>
+            )}
+            {responseBudgetAndFees.data.items.some(el => el.type === 'USA') && (
+              <div className={styles.MovieDetail__rightPartAboutContainer}>
+                <span className={styles.MovieDetail__rightPartKey}>
+                  Сборы в США
+                </span>
+                <span className={styles.MovieDetail__rightPartValue}>
+                  $
+                  {responseBudgetAndFees.data.items
+                    .find(el => el.type === 'USA')
+                    .amount.toLocaleString('ru-RU')}
+                </span>
+              </div>
+            )}
+            {responseBudgetAndFees.data.items.some(
+              el => el.type === 'WORLD',
+            ) && (
+              <div className={styles.MovieDetail__rightPartAboutContainer}>
+                <span className={styles.MovieDetail__rightPartKey}>
+                  Сборы в мире
+                </span>
+                <span className={styles.MovieDetail__rightPartValue}>
+                  $
+                  {responseBudgetAndFees.data.items
+                    .find(el => el.type === 'WORLD')
+                    .amount.toLocaleString('ru-RU')}
+                </span>
+              </div>
+            )}
+            {responseBudgetAndFees.data.items.some(el => el.type === 'RUS') && (
+              <div className={styles.MovieDetail__rightPartAboutContainer}>
+                <span className={styles.MovieDetail__rightPartKey}>
+                  Сборы в России
+                </span>
+                <span className={styles.MovieDetail__rightPartValue}>
+                  $
+                  {responseBudgetAndFees.data.items
+                    .find(el => el.type === 'RUS')
+                    .amount.toLocaleString('ru-RU')}
+                </span>
+              </div>
+            )}
+            {responseDataFilm.data.filmLength && (
+              <div className={styles.MovieDetail__rightPartAboutContainer}>
+                <span className={styles.MovieDetail__rightPartKey}>Время</span>
+                <span className={styles.MovieDetail__rightPartValue}>
+                  {responseDataFilm.data.filmLength} мин
+                </span>
+              </div>
+            )}
           </div>
-        )}
-        {responseDataFilm.data.countries && (
-          <div className={styles.MovieDetail__rightPartAboutContainer}>
-            <span className={styles.MovieDetail__rightPartKey}>Страна</span>
-            <span className={styles.MovieDetail__rightPartValue}>
-              {responseDataFilm.data.countries
-                .map(country => country.country)
-                .join(', ')}
-            </span>
+          <div className={styles.MovieDetail__rightPartActorsContainer}>
+            <span>В главных ролях</span>
           </div>
-        )}
-        {responseDataFilm.data.genres && (
-          <div className={styles.MovieDetail__rightPartAboutContainer}>
-            <span className={styles.MovieDetail__rightPartKey}>Жанр</span>
-            <span className={styles.MovieDetail__rightPartValue}>
-              {responseDataFilm.data.genres
-                .map(genre => genre.genre)
-                .join(', ')}
-            </span>
-          </div>
-        )}
-        {responseDataFilm.data.slogan && (
-          <div className={styles.MovieDetail__rightPartAboutContainer}>
-            <span className={styles.MovieDetail__rightPartKey}>Слоган</span>
-            <span className={styles.MovieDetail__rightPartValue}>
-              {responseDataFilm.data.slogan}
-            </span>
-          </div>
-        )}
-        {responseStaff.data.some(el => el.professionKey === 'DIRECTOR') && (
-          <div className={styles.MovieDetail__rightPartAboutContainer}>
-            <span className={styles.MovieDetail__rightPartKey}>Режиссер</span>
-            <span className={styles.MovieDetail__rightPartValue}>
-              {staffSlice(
-                responseStaff.data.filter(
-                  el => el.professionKey === 'DIRECTOR',
-                ),
-              )}
-            </span>
-          </div>
-        )}
-        {responseStaff.data.some(el => el.professionKey === 'WRITER') && (
-          <div className={styles.MovieDetail__rightPartAboutContainer}>
-            <span className={styles.MovieDetail__rightPartKey}>Сценарий</span>
-            <span className={styles.MovieDetail__rightPartValue}>
-              {staffSlice(
-                responseStaff.data.filter(el => el.professionKey === 'WRITER'),
-              )}
-            </span>
-          </div>
-        )}
-        {responseStaff.data.some(el => el.professionKey === 'PRODUCER') && (
-          <div className={styles.MovieDetail__rightPartAboutContainer}>
-            <span className={styles.MovieDetail__rightPartKey}>Продюсер</span>
-            <span className={styles.MovieDetail__rightPartValue}>
-              {staffSlice(
-                responseStaff.data.filter(
-                  el => el.professionKey === 'PRODUCER',
-                ),
-              )}
-            </span>
-          </div>
-        )}
-        {responseStaff.data.some(el => el.professionKey === 'OPERATOR') && (
-          <div className={styles.MovieDetail__rightPartAboutContainer}>
-            <span className={styles.MovieDetail__rightPartKey}>Оператор</span>
-            <span className={styles.MovieDetail__rightPartValue}>
-              {staffSlice(
-                responseStaff.data.filter(
-                  el => el.professionKey === 'OPERATOR',
-                ),
-              )}
-            </span>
-          </div>
-        )}
-        {responseStaff.data.some(el => el.professionKey === 'COMPOSER') && (
-          <div className={styles.MovieDetail__rightPartAboutContainer}>
-            <span className={styles.MovieDetail__rightPartKey}>Композитор</span>
-            <span className={styles.MovieDetail__rightPartValue}>
-              {staffSlice(
-                responseStaff.data.filter(
-                  el => el.professionKey === 'COMPOSER',
-                ),
-              )}
-            </span>
-          </div>
-        )}
-        {responseStaff.data.some(el => el.professionKey === 'DESIGN') && (
-          <div className={styles.MovieDetail__rightPartAboutContainer}>
-            <span className={styles.MovieDetail__rightPartKey}>Художник</span>
-            <span className={styles.MovieDetail__rightPartValue}>
-              {staffSlice(
-                responseStaff.data.filter(el => el.professionKey === 'DESIGN'),
-              )}
-            </span>
-          </div>
-        )}
-        {responseStaff.data.some(el => el.professionKey === 'EDITOR') && (
-          <div className={styles.MovieDetail__rightPartAboutContainer}>
-            <span className={styles.MovieDetail__rightPartKey}>Монтаж</span>
-            <span className={styles.MovieDetail__rightPartValue}>
-              {staffSlice(
-                responseStaff.data.filter(el => el.professionKey === 'EDITOR'),
-              )}
-            </span>
-          </div>
-        )}
-        {responseBudgetAndFees.data.items.some(el => el.type === 'BUDGET') && (
-          <div className={styles.MovieDetail__rightPartAboutContainer}>
-            <span className={styles.MovieDetail__rightPartKey}>Бюджет</span>
-            <span className={styles.MovieDetail__rightPartValue}>
-              $
-              {responseBudgetAndFees.data.items
-                .find(el => el.type === 'BUDGET')
-                .amount.toLocaleString('ru-RU')}
-            </span>
-          </div>
-        )}
-        {responseBudgetAndFees.data.items.some(el => el.type === 'USA') && (
-          <div className={styles.MovieDetail__rightPartAboutContainer}>
-            <span className={styles.MovieDetail__rightPartKey}>
-              Сборы в США
-            </span>
-            <span className={styles.MovieDetail__rightPartValue}>
-              $
-              {responseBudgetAndFees.data.items
-                .find(el => el.type === 'USA')
-                .amount.toLocaleString('ru-RU')}
-            </span>
-          </div>
-        )}
-        {responseBudgetAndFees.data.items.some(el => el.type === 'WORLD') && (
-          <div className={styles.MovieDetail__rightPartAboutContainer}>
-            <span className={styles.MovieDetail__rightPartKey}>
-              Сборы в мире
-            </span>
-            <span className={styles.MovieDetail__rightPartValue}>
-              $
-              {responseBudgetAndFees.data.items
-                .find(el => el.type === 'WORLD')
-                .amount.toLocaleString('ru-RU')}
-            </span>
-          </div>
-        )}
-        {responseBudgetAndFees.data.items.some(el => el.type === 'RUS') && (
-          <div className={styles.MovieDetail__rightPartAboutContainer}>
-            <span className={styles.MovieDetail__rightPartKey}>
-              Сборы в России
-            </span>
-            <span className={styles.MovieDetail__rightPartValue}>
-              $
-              {responseBudgetAndFees.data.items
-                .find(el => el.type === 'RUS')
-                .amount.toLocaleString('ru-RU')}
-            </span>
-          </div>
-        )}
-        {responseDataFilm.data.filmLength && (
-          <div className={styles.MovieDetail__rightPartAboutContainer}>
-            <span className={styles.MovieDetail__rightPartKey}>Время</span>
-            <span className={styles.MovieDetail__rightPartValue}>
-              {responseDataFilm.data.filmLength} мин
-            </span>
-          </div>
-        )}
+        </div>
       </div>
     </div>
   );
