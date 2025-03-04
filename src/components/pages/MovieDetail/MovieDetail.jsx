@@ -7,7 +7,11 @@ import {
   useGetSequelsAndPrequelsQuery,
   useGetStaffQuery,
 } from '../../../services/kinopoiskApi';
-import { formatRating, getRatingText } from '../../../utils/utils';
+import {
+  formatRating,
+  getDeclensionActorsText,
+  getDeclensionRatingText,
+} from '../../../utils/utils';
 import ErrorMessage from '../../ui/ErrorMessage';
 import styles from './MovieDetail.module.scss';
 
@@ -90,7 +94,9 @@ export default function MovieDetail() {
                 {responseDataFilm.data.ratingKinopoiskVoteCount.toLocaleString(
                   'ru-RU',
                 )}{' '}
-                {getRatingText(responseDataFilm.data.ratingKinopoiskVoteCount)}
+                {getDeclensionRatingText(
+                  responseDataFilm.data.ratingKinopoiskVoteCount,
+                )}
               </span>
             )}
           </div>
@@ -298,7 +304,36 @@ export default function MovieDetail() {
             )}
           </div>
           <div className={styles.MovieDetail__rightPartActorsContainer}>
-            <span>В главных ролях</span>
+            <h3 className={styles.MovieDetail__rightPartActorsTitle}>
+              В главных ролях
+            </h3>
+            {responseStaff.data.some(el => el.professionKey === 'ACTOR') && (
+              <div className={styles.MovieDetail__rightPartActorsList}>
+                {responseStaff.data
+                  .filter(el => el.professionKey === 'ACTOR')
+                  .slice(0, 10)
+                  .map(actor => (
+                    <div
+                      key={actor.staffId}
+                      className={styles.MovieDetail__rightPartActorsName}
+                    >
+                      {actor.nameRu ? actor.nameRu : actor.nameEn}
+                    </div>
+                  ))}
+              </div>
+            )}
+            {responseStaff.data.some(el => el.professionKey === 'ACTOR') && (
+              <span className={styles.MovieDetail__rightPartNumActors}>
+                {
+                  responseStaff.data.filter(el => el.professionKey === 'ACTOR')
+                    .length
+                }{' '}
+                {getDeclensionActorsText(
+                  responseStaff.data.filter(el => el.professionKey === 'ACTOR')
+                    .length,
+                )}
+              </span>
+            )}
           </div>
         </div>
       </div>

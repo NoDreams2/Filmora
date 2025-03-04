@@ -95,5 +95,22 @@
   padding-inline-end: 9px;
   padding-block-start: 43px;
   width: 240px;
+}
+
+.MovieDetail__rightPartActorsTitle {
+  margin-block-end: 15px;
   font-size: 12px;
+}
+
+.MovieDetail__rightPartActorsList {
+  font-size: 11px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-block-end: 5px;
+}
+
+.MovieDetail__rightPartNumActors {
+  font-size: 11px;
+  color: #00a1e7;
 }
