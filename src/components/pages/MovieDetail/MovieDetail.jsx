@@ -49,7 +49,7 @@ export default function MovieDetail() {
     if (staffs.length > 3) {
       return `${numberOfStaffs.slice(0, 3).join(', ')}, ...`;
     }
-    return numberOfStaffs;
+    return numberOfStaffs.join(', ');
   };
 
   return (
@@ -116,7 +116,7 @@ export default function MovieDetail() {
                 </span>
               </div>
             )}
-            {responseDataFilm.data.countries && (
+            {responseDataFilm.data.country && (
               <div className={styles.MovieDetail__rightPartAboutContainer}>
                 <span className={styles.MovieDetail__rightPartKey}>Страна</span>
                 <span className={styles.MovieDetail__rightPartValue}>
@@ -126,7 +126,7 @@ export default function MovieDetail() {
                 </span>
               </div>
             )}
-            {responseDataFilm.data.genres && (
+            {responseDataFilm.data.genre && (
               <div className={styles.MovieDetail__rightPartAboutContainer}>
                 <span className={styles.MovieDetail__rightPartKey}>Жанр</span>
                 <span className={styles.MovieDetail__rightPartValue}>
