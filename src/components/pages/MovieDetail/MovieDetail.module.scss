@@ -7,12 +7,23 @@
 
 .MovieDetail__leftPart {
   padding-inline: 9px;
+  max-width: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .MovieDetail__leftPartPoster {
   width: 222px;
   height: 333px;
   object-fit: cover;
+}
+
+.MovieDetail__leftPartButtons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding-block: 8px;
 }
 
 .MovieDetail__rightPart {
@@ -22,6 +33,7 @@
 .MovieDetail__rightPartMainTitle {
   margin-block-end: 48px;
   display: flex;
+  justify-content: space-between;
 }
 
 .MovieDetail__rightPartTitleDesc {
@@ -39,9 +51,8 @@
 }
 
 .MovieDetail__rightPartRating {
-  padding-inline-end: 9px;
-  padding-inline-start: 50px;
-  width: 240px;
+  padding-inline: 9px;
+  width: 200px;
   display: flex;
   flex-direction: column;
 }
@@ -62,6 +73,7 @@
 
 .MovieDetail__rightPartAboutFilm {
   display: flex;
+  justify-content: space-between;
 }
 
 .MovieDetail__rightPartAboutFilmContainer {
@@ -91,10 +103,9 @@
 }
 
 .MovieDetail__rightPartActorsContainer {
-  padding-inline-start: 50px;
-  padding-inline-end: 9px;
-  padding-block-start: 43px;
-  width: 240px;
+  padding-inline-start: 52px;
+  padding-inline: 9px;
+  width: 200px;
 }
 
 .MovieDetail__rightPartActorsTitle {
