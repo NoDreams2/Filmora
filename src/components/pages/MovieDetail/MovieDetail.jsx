@@ -22,7 +22,6 @@ export default function MovieDetail() {
   const responseSequelsAndPrequels = useGetSequelsAndPrequelsQuery(id);
   const responseStaff = useGetStaffQuery(id);
   const responseBudgetAndFees = useGetBudgetAndFeesQuery(id);
-
   if (
     responseDataFilm.isLoading ||
     responseSequelsAndPrequels.isLoading ||
@@ -59,6 +58,22 @@ export default function MovieDetail() {
           className={styles.MovieDetail__leftPartPoster}
           src={responseDataFilm.data.posterUrlPreview}
         />
+        <div className={styles.MovieDetail__leftPartButtons}>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={responseDataFilm.data.webUrl}
+          >
+            <button className="button">Кинопоиск</button>
+          </a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={`https://www.imdb.com/title/${responseDataFilm.data.imdbId}`}
+          >
+            <button className="button">IMDB</button>
+          </a>
+        </div>
       </div>
       <div className={styles.MovieDetail__rightPart}>
         <div className={styles.MovieDetail__rightPartMainTitle}>
