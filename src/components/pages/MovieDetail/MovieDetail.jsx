@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useParams } from 'react-router-dom';
 
 import {
@@ -13,15 +13,18 @@ import {
   getDeclensionRatingText,
 } from '../../../utils/utils';
 import ErrorMessage from '../../ui/ErrorMessage';
+import MovieCard from '../../ui/MovieCard';
 import styles from './MovieDetail.module.scss';
 
 export default function MovieDetail() {
+  const scrollRef = useRef(null);
   const { id } = useParams();
 
   const responseDataFilm = useGetDataFilmQuery(id);
   const responseSequelsAndPrequels = useGetSequelsAndPrequelsQuery(id);
   const responseStaff = useGetStaffQuery(id);
   const responseBudgetAndFees = useGetBudgetAndFeesQuery(id);
+
   if (
     responseDataFilm.isLoading ||
     responseSequelsAndPrequels.isLoading ||
@@ -51,6 +54,18 @@ export default function MovieDetail() {
     return numberOfStaffs.join(', ');
   };
 
+  const scrollContainer = direction => {
+    const container = scrollRef.current;
+    const scrollAmount = 1000;
+    if (container) {
+      if (direction === 'left') {
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else if (direction === 'right') {
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <div className={styles.MovieDetail__container}>
       <div className={styles.MovieDetail__leftPart}>
@@ -64,14 +79,14 @@ export default function MovieDetail() {
             rel="noopener noreferrer"
             href={responseDataFilm.data.webUrl}
           >
-            <button className="button">Кинопоиск</button>
+            <button className="button button_small">Кинопоиск</button>
           </a>
           <a
             target="_blank"
             rel="noopener noreferrer"
             href={`https://www.imdb.com/title/${responseDataFilm.data.imdbId}`}
           >
-            <button className="button">IMDB</button>
+            <button className="button button_small">IMDB</button>
           </a>
         </div>
       </div>
@@ -349,6 +364,33 @@ export default function MovieDetail() {
                 )}
               </span>
             )}
+          </div>
+        </div>
+        <div className={styles.MovieDetail__SequelsAndPrequelsContainer}>
+          <h4 className={styles.MovieDetail__SequelsAndPrequelsContainerTitle}>
+            Сиквелы, приквелы и ремейки
+          </h4>
+          <div className={styles.MovieDetail__SequelsAndPrequelsCardsWrapper}>
+            <button
+              className={styles.MovieDetail__ScrollButton}
+              onClick={() => scrollContainer('left')}
+            >
+              &lt;
+            </button>
+            <div
+              className={styles.MovieDetail__SequelsAndPrequelsCardsContainer}
+              ref={scrollRef}
+            >
+              {responseSequelsAndPrequels.data.map(el => (
+                <MovieCard key={el.filmId} movie={el} />
+              ))}
+            </div>
+            <button
+              className={styles.MovieDetail__ScrollButton}
+              onClick={() => scrollContainer('right')}
+            >
+              &gt;
+            </button>
           </div>
         </div>
       </div>

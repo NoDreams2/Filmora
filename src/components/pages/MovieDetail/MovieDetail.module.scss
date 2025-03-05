@@ -23,7 +23,7 @@
   display: flex;
   justify-content: center;
   gap: 10px;
-  padding-block: 8px;
+  padding-block-end: 20px;
 }
 
 .MovieDetail__rightPart {
@@ -124,4 +124,37 @@
 .MovieDetail__rightPartNumActors {
   font-size: 11px;
   color: #00a1e7;
+}
+
+.MovieDetail__SequelsAndPrequelsContainer {
+  padding-inline: 9px;
+  padding-block-start: 40px;
+  overflow: hidden;
+  max-width: 882px;
+}
+
+.MovieDetail__SequelsAndPrequelsContainerTitle {
+  font-size: 22px;
+  margin-block-end: 16px;
+}
+
+.MovieDetail__SequelsAndPrequelsCardsWrapper {
+  display: flex;
+}
+
+.MovieDetail__SequelsAndPrequelsCardsContainer {
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  gap: 10px;
+}
+
+.MovieDetail__SequelsAndPrequelsCardsContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.MovieDetail__ScrollButton {
+  height: 44px;
+  width: 44px;
+  cursor: pointer;
 }

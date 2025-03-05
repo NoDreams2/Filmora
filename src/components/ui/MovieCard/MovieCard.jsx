@@ -1,16 +1,34 @@
+import classNames from 'classnames';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import RatingBadge from '../../common/RatingBadge';
 import styles from './MovieCard.module.scss';
 
 export default function MovieCard({ movie }) {
+  const location = useLocation();
+  const pathParts = location.pathname.split('/');
+  const lastPathParts = pathParts[pathParts.length - 1];
+  const isLastSegmentNumber =
+    !isNaN(lastPathParts) && lastPathParts.trim() !== '';
+
   return (
-    <div className={styles.MovieCard__container} key={movie.kinopoiskId}>
+    <div
+      className={classNames(styles.MovieCard__container, {
+        [styles.MovieCard__container_size]: isLastSegmentNumber,
+      })}
+      key={movie.kinopoiskId}
+    >
       <Link to={`/movie/${movie.kinopoiskId}`}>
-        <div className={styles.MovieCard__imgContainer}>
+        <div
+          className={classNames(styles.MovieCard__imgContainer, {
+            [styles.MovieCard__imgContainer_scale]: isLastSegmentNumber,
+          })}
+        >
           <img
-            className={styles.MovieCard__img}
+            className={classNames(styles.MovieCard__img, {
+              [styles.MovieCard__img_size]: isLastSegmentNumber,
+            })}
             src={movie.posterUrlPreview}
             alt={movie.nameRu}
           />
@@ -20,7 +38,11 @@ export default function MovieCard({ movie }) {
         </div>
       </Link>
       <div>
-        <h4 className={styles.MovieCard__title}>
+        <h4
+          className={classNames(styles.MovieCard__title, {
+            [styles.MovieCard__title_size]: isLastSegmentNumber,
+          })}
+        >
           {movie.nameRu || movie.nameEn || movie.nameOriginal}
         </h4>
         {movie.genres && movie.genres.length > 0 && (
