@@ -21,9 +21,10 @@
   }
 }
 
-.MovieCard__imgContainer_scale {
+.MovieCard__imgContainer_darkened {
   &:hover {
     transform: scale(1);
+    opacity: 0.65;
   }
 }
 

@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { useRef } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -366,33 +367,43 @@ export default function MovieDetail() {
             )}
           </div>
         </div>
-        <div className={styles.MovieDetail__SequelsAndPrequelsContainer}>
-          <h4 className={styles.MovieDetail__SequelsAndPrequelsContainerTitle}>
-            Сиквелы, приквелы и ремейки
-          </h4>
-          <div className={styles.MovieDetail__SequelsAndPrequelsCardsWrapper}>
-            <button
-              className={styles.MovieDetail__ScrollButton}
-              onClick={() => scrollContainer('left')}
+        {responseSequelsAndPrequels.data && (
+          <div className={styles.MovieDetail__SequelsAndPrequelsContainer}>
+            <h4
+              className={styles.MovieDetail__SequelsAndPrequelsContainerTitle}
             >
-              &lt;
-            </button>
-            <div
-              className={styles.MovieDetail__SequelsAndPrequelsCardsContainer}
-              ref={scrollRef}
-            >
-              {responseSequelsAndPrequels.data.map(el => (
-                <MovieCard key={el.filmId} movie={el} />
-              ))}
+              Сиквелы, приквелы и ремейки
+            </h4>
+            <div className={styles.MovieDetail__SequelsAndPrequelsCardsWrapper}>
+              <button
+                className={classNames(
+                  styles.MovieDetail__ScrollButton,
+                  styles.MovieDetail__ScrollButtonLeft,
+                )}
+                onClick={() => scrollContainer('left')}
+              >
+                &lt;
+              </button>
+              <div
+                className={styles.MovieDetail__SequelsAndPrequelsCardsContainer}
+                ref={scrollRef}
+              >
+                {responseSequelsAndPrequels.data.map(el => (
+                  <MovieCard key={el.filmId} movie={el} />
+                ))}
+              </div>
+              <button
+                className={classNames(
+                  styles.MovieDetail__ScrollButton,
+                  styles.MovieDetail__ScrollButtonRight,
+                )}
+                onClick={() => scrollContainer('right')}
+              >
+                &gt;
+              </button>
             </div>
-            <button
-              className={styles.MovieDetail__ScrollButton}
-              onClick={() => scrollContainer('right')}
-            >
-              &gt;
-            </button>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
