@@ -102,6 +102,10 @@ export const kinopoiskApi = createApi({
     getBudgetAndFees: builder.query({
       query: id => `/v2.2/films/${id}/box_office`,
     }),
+
+    getAwards: builder.query({
+      query: id => `/v2.2/films/${id}/awards`,
+    }),
   }),
 });
 
@@ -113,4 +117,5 @@ export const {
   useGetSequelsAndPrequelsQuery,
   useGetStaffQuery,
   useGetBudgetAndFeesQuery,
+  useGetAwardsQuery,
 } = kinopoiskApi;
