@@ -22,7 +22,7 @@ export default function MovieCard({ movie }) {
       <Link to={`/movie/${movie.kinopoiskId}`}>
         <div
           className={classNames(styles.MovieCard__imgContainer, {
-            [styles.MovieCard__imgContainer_scale]: isLastSegmentNumber,
+            [styles.MovieCard__imgContainer_darkened]: isLastSegmentNumber,
           })}
         >
           <img

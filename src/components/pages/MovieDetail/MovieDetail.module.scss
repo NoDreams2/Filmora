@@ -131,6 +131,7 @@
   padding-block-start: 40px;
   overflow: hidden;
   max-width: 882px;
+  position: relative;
 }
 
 .MovieDetail__SequelsAndPrequelsContainerTitle {
@@ -157,4 +158,26 @@
   height: 44px;
   width: 44px;
   cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  border-radius: 50%;
+  border: none;
+  transition: all 0.2s;
+  color: #333;
+  background-color: #cbd5e1;
+}
+
+.MovieDetail__ScrollButtonLeft {
+  left: 5px;
+  &:hover {
+    transform: translateX(-5px);
+  }
+}
+
+.MovieDetail__ScrollButtonRight {
+  right: 5px;
+  &:hover {
+    transform: translateX(5px);
+  }
 }
