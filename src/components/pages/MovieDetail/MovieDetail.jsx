@@ -2,7 +2,9 @@ import classNames from 'classnames';
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import oscar from '../../../assets/images/oscar.svg';
 import {
+  useGetAwardsQuery,
   useGetBudgetAndFeesQuery,
   useGetDataFilmQuery,
   useGetSequelsAndPrequelsQuery,
@@ -27,6 +29,7 @@ export default function MovieDetail() {
   const responseSequelsAndPrequels = useGetSequelsAndPrequelsQuery(id);
   const responseStaff = useGetStaffQuery(id);
   const responseBudgetAndFees = useGetBudgetAndFeesQuery(id);
+  const responseAwards = useGetAwardsQuery(id);
 
   useEffect(() => {
     const container = scrollRef.current;
@@ -47,7 +50,8 @@ export default function MovieDetail() {
     responseDataFilm.isLoading ||
     responseSequelsAndPrequels.isLoading ||
     responseStaff.isLoading ||
-    responseBudgetAndFees.isLoading
+    responseBudgetAndFees.isLoading ||
+    responseAwards.isLoading
   ) {
     return <div>Загрузка...</div>;
   }
@@ -57,7 +61,8 @@ export default function MovieDetail() {
     // TODO: Убрать комментарий после исправления ошибки на сервере
     // responseSequelsAndPrequels.error ||
     responseStaff.error ||
-    responseBudgetAndFees.error
+    responseBudgetAndFees.error ||
+    responseAwards.error
   ) {
     return <ErrorMessage />;
   }
@@ -92,6 +97,12 @@ export default function MovieDetail() {
       }
     }
   };
+
+  const oscarWins = responseAwards.data?.items.filter(
+    award => award.name === 'Оскар' && award.win === true,
+  );
+
+  console.log(oscarWins);
 
   return (
     <div className={styles.MovieDetail__container}>
@@ -361,36 +372,81 @@ export default function MovieDetail() {
             )}
           </div>
           <div className={styles.MovieDetail__rightPartActorsContainer}>
-            <h3 className={styles.MovieDetail__rightPartActorsTitle}>
-              В главных ролях
-            </h3>
-            {responseStaff.data.some(el => el.professionKey === 'ACTOR') && (
-              <div className={styles.MovieDetail__rightPartActorsList}>
-                {responseStaff.data
-                  .filter(el => el.professionKey === 'ACTOR')
-                  .slice(0, 10)
-                  .map(actor => (
-                    <div
-                      key={actor.staffId}
-                      className={styles.MovieDetail__rightPartActorsName}
-                    >
-                      {actor.nameRu ? actor.nameRu : actor.nameEn}
+            <div
+              className={styles.MovieDetail__rightPartActorsAndOscarsContainer}
+            >
+              <h3 className={styles.MovieDetail__rightPartActorsTitle}>
+                В главных ролях
+              </h3>
+              {responseStaff.data.some(el => el.professionKey === 'ACTOR') && (
+                <div className={styles.MovieDetail__rightPartActorsList}>
+                  {responseStaff.data
+                    .filter(el => el.professionKey === 'ACTOR')
+                    .slice(0, 10)
+                    .map(actor => (
+                      <div
+                        key={actor.staffId}
+                        className={styles.MovieDetail__rightPartActorsName}
+                      >
+                        {actor.nameRu ? actor.nameRu : actor.nameEn}
+                      </div>
+                    ))}
+                </div>
+              )}
+              {responseStaff.data.some(el => el.professionKey === 'ACTOR') && (
+                <span className={styles.MovieDetail__rightPartNumActors}>
+                  {
+                    responseStaff.data.filter(
+                      el => el.professionKey === 'ACTOR',
+                    ).length
+                  }{' '}
+                  {getDeclensionActorsText(
+                    responseStaff.data.filter(
+                      el => el.professionKey === 'ACTOR',
+                    ).length,
+                  )}
+                </span>
+              )}
+            </div>
+            <div className={styles.MovieDetail__rightPartOscarContainer}>
+              <div>
+                <img
+                  className={styles.MovieDetail__rightPartOscarImg}
+                  src={oscar}
+                  alt="Статуэтка"
+                />
+                <span className={styles.MovieDetail__rightPartOscarNum}>
+                  {oscarWins.length}
+                </span>
+                <div className={styles.MovieDetail__rightPartOscarText}>
+                  <h5 className={styles.MovieDetail__rightPartOscarTitle}>
+                    Оскар
+                  </h5>
+                  <div
+                    className={styles.MovieDetail__rightPartOscarYearsAndWins}
+                  >
+                    <time className={styles.MovieDetail__rightPartOscarYear}>
+                      {oscarWins[0].year}
+                    </time>
+                    <div className={styles.MovieDetail__rightPartOscarWins}>
+                      <h6
+                        className={styles.MovieDetail__rightPartOscarWinsTitle}
+                      >
+                        Победитель
+                      </h6>
+                      {oscarWins.map(win => (
+                        <span
+                          key={win.nominationName}
+                          className={styles.MovieDetail__rightPartNominations}
+                        >
+                          {win.nominationName}
+                        </span>
+                      ))}
                     </div>
-                  ))}
+                  </div>
+                </div>
               </div>
-            )}
-            {responseStaff.data.some(el => el.professionKey === 'ACTOR') && (
-              <span className={styles.MovieDetail__rightPartNumActors}>
-                {
-                  responseStaff.data.filter(el => el.professionKey === 'ACTOR')
-                    .length
-                }{' '}
-                {getDeclensionActorsText(
-                  responseStaff.data.filter(el => el.professionKey === 'ACTOR')
-                    .length,
-                )}
-              </span>
-            )}
+            </div>
           </div>
         </div>
         {responseSequelsAndPrequels.data && (
