@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import {
@@ -20,11 +20,28 @@ import styles from './MovieDetail.module.scss';
 export default function MovieDetail() {
   const scrollRef = useRef(null);
   const { id } = useParams();
+  const [isLeftEdge, setIsLeftEdge] = useState(true);
+  const [isRightEdge, setIsRightEdge] = useState(false);
 
   const responseDataFilm = useGetDataFilmQuery(id);
   const responseSequelsAndPrequels = useGetSequelsAndPrequelsQuery(id);
   const responseStaff = useGetStaffQuery(id);
   const responseBudgetAndFees = useGetBudgetAndFeesQuery(id);
+
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (container) {
+      container.addEventListener('scroll', checkScroll);
+      window.addEventListener('resize', checkScroll);
+      checkScroll();
+    }
+    return () => {
+      if (container) {
+        container.removeEventListener('scroll', checkScroll);
+        window.removeEventListener('resize', checkScroll);
+      }
+    };
+  });
 
   if (
     responseDataFilm.isLoading ||
@@ -53,6 +70,15 @@ export default function MovieDetail() {
       return `${numberOfStaffs.slice(0, 3).join(', ')}, ...`;
     }
     return numberOfStaffs.join(', ');
+  };
+
+  const checkScroll = () => {
+    const container = scrollRef.current;
+    if (container) {
+      const { scrollLeft, scrollWidth, clientWidth } = container;
+      setIsLeftEdge(scrollLeft === 0);
+      setIsRightEdge(scrollLeft + clientWidth >= scrollWidth - 1);
+    }
   };
 
   const scrollContainer = direction => {
@@ -379,6 +405,10 @@ export default function MovieDetail() {
                 className={classNames(
                   styles.MovieDetail__ScrollButton,
                   styles.MovieDetail__ScrollButtonLeft,
+                  {
+                    [styles.MovieDetail__ScrollButtonHidden]: isLeftEdge,
+                    [styles.MovieDetail__ScrollButtonVisible]: isLeftEdge,
+                  },
                 )}
                 onClick={() => scrollContainer('left')}
               >
@@ -396,6 +426,10 @@ export default function MovieDetail() {
                 className={classNames(
                   styles.MovieDetail__ScrollButton,
                   styles.MovieDetail__ScrollButtonRight,
+                  {
+                    [styles.MovieDetail__ScrollButtonHidden]: isRightEdge,
+                    [styles.MovieDetail__ScrollButtonVisible]: isRightEdge,
+                  },
                 )}
                 onClick={() => scrollContainer('right')}
               >

@@ -22,8 +22,8 @@
 .MovieDetail__leftPartButtons {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  padding-block-end: 20px;
+  gap: 8px;
+  padding-block-end: 10px;
 }
 
 .MovieDetail__rightPart {
@@ -147,7 +147,7 @@
   display: flex;
   overflow-x: scroll;
   scroll-behavior: smooth;
-  gap: 10px;
+  gap: 9px;
 }
 
 .MovieDetail__SequelsAndPrequelsCardsContainer::-webkit-scrollbar {
@@ -166,6 +166,7 @@
   transition: all 0.2s;
   color: #333;
   background-color: #cbd5e1;
+  transition: all 0.2s ease-in-out;
 }
 
 .MovieDetail__ScrollButtonLeft {
@@ -180,4 +181,14 @@
   &:hover {
     transform: translateX(5px);
   }
+}
+
+.MovieDetail__ScrollButtonHidden {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+.MovieDetail__ScrollButtonVisible {
+  opacity: 1;
+  pointer-events: auto;
 }
