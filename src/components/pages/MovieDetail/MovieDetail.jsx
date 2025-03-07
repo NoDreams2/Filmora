@@ -145,29 +145,23 @@ export default function MovieDetail() {
               <span>Описание отсутствует</span>
             )}
           </div>
-          <div className={styles.MovieDetail__rightPartRating}>
-            <span className={styles.MovieDetail__rightPartRatingKinopoisk}>
-              {responseDataFilm.data.ratingKinopoisk ? (
-                formatRating(responseDataFilm.data.ratingKinopoisk)
-              ) : (
-                <span
-                  className={styles.MovieDetail__rightPartNoRatingKinopoisk}
-                >
-                  Оценки еще не набрались
+          {responseDataFilm.data.ratingKinopoisk && (
+            <div className={styles.MovieDetail__rightPartRating}>
+              <span className={styles.MovieDetail__rightPartRatingKinopoisk}>
+                {formatRating(responseDataFilm.data.ratingKinopoisk)}
+              </span>
+              {responseDataFilm.data.ratingKinopoiskVoteCount && (
+                <span className={styles.MovieDetail__rightPartVoteCount}>
+                  {responseDataFilm.data.ratingKinopoiskVoteCount.toLocaleString(
+                    'ru-RU',
+                  )}{' '}
+                  {getDeclensionRatingText(
+                    responseDataFilm.data.ratingKinopoiskVoteCount,
+                  )}
                 </span>
               )}
-            </span>
-            {responseDataFilm.data.ratingKinopoiskVoteCount && (
-              <span className={styles.MovieDetail__rightPartVoteCount}>
-                {responseDataFilm.data.ratingKinopoiskVoteCount.toLocaleString(
-                  'ru-RU',
-                )}{' '}
-                {getDeclensionRatingText(
-                  responseDataFilm.data.ratingKinopoiskVoteCount,
-                )}
-              </span>
-            )}
-          </div>
+            </div>
+          )}
         </div>
         <div className={styles.MovieDetail__rightPartAboutFilm}>
           <div className={styles.MovieDetail__rightPartAboutFilmContainer}>
@@ -408,45 +402,49 @@ export default function MovieDetail() {
                 </span>
               )}
             </div>
-            <div className={styles.MovieDetail__rightPartOscarContainer}>
-              <div>
-                <img
-                  className={styles.MovieDetail__rightPartOscarImg}
-                  src={oscar}
-                  alt="Статуэтка"
-                />
-                <span className={styles.MovieDetail__rightPartOscarNum}>
-                  {oscarWins.length}
-                </span>
-                <div className={styles.MovieDetail__rightPartOscarText}>
-                  <h5 className={styles.MovieDetail__rightPartOscarTitle}>
-                    Оскар
-                  </h5>
-                  <div
-                    className={styles.MovieDetail__rightPartOscarYearsAndWins}
-                  >
-                    <time className={styles.MovieDetail__rightPartOscarYear}>
-                      {oscarWins[0].year}
-                    </time>
-                    <div className={styles.MovieDetail__rightPartOscarWins}>
-                      <h6
-                        className={styles.MovieDetail__rightPartOscarWinsTitle}
-                      >
-                        Победитель
-                      </h6>
-                      {oscarWins.map(win => (
-                        <span
-                          key={win.nominationName}
-                          className={styles.MovieDetail__rightPartNominations}
+            {oscarWins && oscarWins.length > 0 && (
+              <div className={styles.MovieDetail__rightPartOscarContainer}>
+                <div>
+                  <img
+                    className={styles.MovieDetail__rightPartOscarImg}
+                    src={oscar}
+                    alt="Статуэтка"
+                  />
+                  <span className={styles.MovieDetail__rightPartOscarNum}>
+                    {oscarWins.length}
+                  </span>
+                  <div className={styles.MovieDetail__rightPartOscarText}>
+                    <h5 className={styles.MovieDetail__rightPartOscarTitle}>
+                      Оскар
+                    </h5>
+                    <div
+                      className={styles.MovieDetail__rightPartOscarYearsAndWins}
+                    >
+                      <time className={styles.MovieDetail__rightPartOscarYear}>
+                        {oscarWins[0].year}
+                      </time>
+                      <div className={styles.MovieDetail__rightPartOscarWins}>
+                        <h6
+                          className={
+                            styles.MovieDetail__rightPartOscarWinsTitle
+                          }
                         >
-                          {win.nominationName}
-                        </span>
-                      ))}
+                          Победитель
+                        </h6>
+                        {oscarWins.map(win => (
+                          <span
+                            key={win.nominationName}
+                            className={styles.MovieDetail__rightPartNominations}
+                          >
+                            {win.nominationName}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
         {responseSequelsAndPrequels.data && (

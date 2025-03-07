@@ -11,12 +11,28 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      #3b82f680 50%,
+      transparent 100%
+    );
+  }
 }
 
 .MovieDetail__leftPartPoster {
   width: 222px;
   height: 333px;
   object-fit: cover;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 1);
 }
 
 .MovieDetail__leftPartButtons {
@@ -34,6 +50,7 @@
   margin-block-end: 48px;
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .MovieDetail__rightPartTitleDesc {
@@ -51,10 +68,17 @@
 }
 
 .MovieDetail__rightPartRating {
-  padding-inline: 9px;
-  width: 200px;
   display: flex;
   flex-direction: column;
+  height: 120px;
+  align-items: center;
+  position: relative;
+  padding: 1.5rem;
+  background: rgba(30, 41, 59, 0.7);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .MovieDetail__rightPartRatingKinopoisk {
@@ -63,8 +87,7 @@
 }
 
 .MovieDetail__rightPartNoRatingKinopoisk {
-  font-size: 20px;
-  display: inline-block;
+  font-size: 12px;
 }
 
 .MovieDetail__rightPartVoteCount {
@@ -90,6 +113,10 @@
   padding-block: 8px;
   font-size: 11px;
   display: flex;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+  &:last-child {
+    border-bottom: none;
+  }
 }
 
 .MovieDetail__rightPartKey {
@@ -103,9 +130,7 @@
 }
 
 .MovieDetail__rightPartActorsContainer {
-  padding-inline-start: 52px;
-  padding-inline: 9px;
-  width: 200px;
+  padding-right: 16px;
   position: relative;
   min-height: 370px;
 }
@@ -148,23 +173,32 @@
   position: absolute;
   z-index: 1;
   left: -8px;
+  filter: drop-shadow(0 0 10px rgba(0, 161, 231, 0.8));
 }
 
 .MovieDetail__rightPartOscarNum {
   position: absolute;
-  left: 84px;
+  left: 80px;
+  width: 24px;
+  height: 24px;
   top: 90px;
-  background-color: #00a1e7;
-  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
   padding: 5px;
   z-index: 1;
   letter-spacing: -1px;
+  font-size: 14px;
 }
 
 .MovieDetail__rightPartOscarText {
   position: absolute;
   background-color: #313d4b;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
   width: 400px;
+  min-height: 185px;
   left: -280px;
   top: -30px;
   padding-block: 20px;
@@ -197,6 +231,7 @@
 .MovieDetail__rightPartOscarWinsTitle {
   font-size: 14px;
   font-weight: 700;
+  margin-block-end: 6px;
 }
 
 .MovieDetail__rightPartNominations {
