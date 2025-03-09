@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from 'react';
 
 import '../../../services/kinopoiskApi';
 
-import { Link } from '@mui/material';
 import BearCarousel, { BearSlideImage } from 'bear-react-carousel';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -105,13 +104,9 @@ export default function Movies() {
     <div className={styles.movies__wrap}>
       {carouselArr.map((carousel, index) => (
         <div className={styles.movies__container} key={carousel.title}>
-          <Link
-            className={styles.movies__title}
-            component={RouterLink}
-            to={carousel.url}
-          >
+          <a className={styles.movies__title} href={carousel.url}>
             {carousel.title}
-          </Link>
+          </a>
           <BearCarousel
             data={carousel.data}
             slidesPerView={1}

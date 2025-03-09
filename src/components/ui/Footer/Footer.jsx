@@ -1,19 +1,24 @@
 import React from 'react';
 
-import styles from './Footer.module.scss';
+import './Footer.scss';
+import '../../common/logo.scss';
+
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
-      <div className={styles.footer__container}>
-        <div className={styles.footer__copyrightContainer}>
-          <p className={styles.footer__copyright}>
+    <footer className="footer" role="contentinfo" aria-label="basement website">
+      <div className="footer__container">
+        <div className="footer__copyright-container">
+          <p className="footer__copyright">
             &copy; {new Date().getFullYear()} &laquo;FILMORA&raquo; 18+
           </p>
           <p>Данный сайт создан исключительно в обучающих целях.</p>
           <p>Все права принадлежат правообладателям.</p>
         </div>
-        <span className={styles.footer__logo}>Filmora</span>
+        <Link className="logo" to="/" aria-label="logo Filmora">
+          Filmora
+        </Link>
       </div>
     </footer>
   );
