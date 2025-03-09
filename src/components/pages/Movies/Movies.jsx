@@ -102,7 +102,7 @@ export default function Movies() {
     );
 
   return (
-    <>
+    <div className={styles.movies__wrap}>
       {carouselArr.map((carousel, index) => (
         <div className={styles.movies__container} key={carousel.title}>
           <Link
@@ -126,11 +126,11 @@ export default function Movies() {
               375: { slidesPerView: 2 },
               500: { slidesPerView: 3 },
               618: { slidesPerView: 4 },
-              900: { slidesPerView: 5 },
+              900: { slidesPerView: 6 },
             }}
           />
         </div>
       ))}
-    </>
+    </div>
   );
 }

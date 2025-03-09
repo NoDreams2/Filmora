@@ -1,4 +1,5 @@
 .footer {
+  width: 100%;
   background-color: #1c232b;
   margin-block-start: auto;
   position: relative;
@@ -16,10 +17,9 @@
 }
 
 .footer__container {
-  max-width: 1440px;
-  width: 100%;
+  max-width: 1920px;
   margin-inline: auto;
-  padding-inline: 32px;
+  padding-inline: 50px;
   padding-block: 20px;
   display: flex;
   justify-content: space-between;
@@ -30,18 +30,19 @@
 
 .footer__copyrightContainer {
   color: #94a3b8;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .footer__copyright {
   font-weight: 500;
   color: #cbd5e1;
   margin-block-end: 8px;
+  font-size: 14px;
 }
 
 .footer__logo {
   color: #fff;
-  font-size: 28px;
+  font-size: 30px;
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 3px;
@@ -54,7 +55,7 @@
 @keyframes footerGlow {
   0%,
   100% {
-    opacity: 0.3;
+    opacity: 0.2;
   }
   50% {
     opacity: 1;

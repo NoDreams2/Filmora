@@ -1,22 +1,4 @@
-import MenuIcon from '@mui/icons-material/Menu';
-import {
-  AppBar,
-  Box,
-  Divider,
-  Drawer,
-  IconButton,
-  Link,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Slide,
-  Toolbar,
-  Typography,
-  useScrollTrigger,
-} from '@mui/material';
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { iconComponents, MOVIE_LISTS, TOP_LISTS } from '../../../constants';
@@ -30,110 +12,83 @@ const Icon = ({ iconName, className }) => {
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const trigger = useScrollTrigger({
-    target: window,
-  });
-
-  const handleDrawerToggle = useCallback(() => {
+  const handleDrawerToggle = () => {
     setIsOpen(prevState => !prevState);
-  }, []);
+  };
+
+  const closeDrawer = () => {
+    setIsOpen(false);
+  };
 
   return (
-    <Slide appear={false} direction="down" in={!trigger}>
-      <AppBar className={styles.navbar}>
-        <div className={styles.navbar__container}>
-          <Toolbar>
-            <IconButton
-              className={styles.navbar__iconButton}
-              color="inherit"
-              onClick={handleDrawerToggle}
-              aria-label="open menu"
-              aria-expanded={isOpen}
-            >
-              <MenuIcon className={styles.navbar__burger} />
-            </IconButton>
-            <Drawer
-              open={isOpen}
-              onClose={handleDrawerToggle}
-              PaperProps={{
-                className: styles.navbar__drawer,
-              }}
-            >
-              <Box className={styles.navbar__menu} onClick={handleDrawerToggle}>
-                <List>
-                  {TOP_LISTS.map(item => (
-                    <Link
-                      key={item.title}
-                      component={RouterLink}
-                      to={item.url}
-                      className={styles.navbar__link}
-                    >
-                      <ListItem
-                        className={styles.navbar__listItem}
-                        disablePadding
-                      >
-                        <ListItemButton
-                          className={styles.navbar__listItemButton}
-                        >
-                          <ListItemIcon>
-                            <Icon
-                              iconName={item.icon}
-                              className={styles.navbar__movieItemIcon}
-                            />
-                          </ListItemIcon>
-                          <ListItemText
-                            className={styles.navbar__listItemText}
-                            primary={item.title}
+    <nav className={styles.navbar}>
+      <div className={styles.navbar__container}>
+        <div className={styles.navbar__toolbar}>
+          <button
+            className={styles.navbar__button}
+            onClick={handleDrawerToggle}
+            aria-label="open menu"
+            aria-expanded={isOpen}
+          >
+            <span className={styles.navbar__burger}></span>
+            <span className={styles.navbar__burger}></span>
+            <span className={styles.navbar__burger}></span>
+          </button>
+
+          {isOpen && (
+            <div className={styles.navbar__overlay} onClick={closeDrawer} />
+          )}
+
+          <div
+            className={`${styles.navbar__drawer} ${isOpen ? styles.drawerOpen : ''}`}
+          >
+            <div className={styles.navbar__menu}>
+              <ul className={styles.navbar__list}>
+                {TOP_LISTS.map(item => (
+                  <li key={item.title} className={styles.navbar__listItem}>
+                    <RouterLink to={item.url} className={styles.navbar__link}>
+                      <div className={styles.navbar__listItemButton}>
+                        <div className={styles.navbar__listItemIcon}>
+                          <Icon
+                            iconName={item.icon}
+                            className={styles.navbar__movieItemIcon}
                           />
-                        </ListItemButton>
-                      </ListItem>
-                    </Link>
-                  ))}
-                </List>
-                <Divider sx={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }} />
-                <List>
-                  {MOVIE_LISTS.map(item => (
-                    <Link
-                      key={item.title}
-                      component={RouterLink}
-                      to={item.url}
-                      className={styles.navbar__link}
-                    >
-                      <ListItem
-                        className={styles.navbar__listItem}
-                        disablePadding
-                      >
-                        <ListItemButton
-                          className={styles.navbar__listItemButton}
-                        >
-                          <ListItemIcon>
-                            <Icon
-                              iconName={item.icon}
-                              className={styles.navbar__movieItemIcon}
-                            />
-                          </ListItemIcon>
-                          <ListItemText
-                            className={styles.navbar__listItemText}
-                            primary={item.title}
+                        </div>
+                        <span className={styles.navbar__listItemText}>
+                          {item.title}
+                        </span>
+                      </div>
+                    </RouterLink>
+                  </li>
+                ))}
+              </ul>
+              <div className={styles.navbar__divider} />
+              <ul className={styles.navbar__list}>
+                {MOVIE_LISTS.map(item => (
+                  <li key={item.title} className={styles.navbar__listItem}>
+                    <RouterLink to={item.url} className={styles.navbar__link}>
+                      <div className={styles.navbar__listItemButton}>
+                        <div className={styles.navbar__listItemIcon}>
+                          <Icon
+                            iconName={item.icon}
+                            className={styles.navbar__movieItemIcon}
                           />
-                        </ListItemButton>
-                      </ListItem>
-                    </Link>
-                  ))}
-                </List>
-              </Box>
-            </Drawer>
-            <Typography
-              variant="h5"
-              className={styles.navbar__logo}
-              component={RouterLink}
-              to="/"
-            >
-              Filmora
-            </Typography>
-          </Toolbar>
+                        </div>
+                        <span className={styles.navbar__listItemText}>
+                          {item.title}
+                        </span>
+                      </div>
+                    </RouterLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <a className={styles.navbar__logo} href="/">
+            Filmora
+          </a>
         </div>
-      </AppBar>
-    </Slide>
+      </div>
+    </nav>
   );
 }
