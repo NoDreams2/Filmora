@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import React, { useCallback, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { iconComponents, MOVIE_LISTS, TOP_LISTS } from '../../../constants';
-import styles from './NavBar.module.scss';
+
+import './NavBar.scss';
+import '../../common/logo.scss';
 
 const Icon = ({ iconName, className }) => {
   const IconComponent = iconComponents[iconName];
@@ -12,81 +14,101 @@ const Icon = ({ iconName, className }) => {
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleDrawerToggle = () => {
+  const handleDrawerToggle = useCallback(() => {
     setIsOpen(prevState => !prevState);
-  };
+  }, []);
 
-  const closeDrawer = () => {
+  const closeDrawer = useCallback(() => {
     setIsOpen(false);
-  };
+  }, []);
+
+  useEffect(() => {
+    const handleESC = e => {
+      if (e.key === 'Escape') {
+        closeDrawer();
+      }
+    };
+    if (isOpen) {
+      document.addEventListener('keydown', handleESC);
+      document.querySelector('.navbar__drawer').focus();
+    }
+
+    return () => document.removeEventListener('keydown', handleESC);
+  }, [isOpen]);
 
   return (
-    <nav className={styles.navbar}>
-      <div className={styles.navbar__container}>
-        <div className={styles.navbar__toolbar}>
+    <nav className="navbar">
+      <div className="navbar__container">
+        <div className="navbar__toolbar">
           <button
-            className={styles.navbar__button}
+            className="navbar__button"
             onClick={handleDrawerToggle}
             aria-label="open menu"
+            aria-controls="main-menu"
+            aria-haspopup="true"
             aria-expanded={isOpen}
           >
-            <span className={styles.navbar__burger}></span>
-            <span className={styles.navbar__burger}></span>
-            <span className={styles.navbar__burger}></span>
+            <span className="navbar__burger"></span>
+            <span className="navbar__burger"></span>
+            <span className="navbar__burger"></span>
           </button>
 
-          {isOpen && (
-            <div className={styles.navbar__overlay} onClick={closeDrawer} />
-          )}
+          {isOpen && <div className="navbar__overlay" onClick={closeDrawer} />}
 
-          <div
-            className={`${styles.navbar__drawer} ${isOpen ? styles.drawerOpen : ''}`}
+          <nav
+            className={`navbar__drawer ${isOpen ? 'navbar__drawer_open' : ''}`}
+            aria-label="main menu"
+            id="main-menu"
+            role="menu"
+            aria-orientation="vertical"
           >
-            <div className={styles.navbar__menu}>
-              <ul className={styles.navbar__list}>
+            <div className="navbar__menu">
+              <ul className="navbar__list">
                 {TOP_LISTS.map(item => (
-                  <li key={item.title} className={styles.navbar__listItem}>
-                    <RouterLink to={item.url} className={styles.navbar__link}>
-                      <div className={styles.navbar__listItemButton}>
-                        <div className={styles.navbar__listItemIcon}>
-                          <Icon
-                            iconName={item.icon}
-                            className={styles.navbar__movieItemIcon}
-                          />
+                  <li key={item.title} className="navbar__list-item">
+                    <Link
+                      to={item.url}
+                      className="navbar__link"
+                      onClick={handleDrawerToggle}
+                    >
+                      <div className="navbar__list-item-button">
+                        <div>
+                          <Icon iconName={item.icon} />
                         </div>
-                        <span className={styles.navbar__listItemText}>
+                        <span className="navbar__list-item-text">
                           {item.title}
                         </span>
                       </div>
-                    </RouterLink>
+                    </Link>
                   </li>
                 ))}
               </ul>
-              <div className={styles.navbar__divider} />
-              <ul className={styles.navbar__list}>
+              <div className="navbar__divider" />
+              <ul className="navbar__list">
                 {MOVIE_LISTS.map(item => (
-                  <li key={item.title} className={styles.navbar__listItem}>
-                    <RouterLink to={item.url} className={styles.navbar__link}>
-                      <div className={styles.navbar__listItemButton}>
-                        <div className={styles.navbar__listItemIcon}>
-                          <Icon
-                            iconName={item.icon}
-                            className={styles.navbar__movieItemIcon}
-                          />
+                  <li key={item.title} className="navbar__list-item">
+                    <Link
+                      to={item.url}
+                      className="navbar__link"
+                      onClick={handleDrawerToggle}
+                    >
+                      <div className="navbar__list-item-button">
+                        <div>
+                          <Icon iconName={item.icon} />
                         </div>
-                        <span className={styles.navbar__listItemText}>
+                        <span className="navbar__list-item-text">
                           {item.title}
                         </span>
                       </div>
-                    </RouterLink>
+                    </Link>
                   </li>
                 ))}
               </ul>
             </div>
-          </div>
-          <a className={styles.navbar__logo} href="/">
+          </nav>
+          <Link className="logo" to="/" aria-label="logo Filmora">
             Filmora
-          </a>
+          </Link>
         </div>
       </div>
     </nav>

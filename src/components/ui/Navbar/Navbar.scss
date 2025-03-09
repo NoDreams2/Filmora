@@ -4,8 +4,8 @@
   left: 0;
   width: 100%;
   background-color: rgba(28, 35, 43, 1);
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1100;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
   margin-bottom: 50px;
 }
 
@@ -50,7 +50,7 @@
   margin: 0;
 }
 
-.navbar__listItem {
+.navbar__list-item {
   width: 100%;
   transition: background-color 0.2s ease;
   &:hover {
@@ -63,7 +63,7 @@
   color: inherit;
 }
 
-.navbar__listItemButton {
+.navbar__list-item-button {
   display: flex;
   align-items: center;
   padding-block: 15px;
@@ -79,27 +79,17 @@
   }
 }
 
-.navbar__listItemText {
+.navbar__list-item-text {
+  position: relative;
   text-transform: uppercase;
   font-size: 20px;
+  letter-spacing: 1px;
 }
 
 .navbar__divider {
   height: 1px;
   background-color: rgba(255, 255, 255, 0.1);
   margin: 16px 0;
-}
-
-.navbar__logo {
-  background: linear-gradient(45deg, #fff, #00a1e7);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 2px;
-  font-size: 30px;
 }
 
 .navbar__overlay {
@@ -116,15 +106,16 @@
   position: fixed;
   top: 0;
   left: -550px;
-  width: 550px;
+  width: 500px;
   height: 100vh;
   background-color: #1c232b;
-  transition: left 0.3s ease;
+  will-change: transform;
+  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow-y: auto;
   z-index: 1002;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
 
-  &.drawerOpen {
+  &.navbar__drawer_open {
     left: 0;
   }
 }
