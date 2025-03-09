@@ -51,6 +51,10 @@ h6 {
   margin: 0;
 }
 
+.MuiContainer-fixed {
+  max-width: 1920px !important;
+}
+
 @media (max-width: 1199px) {
   .bear-react-carousel__nav-button {
     width: 34px !important;

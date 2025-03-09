@@ -1,4 +1,3 @@
-import { Container } from '@mui/material';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
@@ -13,12 +12,20 @@ export default function Layout() {
         flexDirection: 'column',
         minHeight: '100vh',
         backgroundColor: '#14191f',
+        width: '100%',
       }}
     >
-      <Navbar />
-      <Container fixed sx={{ py: 8, flexGrow: 1 }}>
+      <div
+        style={{
+          width: '1920px',
+          maxWidth: '100%',
+          margin: '0 auto',
+          flexGrow: 1,
+        }}
+      >
+        <Navbar />
         <Outlet />
-      </Container>
+      </div>
       <Footer />
     </div>
   );
