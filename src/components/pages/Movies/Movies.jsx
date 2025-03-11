@@ -94,7 +94,7 @@ export default function Movies() {
     serializeDataForCarousel,
   ]);
 
-  if (isLoading) return <MoviesSkeleton />;
+  if (!isLoading) return <MoviesSkeleton />;
   if (hasError)
     return (
       <ErrorMessage message="Не удалось загрузить список фильмов. Проверьте интернет-соединение и попробуйте снова." />
