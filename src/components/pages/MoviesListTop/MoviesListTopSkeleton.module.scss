@@ -1,15 +1,22 @@
 .skeleton__container {
-  padding-block-start: 20px;
+  padding-block-start: 100px;
+  padding-block-end: 30px;
+  max-width: 1920px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline: 50px;
 }
 
 .skeleton__header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
-  width: 1152px;
-  height: 58px;
+  max-width: 1880px;
+  height: 83px;
   background-color: #1c232b;
   border-radius: 24px;
+  margin-block: 30px;
 }
 
 .skeleton__button {
@@ -22,8 +29,8 @@
 
 .skeleton__title {
   justify-self: center;
-  width: 400px;
-  height: 30px;
+  width: 500px;
+  height: 38px;
   background-color: #2a2e35;
   border-radius: 12px;
 }
@@ -55,9 +62,18 @@
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1644px) {
   .skeleton__header {
-    width: 852px;
+    height: 58px;
+  }
+  .skeleton__title {
+    height: 30px;
+  }
+}
+
+@media (max-width: 1420px) {
+  .skeleton__container {
+    padding-block-start: 80px;
   }
 }
 
@@ -70,6 +86,12 @@
   .skeleton__title {
     width: 360px;
     margin-right: 50px;
+  }
+}
+
+@media (max-width: 720px) {
+  .skeleton__container {
+    padding-block-start: 70px;
   }
 }
 
