@@ -128,6 +128,86 @@
     width: 28px;
     height: 2.7px;
   }
+  .navbar__menu {
+    padding-block: 16px;
+  }
+  .navbar__list-item-button {
+    padding-block: 16px;
+    padding-inline: 26px;
+    gap: 26px;
+  }
+  .navbar__list-item-text {
+    font-size: 18px;
+  }
+  .css-1umw9bq-MuiSvgIcon-root {
+    width: 26px !important;
+    height: 26px !important;
+  }
+  .navbar__drawer {
+    width: 440px;
+  }
+}
+
+@media (max-width: 1120px) {
+  .navbar__menu {
+    padding-block: 12px;
+  }
+  .navbar__list-item-button {
+    padding-block: 15px;
+    padding-inline: 24px;
+    gap: 24px;
+  }
+  .navbar__drawer {
+    width: 430px;
+  }
+}
+
+@media (max-width: 1020px) {
+  .navbar__menu {
+    padding-block: 12px;
+  }
+  .navbar__list-item-button {
+    padding-block: 15px;
+    padding-inline-end: 0px;
+    padding-inline-start: 18px;
+    gap: 22px;
+  }
+  .navbar__drawer {
+    width: 350px;
+  }
+  .navbar__list-item-text {
+    font-size: 17px;
+    font-weight: 500;
+  }
+  .css-1umw9bq-MuiSvgIcon-root {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  .navbar__divider {
+    margin-block: 10px;
+  }
+}
+
+@media (max-width: 818px) {
+  .navbar__list-item-button {
+    padding-block: 12px;
+    padding-inline-start: 17px;
+    gap: 20px;
+  }
+  .navbar__drawer {
+    width: 280px;
+  }
+  .navbar__list-item-text {
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .css-1umw9bq-MuiSvgIcon-root {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  .navbar__divider {
+    margin-block: 8px;
+  }
 }
 
 @media (max-width: 720px) {
@@ -140,5 +220,56 @@
   }
   .navbar__container {
     padding-inline: 30px;
+  }
+}
+
+@media (max-width: 666px) {
+  .navbar__menu {
+    padding-block: 8px;
+  }
+  .navbar__list-item-button {
+    padding-block: 10px;
+    padding-inline-start: 13px;
+    padding-inline-end: 3px;
+    gap: 14px;
+  }
+  .navbar__drawer {
+    width: 230px;
+  }
+  .navbar__list-item-text {
+    font-size: 13px;
+    font-weight: 400;
+  }
+  .css-1umw9bq-MuiSvgIcon-root {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .navbar__divider {
+    margin-block: 6px;
+  }
+}
+
+@media (max-width: 466px) {
+  .navbar__menu {
+    padding-block: 4px;
+  }
+  .navbar__list-item-button {
+    padding-block: 8px;
+    padding-inline-start: 8px;
+    gap: 12px;
+  }
+  .navbar__drawer {
+    width: 180px;
+  }
+  .navbar__list-item-text {
+    font-size: 10px;
+    font-weight: 400;
+  }
+  .css-1umw9bq-MuiSvgIcon-root {
+    width: 16px !important;
+    height: 16px !important;
+  }
+  .navbar__divider {
+    margin-block: 4px;
   }
 }

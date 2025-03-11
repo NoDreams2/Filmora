@@ -1,9 +1,14 @@
+.container {
+  padding-top: 100px;
+  width: 1830px;
+}
+
 .skeletonContainer {
-  max-width: 1180px;
-  height: 393px;
+  padding-inline-end: 10px;
+  height: 503px;
   position: relative;
   margin: 40px 0;
-  padding: 10px 0;
+  padding-block-start: 10px;
   background-color: #1c232b;
   overflow: hidden;
   &::before {
@@ -19,8 +24,8 @@
 }
 
 .skeletonTitle {
-  width: 273px;
-  height: 34px;
+  width: 313px;
+  height: 39px;
   background: #2a2e35;
   margin: 0 0 10px 15px;
   position: relative;
@@ -51,8 +56,8 @@
 
 .skeletonCard {
   flex: 0 0 auto;
-  width: 213px;
-  height: 324px;
+  width: 289px;
+  height: 436px;
   background: #2a2e35;
   position: relative;
   overflow: hidden;
@@ -80,115 +85,93 @@
   }
 }
 
-@media (max-width: 1199px) {
-  .skeletonContainer {
-    max-width: 852px;
-    max-height: 293px;
-    margin-block: 30px;
+@media (max-width: 1920px) {
+  .container {
+    width: 1630px;
   }
   .skeletonCard {
-    width: 153px;
-    height: 230px;
+    width: 310px;
+    height: 458px;
+  }
+  .skeletonContainer {
+    height: 534px;
+  }
+}
+
+@media (max-width: 1720px) {
+  .container {
+    width: 1330px;
+  }
+  .skeletonCard {
+    width: 316px;
+    height: 467px;
+  }
+  .skeletonContainer {
+    height: 543px;
+  }
+}
+
+@media (max-width: 1420px) {
+  .container {
+    padding-top: 80px;
+    width: 1030px;
+  }
+  .skeletonCard {
+    width: 326px;
+    height: 484px;
   }
   .skeletonTitle {
-    width: 222px;
-    height: 28px;
+    width: 283px;
+    height: 35px;
+  }
+  .skeletonContainer {
+    height: 554px;
   }
 }
 
-@media (max-width: 900px) {
-  .skeletonContainer {
-    max-width: 552px;
-    max-height: 235px;
+@media (max-width: 1120px) {
+  .container {
+    width: 630px;
   }
   .skeletonCard {
-    width: 120px;
-    height: 180px;
+    width: 296px;
+    height: 434px;
   }
   .skeletonTitle {
-    width: 192px;
-    height: 24px;
+    width: 252px;
+    height: 31px;
+  }
+  .skeletonContainer {
+    height: 498px;
   }
 }
 
-@media (max-width: 618px) {
-  .skeletonContainer {
-    max-width: 552px;
-    max-height: 304px;
+@media (max-width: 720px) {
+  .container {
+    width: 330px;
   }
   .skeletonCard {
-    width: 165px;
-    height: 250px;
-  }
-}
-
-@media (max-width: 584px) {
-  .skeletonContainer {
-    margin-inline: auto;
-    max-width: 500px;
-    max-height: 280px;
-  }
-  .skeletonCard {
-    width: 148px;
-    height: 220px;
-  }
-}
-
-@media (max-width: 536px) {
-  .skeletonContainer {
-    max-width: 470px;
-    max-height: 260px;
-  }
-  .skeletonCard {
-    width: 138px;
-    height: 200px;
-  }
-}
-
-@media (max-width: 500px) {
-  .skeletonContainer {
-    max-width: 400px;
-    max-height: 340px;
-  }
-  .skeletonCard {
-    width: 180px;
-    height: 290px;
+    width: 306px;
+    height: 448px;
   }
   .skeletonTitle {
-    width: 151px;
-    height: 18px;
+    width: 212px;
+    height: 26px;
+  }
+  .skeletonContainer {
+    height: 508px;
   }
 }
 
-@media (max-width: 431px) {
-  .skeletonContainer {
-    max-width: 340px;
-    max-height: 310px;
+@media (max-width: 420px) {
+  .container {
+    width: 278px;
   }
   .skeletonCard {
-    width: 150px;
-    height: 250px;
+    width: 254px;
+    height: 374px;
   }
-}
-
-@media (max-width: 376px) {
   .skeletonContainer {
-    max-width: 300px;
-    max-height: 500px;
-  }
-  .skeletonCard {
-    width: 272px;
-    height: 440px;
-  }
-}
-
-@media (max-width: 335px) {
-  .skeletonContainer {
-    max-width: 270px;
-    max-height: 470px;
-  }
-  .skeletonCard {
-    width: 242px;
-    height: 410px;
+    height: 430px;
   }
 }
