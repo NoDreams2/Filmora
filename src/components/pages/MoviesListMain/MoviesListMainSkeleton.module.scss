@@ -1,11 +1,18 @@
 .skeleton__container {
-  padding-block-start: 20px;
+  padding-block-start: 100px;
+  padding-block-end: 30px;
+  padding-inline: 50px;
+  max-width: 1920px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .skeleton__header {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding-block: 30px;
 }
 
 .skeleton__title {
@@ -92,6 +99,12 @@
   }
 }
 
+@media (max-width: 1420px) {
+  .skeleton__container {
+    padding-block-start: 80px;
+  }
+}
+
 @media (max-width: 1200px) {
   .skeleton__title {
     width: 852px;
@@ -122,6 +135,12 @@
   .skeleton__form {
     align-self: start;
     width: 522px;
+  }
+}
+
+@media (max-width: 720px) {
+  .skeleton__container {
+    padding-block-start: 70px;
   }
 }
 
