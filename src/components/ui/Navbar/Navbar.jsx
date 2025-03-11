@@ -54,7 +54,6 @@ export default function Navbar() {
           </button>
 
           {isOpen && <div className="navbar__overlay" onClick={closeDrawer} />}
-
           <nav
             className={`navbar__drawer ${isOpen ? 'navbar__drawer_open' : ''}`}
             aria-label="main menu"

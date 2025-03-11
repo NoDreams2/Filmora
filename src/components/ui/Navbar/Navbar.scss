@@ -66,7 +66,7 @@
 .navbar__list-item-button {
   display: flex;
   align-items: center;
-  padding-block: 15px;
+  padding-block: 18px;
   padding-inline: 30px;
   gap: 30px;
   color: #cbd5e1;
@@ -117,5 +117,28 @@
 
   &.navbar__drawer_open {
     left: 0;
+  }
+}
+
+@media (max-width: 1420px) {
+  .navbar__toolbar {
+    height: 80px;
+  }
+  .navbar__burger {
+    width: 28px;
+    height: 2.7px;
+  }
+}
+
+@media (max-width: 720px) {
+  .navbar__toolbar {
+    height: 70px;
+  }
+  .navbar__burger {
+    width: 26px;
+    height: 2.4px;
+  }
+  .navbar__container {
+    padding-inline: 30px;
   }
 }

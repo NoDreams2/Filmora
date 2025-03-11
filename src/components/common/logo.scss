@@ -20,3 +20,15 @@
     background-position: 0% 50%;
   }
 }
+
+@media (max-width: 1420px) {
+  .logo {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 720px) {
+  .logo {
+    font-size: 26px;
+  }
+}

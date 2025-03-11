@@ -16,6 +16,7 @@
 
 .movies__container {
   width: 100%;
+  padding-block-start: 10px;
   position: relative;
   margin: 40px auto;
   background-color: #1c232b;
@@ -61,56 +62,71 @@
   }
 }
 
-@media (max-width: 1199px) {
-  .movies__container {
-    padding-block: 10px;
-    margin-block: 30px;
-  }
-  .Movies__image {
-    padding-top: 10px;
-  }
-  .Movies__rating {
-    font-size: 13px;
-    padding: 2px 6px;
-    transform: scale(0.8);
-    transform-origin: left bottom;
-    bottom: 8px;
-    left: 8px;
-  }
-  .movies__title {
-    font-size: 21px !important;
+@media (max-width: 1920px) {
+  .movies__wrap {
+    width: 1720px;
   }
 }
 
-@media (max-width: 900px) {
-  .movies__container {
-    padding-block: 8px;
-  }
-  .Movies__image {
-    padding-top: 8px;
-  }
-  .Movies__rating {
-    transform: scale(0.7);
-  }
-  .movies__title {
-    font-size: 18px !important;
-  }
-  .movies__container {
-    gap: 6px;
+@media (max-width: 1720px) {
+  .movies__wrap {
+    width: 1420px;
   }
 }
 
-@media (max-width: 618px) {
-  .movies__container {
-    padding-block: 6px;
-  }
-  .Movies__image {
-    padding-top: 6px;
-  }
-  .Movies__rating {
-    transform: scale(0.8);
+@media (max-width: 1420px) {
+  .movies__wrap {
+    width: 1120px;
+    padding-top: 80px;
   }
   .movies__title {
-    font-size: 14px !important;
+    font-size: 27px;
+  }
+}
+
+@media (max-width: 1120px) {
+  .movies__wrap {
+    width: 720px;
+  }
+  .movies__title {
+    font-size: 24px;
+  }
+  :global {
+    .bear-react-carousel__nav-button {
+      padding: 22px !important;
+    }
+    .bear-react-carousel__nav-icon {
+      padding: 15px;
+    }
+  }
+  .Movies__image {
+    padding-block-start: 6px;
+  }
+  .movies__container {
+    padding-block-start: 6px;
+  }
+}
+
+@media (max-width: 720px) {
+  .movies__wrap {
+    width: 420px;
+  }
+  .movies__title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 420px) {
+  .movies__wrap {
+    width: 300px;
+    padding-inline: 16px;
+  }
+  :global {
+    .bear-react-carousel__nav-button {
+      padding: 20px !important;
+    }
+    .bear-react-carousel__nav-icon {
+      padding: 13px;
+    }
   }
 }

@@ -17,7 +17,6 @@ export default function Layout() {
     >
       <div
         style={{
-          width: '1920px',
           maxWidth: '100%',
           margin: '0 auto',
           flexGrow: 1,

@@ -117,11 +117,12 @@ export default function Movies() {
             autoPlayTime={11000}
             spaceBetween={14}
             breakpoints={{
-              1: { autoPlayTime: 0 },
-              375: { slidesPerView: 2 },
-              500: { slidesPerView: 3 },
-              618: { slidesPerView: 4 },
-              900: { slidesPerView: 6 },
+              0: { slidesPerView: 1 },
+              720: { slidesPerView: 2 },
+              1120: { slidesPerView: 3 },
+              1420: { slidesPerView: 4 },
+              1720: { slidesPerView: 5 },
+              1920: { slidesPerView: 6 },
             }}
           />
         </div>
