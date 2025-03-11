@@ -8,7 +8,9 @@ import { Link as RouterLink } from 'react-router-dom';
 import useMoviesQuery from '../../../hooks/useMoviesQuery';
 import RatingBadge from '../../common/RatingBadge';
 import ErrorMessage from '../../ui/ErrorMessage/ErrorMessage';
-import styles from './Movies.module.scss';
+
+import './Movies.scss';
+
 import MoviesSkeleton from './MoviesSkeleton';
 
 export default function Movies() {
@@ -39,12 +41,12 @@ export default function Movies() {
       data.map(row => (
         <RouterLink key={row.id} to={`/movie/${row.kinopoiskId}`}>
           <BearSlideImage
-            className={styles.Movies__image}
+            className="movies__image"
             imageUrl={row.posterUrlPreview}
           />
           {row.ratingKinopoisk && (
             <RatingBadge
-              className={styles.Movies__rating}
+              className="movies__rating"
               rating={row.ratingKinopoisk}
             />
           )}
@@ -94,17 +96,17 @@ export default function Movies() {
     serializeDataForCarousel,
   ]);
 
-  if (!isLoading) return <MoviesSkeleton />;
+  if (isLoading) return <MoviesSkeleton />;
   if (hasError)
     return (
       <ErrorMessage message="Не удалось загрузить список фильмов. Проверьте интернет-соединение и попробуйте снова." />
     );
 
   return (
-    <div className={styles.movies__wrap}>
+    <div className="movies__wrap">
       {carouselArr.map((carousel, index) => (
-        <div className={styles.movies__container} key={carousel.title}>
-          <a className={styles.movies__title} href={carousel.url}>
+        <div className="movies__container" key={carousel.title}>
+          <a className="movies__title" href={carousel.url}>
             {carousel.title}
           </a>
           <BearCarousel

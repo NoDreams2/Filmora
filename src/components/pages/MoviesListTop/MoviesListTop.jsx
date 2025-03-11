@@ -10,6 +10,8 @@ import MoviesList from '../../ui/MoviesList';
 import MoviesListTitle from '../../ui/MoviesListTitle';
 import MoviesListTopSkeleton from './MoviesListTopSkeleton';
 
+import './MoviesListTop.scss';
+
 export default function MoviesListTop() {
   const dispatch = useDispatch();
   const location = useLocation();
@@ -38,7 +40,7 @@ export default function MoviesListTop() {
   if (isLoading) return <MoviesListTopSkeleton />;
 
   return (
-    <>
+    <div className="MoviesListTop__container">
       <MoviesListTitle title={movieType.title} />
       {data && (
         <MoviesList
@@ -48,6 +50,6 @@ export default function MoviesListTop() {
           setPage={handlePageChange}
         />
       )}
-    </>
+    </div>
   );
 }

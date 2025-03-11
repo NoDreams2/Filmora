@@ -1,4 +1,4 @@
-.Movies__image {
+.movies__image {
   object-fit: cover;
   padding-block: 10px;
   transition: opacity 0.2s;
@@ -48,18 +48,16 @@
   color: transparent;
 }
 
-:global {
-  .bear-react-carousel__nav-button {
-    padding: 25px !important;
-    opacity: 1 !important;
-    background-color: #29333d !important;
-    border-radius: 8px !important;
-    border: 1.6px solid rgba(0, 161, 231, 1) !important;
-  }
+.bear-react-carousel__nav-button {
+  padding: 25px !important;
+  opacity: 1 !important;
+  background-color: #29333d !important;
+  border-radius: 8px !important;
+  border: 1.6px solid rgba(0, 161, 231, 1) !important;
+}
 
-  .bear-react-carousel__nav-icon {
-    padding: 20px;
-  }
+.bear-react-carousel__nav-icon {
+  padding: 20px;
 }
 
 @media (max-width: 1920px) {

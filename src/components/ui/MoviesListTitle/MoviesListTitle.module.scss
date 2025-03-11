@@ -1,8 +1,9 @@
 .MoviesListTitle__container {
   display: flex;
   align-items: center;
-  margin-block: 20px;
-  padding: 10px;
+  margin-block: 30px;
+  padding-inline: 10px;
+  padding-block: 20px;
   background: #1c232b;
   border-radius: 24px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.36);
@@ -15,7 +16,7 @@
   text-transform: uppercase;
   text-align: center;
   flex-grow: 1;
-  font-size: 1.6rem;
+  font-size: 2rem;
   background: linear-gradient(45deg, #fff, #00a1e7);
   -webkit-background-clip: text;
   background-clip: text;
@@ -35,35 +36,51 @@
   }
 }
 
+@media (max-width: 1644px) {
+  .MoviesListTitle__container {
+    padding-inline: 10px;
+    padding-block: 10px;
+  }
+  .MoviesListTitle__title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 1420px) {
+  .MoviesListTitle__container {
+    padding-inline: 10px;
+    padding-block: 10px;
+  }
+  .MoviesListTitle__title {
+    font-size: 1.6rem;
+  }
+}
+
 @media (max-width: 900px) {
   .MoviesListTitle__container {
     justify-content: space-between;
   }
   .MoviesListTitle__title {
     font-size: 1.4rem;
-    margin: 0;
   }
   .MoviesListTitle__button {
     padding: 6px 16px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 644px) {
   .MoviesListTitle__title {
     font-size: 20px;
     margin: 0;
   }
   .MoviesListTitle__container {
-    margin-block-start: 4px;
     flex-direction: column;
     background: transparent;
     box-shadow: none;
     padding: 0;
-    margin-block-start: 10px;
-    margin-block-end: 20px;
     animation: none;
     border: none;
-    gap: 15px;
+    gap: 12px;
   }
   .MoviesListTitle__button {
     margin-inline-end: auto;

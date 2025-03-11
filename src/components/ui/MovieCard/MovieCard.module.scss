@@ -1,8 +1,8 @@
 .MovieCard__container {
   transition: transform 0.2s ease;
-  max-width: 205px;
-  min-width: 205px;
-  width: 205px;
+  max-width: 305px;
+  min-width: 305px;
+  width: 305px;
   animation: cardAppear 0.6s ease forwards;
 }
 
@@ -17,7 +17,7 @@
   border-radius: 16px;
   transition: all 0.2s ease;
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
 }
 
@@ -30,8 +30,8 @@
 
 .MovieCard__img {
   width: 100%;
-  height: 305px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.8);
+  height: 460px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 1);
   position: relative;
   margin-block-end: 2px;
   border-radius: 12px;
@@ -51,6 +51,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  font-size: 20px;
 }
 
 .MovieCard__title_size {
@@ -59,7 +60,7 @@
 }
 
 .MovieCard__genre {
-  font-size: 12px;
+  font-size: 14px;
   color: #94a3b8;
 }
 
@@ -71,5 +72,23 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@media (max-width: 1644px) {
+  .MovieCard__container {
+    max-width: 255px;
+    min-width: 255px;
+    width: 255px;
+  }
+  .MovieCard__img {
+    height: 385px;
+  }
+  .MovieCard__title {
+    font-size: 18px;
+  }
+  .MovieCard__genre {
+    font-size: 13px;
+    color: #94a3b8;
   }
 }
