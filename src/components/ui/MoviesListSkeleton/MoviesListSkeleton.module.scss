@@ -3,7 +3,6 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
-  padding-block-start: 20px;
 }
 
 .skeleton__card {
@@ -49,7 +48,7 @@
 }
 
 .skeleton__pagination {
-  width: 300px;
+  width: 400px;
   height: 37px;
   background-color: #2a2e35;
   border-radius: 12px;
@@ -95,7 +94,13 @@
 
 @media (max-width: 500px) {
   .skeleton__pagination {
-    width: 200px;
+    width: 260px;
     height: 30px;
+  }
+}
+
+@media (max-width: 348px) {
+  .skeleton__pagination {
+    width: 200px;
   }
 }
