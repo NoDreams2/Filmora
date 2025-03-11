@@ -1,0 +1,18 @@
+.MoviesListMain__container {
+  max-width: 1920px;
+  padding-block-start: 100px;
+  padding-block-end: 30px;
+  padding-inline: 50px;
+}
+
+@media (max-width: 1420px) {
+  .MoviesListMain__container {
+    padding-block-start: 80px;
+  }
+}
+
+@media (max-width: 720px) {
+  .MoviesListMain__container {
+    padding-block-start: 70px;
+  }
+}

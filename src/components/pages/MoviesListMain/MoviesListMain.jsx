@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
+import './MoviesListMain.scss';
+
 import { MOVIE_LISTS } from '../../../constants';
 import { resetPage, setPage } from '../../../features/currentQuerySlice';
 import {
@@ -64,7 +66,7 @@ export default function MoviesListMain() {
     );
 
   return (
-    <>
+    <div className="MoviesListMain__container">
       <MoviesListTitle title={movieType.title} />
       <SelectMovies
         countriesList={responseGenresAndCountries.data.countries}
@@ -82,6 +84,6 @@ export default function MoviesListMain() {
           setPage={handlePageChange}
         />
       )}
-    </>
+    </div>
   );
 }
