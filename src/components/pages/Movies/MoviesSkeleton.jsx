@@ -1,20 +1,16 @@
 import React from 'react';
 
-import styles from './MoviesSkeleton.module.scss';
+import './MoviesSkeleton.scss';
 
 export default function MoviesSkeleton() {
   return (
-    <div className={styles.container}>
+    <div className="movies-skeleton__wrap">
       {[...Array(5)].map((_, index) => (
-        <div className={styles.skeletonContainer} key={index}>
-          <div className={styles.skeletonTitle} />
-          <div className={styles.skeletonCarousel}>
-            <div className={styles.skeletonbuttons}>
-              <div className={styles.skeletonbutton__left}></div>
-              <div className={styles.skeletonbutton__right}></div>
-            </div>
+        <div className="movies-skeleton__container" key={index}>
+          <div className="movies-skeleton__title" />
+          <div className="movies-skeleton__carousel">
             {[...Array(6)].map((_, idx) => (
-              <div key={idx} className={styles.skeletonCard} />
+              <div key={idx} className="movies-skeleton__card" />
             ))}
           </div>
         </div>

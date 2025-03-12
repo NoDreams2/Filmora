@@ -44,12 +44,7 @@ export default function Movies() {
             className="movies__image"
             imageUrl={row.posterUrlPreview}
           />
-          {row.ratingKinopoisk && (
-            <RatingBadge
-              className="movies__rating"
-              rating={row.ratingKinopoisk}
-            />
-          )}
+          {row.ratingKinopoisk && <RatingBadge rating={row.ratingKinopoisk} />}
         </RouterLink>
       )),
     [],

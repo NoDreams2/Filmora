@@ -1,4 +1,4 @@
-.skeleton__container {
+.movies-list-top-skeleton__container {
   padding-block-start: 100px;
   padding-block-end: 30px;
   max-width: 1920px;
@@ -8,7 +8,7 @@
   padding-inline: 50px;
 }
 
-.skeleton__header {
+.movies-list-top-skeleton__header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
@@ -19,7 +19,7 @@
   margin-block: 30px;
 }
 
-.skeleton__button {
+.movies-list-top-skeleton__button {
   margin-left: 10px;
   width: 80px;
   height: 39px;
@@ -27,7 +27,7 @@
   border-radius: 12px;
 }
 
-.skeleton__title {
+.movies-list-top-skeleton__title {
   justify-self: center;
   width: 500px;
   height: 38px;
@@ -35,8 +35,8 @@
   border-radius: 12px;
 }
 
-.skeleton__button,
-.skeleton__title {
+.movies-list-top-skeleton__button,
+.movies-list-top-skeleton__title {
   position: relative;
   overflow: hidden;
   &::after {
@@ -63,53 +63,53 @@
 }
 
 @media (max-width: 1644px) {
-  .skeleton__header {
+  .movies-list-top-skeleton__header {
     height: 58px;
   }
-  .skeleton__title {
+  .movies-list-top-skeleton__title {
     height: 30px;
   }
 }
 
 @media (max-width: 1420px) {
-  .skeleton__container {
+  .movies-list-top-skeleton__container {
     padding-block-start: 80px;
   }
 }
 
 @media (max-width: 900px) {
-  .skeleton__header {
+  .movies-list-top-skeleton__header {
     display: flex;
     justify-content: space-between;
     width: 552px;
   }
-  .skeleton__title {
+  .movies-list-top-skeleton__title {
     width: 360px;
     margin-right: 50px;
   }
 }
 
 @media (max-width: 720px) {
-  .skeleton__container {
+  .movies-list-top-skeleton__container {
     padding-block-start: 70px;
   }
 }
 
 @media (max-width: 600px) {
-  .skeleton__header {
+  .movies-list-top-skeleton__header {
     background-color: transparent;
     flex-direction: column;
     gap: 10px;
     width: 100%;
   }
-  .skeleton__title {
+  .movies-list-top-skeleton__title {
     margin: 0;
     width: 300px;
   }
 }
 
 @media (max-width: 375px) {
-  .skeleton__title {
+  .movies-list-top-skeleton__title {
     width: 240px;
   }
 }

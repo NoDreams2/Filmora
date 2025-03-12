@@ -1,23 +1,23 @@
 import React from 'react';
 
-import styles from './MoviesListSkeleton.module.scss';
+import './movies-list-skeleton.scss';
 
 export default function MoviesListSkeleton() {
   return (
     <>
-      <div className={styles.skeleton__grid}>
+      <div className="movies-list-skeleton__grid">
         {[...Array(20)].map((_, index) => (
-          <div key={index} className={styles.skeleton__card}>
-            <div className={styles.skeleton__image}></div>
-            <div className={styles.skeleton__rating}></div>
-            <div className={styles.sleketon__text}>
-              <div className={styles.skeleton__textLineShort}></div>
-              <div className={styles.skeleton__textLine}></div>
+          <div key={index} className="movies-list-skeleton__card">
+            <div className="movies-list-skeleton__image"></div>
+            <div className="movies-list-skeleton__rating"></div>
+            <div className="movies-list-skeleton__text">
+              <div className="movies-list-skeleton__text-line-short"></div>
+              <div className="movies-list-skeleton__text-line"></div>
             </div>
           </div>
         ))}
       </div>
-      <div className={styles.skeleton__pagination}></div>
+      <div className="movies-list-skeleton__pagination"></div>
     </>
   );
 }

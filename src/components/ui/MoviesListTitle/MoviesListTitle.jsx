@@ -1,16 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import styles from './MoviesListTitle.module.scss';
+import './movies-list-title.scss';
 
 export default function MoviesListTitle({ title }) {
   const navigate = useNavigate();
   return (
-    <div className={styles.MoviesListTitle__container}>
+    <div className="movies-list-title__container">
       <button className="button" onClick={() => navigate(-1)}>
         Назад
       </button>
-      <h2 className={styles.MoviesListTitle__title}>{title}</h2>
+      <h2 className="movies-list-title__title">{title}</h2>
     </div>
   );
 }

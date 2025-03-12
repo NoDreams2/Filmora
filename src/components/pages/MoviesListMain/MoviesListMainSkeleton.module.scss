@@ -13,13 +13,14 @@
   flex-direction: column;
   gap: 20px;
   padding-block: 30px;
+  padding-inline: 50px;
 }
 
 .skeleton__title {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
-  width: 1152px;
+  width: 1820px;
   height: 58px;
   background-color: #1c232b;
   border-radius: 24px;
@@ -48,14 +49,14 @@
   justify-content: space-between;
   gap: 20px;
   align-items: center;
-  width: 1152px;
+  width: 1820px;
   height: 70px;
   background-color: #1c232b;
   border-radius: 20px;
 }
 
 .skeleton__form {
-  width: 235px;
+  width: 100%;
   height: 40px;
   background-color: #2a2e35;
   border-radius: 12px;
@@ -63,7 +64,7 @@
 }
 
 .skeleton__formButton {
-  width: 102px;
+  width: 400px;
   height: 37px;
   background-color: #2a2e35;
   border-radius: 12px;
@@ -99,18 +100,57 @@
   }
 }
 
+@media (max-width: 1920px) {
+  .skeleton__container {
+    max-width: 1620px;
+  }
+  .skeleton__title {
+    width: 1620px;
+  }
+  .skeleton__forms {
+    width: 1620px;
+  }
+}
+
+@media (max-width: 1700px) {
+  .skeleton__container {
+    max-width: 1320px;
+  }
+  .skeleton__title {
+    width: 1320px;
+  }
+  .skeleton__forms {
+    width: 1320px;
+  }
+}
+
+@media (max-width: 1430px) {
+  .skeleton__container {
+    max-width: 1020px;
+  }
+  .skeleton__title {
+    width: 1020px;
+  }
+  .skeleton__forms {
+    width: 1020px;
+  }
+}
+
 @media (max-width: 1420px) {
   .skeleton__container {
     padding-block-start: 80px;
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1020px) {
+  .skeleton__container {
+    max-width: 720px;
+  }
   .skeleton__title {
-    width: 852px;
+    width: 720px;
   }
   .skeleton__forms {
-    width: 852px;
+    width: 720px;
   }
 }
 
@@ -136,11 +176,32 @@
     align-self: start;
     width: 522px;
   }
+  .skeleton__formButton {
+    width: 80px;
+  }
 }
 
 @media (max-width: 720px) {
   .skeleton__container {
     padding-block-start: 70px;
+  }
+}
+
+@media (max-width: 670px) {
+  .skeleton__container {
+    max-width: 420px;
+  }
+  .skeleton__title {
+    width: 420px;
+  }
+  .skeleton__forms {
+    width: 420px;
+  }
+  .skeleton__form {
+    width: 390px;
+  }
+  .skeleton__titleText {
+    width: 240px;
   }
 }
 
@@ -159,11 +220,7 @@
     width: 300px;
   }
   .skeleton__forms {
-    width: 450px;
     margin-inline: auto;
-  }
-  .skeleton__form {
-    width: 420px;
   }
 }
 
