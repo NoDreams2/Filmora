@@ -37,10 +37,10 @@ export default function MoviesListTop() {
       <ErrorMessage message="Не удалось загрузить список фильмов. Проверьте интернет-соединение и попробуйте снова." />
     );
 
-  if (isLoading) return <MoviesListTopSkeleton />;
+  if (!isLoading) return <MoviesListTopSkeleton />;
 
   return (
-    <div className="MoviesListTop__container">
+    <div className="movies-list-top__container">
       <MoviesListTitle title={movieType.title} />
       {data && (
         <MoviesList

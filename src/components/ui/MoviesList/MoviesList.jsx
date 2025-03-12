@@ -5,7 +5,8 @@ import { useLocation } from 'react-router-dom';
 import { EXCLUDE_GENRES } from '../../../constants';
 import useWindowWidth from '../../../hooks/useWindowWidth';
 import MovieCard from '../MovieCard';
-import styles from './MoviesList.module.scss';
+
+import './movies-list.scss';
 
 export default function MoviesList({ movies, totalPages, page, setPage }) {
   const windowWidth = useWindowWidth();
@@ -25,19 +26,19 @@ export default function MoviesList({ movies, totalPages, page, setPage }) {
 
   return (
     <>
-      <div className={styles.MoviesList__container}>
+      <div className="movies-list__container">
         {filteredMovies.length > 0 ? (
           filteredMovies.map(movie => (
             <MovieCard key={movie.kinopoiskId} movie={movie} />
           ))
         ) : (
-          <div className={styles.MoviesList__empty}>
-            <div className={styles.MoviesList__emptyInner}>
-              <div className={styles.MoviesList__emptyStars}>
+          <div className="movies-list__empty">
+            <div className="movies-list__empty-inner">
+              <div className="movies-list__empty-stars">
                 {[...Array(30)].map((_, i) => (
                   <div
                     key={i}
-                    className={styles.MoviesList__emptyStar}
+                    className="movies-list__empty-star"
                     style={{
                       left: `${Math.random() * 100}%`,
                       top: `${Math.random() * 100}%`,
@@ -46,23 +47,23 @@ export default function MoviesList({ movies, totalPages, page, setPage }) {
                   />
                 ))}
               </div>
-              <span className={styles.MoviesList__emptyEmoji}>🎬</span>
-              <h3 className={styles.MoviesList__emptyTitle}>
+              <span className="movies-list__empty-emoji">🎬</span>
+              <h3 className="movies-list__empty-title">
                 Кинопустота
-                <span className={styles.MoviesList__emptyColon}>:</span>
+                <span className="movies-list__empty-colon">:</span>
               </h3>
-              <p className={styles.MoviesList__emptyText}>
+              <p className="movies-list__empty-text">
                 Вселенная кино свернулась в чёрную дыру
                 <br />
                 Попробуйте другие параметры поиска!
               </p>
-              <div className={styles.MoviesList__emptyOrb} />
+              <div className="movies-list__empty-orb" />
             </div>
           </div>
         )}
       </div>
       {filteredMovies.length > 0 && (
-        <div className={styles.MoviesList__pagination}>
+        <div className="movies-list__pagination">
           <Pagination
             count={totalPages}
             variant="outlined"

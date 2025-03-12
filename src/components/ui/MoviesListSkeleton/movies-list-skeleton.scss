@@ -1,23 +1,23 @@
-.skeleton__grid {
+.movies-list-skeleton__grid {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
 }
 
-.skeleton__card {
+.movies-list-skeleton__card {
   border-radius: 12px;
   position: relative;
 }
 
-.skeleton__image {
+.movies-list-skeleton__image {
   width: 205px;
   height: 305px;
   background: #1c232b;
   border-radius: 12px;
 }
 
-.skeleton__rating {
+.movies-list-skeleton__rating {
   position: absolute;
   width: 37px;
   height: 24px;
@@ -27,18 +27,18 @@
   border-radius: 8px;
 }
 
-.sleketon__text {
+.movies-list-skeleton__text {
   margin-bottom: 10px;
 }
 
-.skeleton__textLine {
+.movies-list-skeleton__text-line {
   width: 100%;
   height: 20px;
   background: #2a2e35;
   border-radius: 4px;
 }
 
-.skeleton__textLineShort {
+.movies-list-skeleton__text-line-short {
   width: 70%;
   height: 16px;
   background: #2a2e35;
@@ -47,7 +47,7 @@
   margin-bottom: 8px;
 }
 
-.skeleton__pagination {
+.movies-list-skeleton__pagination {
   width: 400px;
   height: 37px;
   background-color: #2a2e35;
@@ -62,11 +62,11 @@
   }
 }
 
-.skeleton__image,
-.skeleton__rating,
-.skeleton__textLine,
-.skeleton__textLineShort,
-.skeleton__pagination {
+.movies-list-skeleton__image,
+.movies-list-skeleton__rating,
+.movies-list-skeleton__text-line,
+.movies-list-skeleton__text-line-short,
+.movies-list-skeleton__pagination {
   position: relative;
   overflow: hidden;
   &::after {
@@ -93,14 +93,14 @@
 }
 
 @media (max-width: 500px) {
-  .skeleton__pagination {
+  .movies-list-skeleton__pagination {
     width: 260px;
     height: 30px;
   }
 }
 
 @media (max-width: 348px) {
-  .skeleton__pagination {
+  .movies-list-skeleton__pagination {
     width: 200px;
   }
 }

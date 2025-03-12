@@ -1,10 +1,9 @@
-.container {
+.movies-skeleton__wrap {
   padding-top: 100px;
   width: 1830px;
 }
 
-.skeletonContainer {
-  padding-inline-end: 10px;
+.movies-skeleton__container {
   height: 503px;
   position: relative;
   margin: 40px 0;
@@ -23,7 +22,7 @@
   }
 }
 
-.skeletonTitle {
+.movies-skeleton__title {
   width: 313px;
   height: 39px;
   background: #2a2e35;
@@ -47,14 +46,16 @@
   }
 }
 
-.skeletonCarousel {
+.movies-skeleton__carousel {
   display: flex;
+  justify-content: space-between;
   gap: 14px;
   overflow-x: hidden;
   position: relative;
+  padding-inline: 10px;
 }
 
-.skeletonCard {
+.movies-skeleton__card {
   flex: 0 0 auto;
   width: 289px;
   height: 436px;
@@ -86,92 +87,92 @@
 }
 
 @media (max-width: 1920px) {
-  .container {
+  .movies-skeleton__wrap {
     width: 1630px;
   }
-  .skeletonCard {
+  .movies-skeleton__card {
     width: 310px;
     height: 458px;
   }
-  .skeletonContainer {
+  .movies-skeleton__container {
     height: 534px;
   }
 }
 
 @media (max-width: 1720px) {
-  .container {
+  .movies-skeleton__wrap {
     width: 1330px;
   }
-  .skeletonCard {
+  .movies-skeleton__card {
     width: 316px;
     height: 467px;
   }
-  .skeletonContainer {
+  .movies-skeleton__container {
     height: 543px;
   }
 }
 
 @media (max-width: 1420px) {
-  .container {
+  .movies-skeleton__wrap {
     padding-top: 80px;
     width: 1030px;
   }
-  .skeletonCard {
+  .movies-skeleton__card {
     width: 326px;
     height: 484px;
   }
-  .skeletonTitle {
+  .movies-skeleton__title {
     width: 283px;
     height: 35px;
   }
-  .skeletonContainer {
+  .movies-skeleton__container {
     height: 554px;
   }
 }
 
 @media (max-width: 1120px) {
-  .container {
+  .movies-skeleton__wrap {
     width: 630px;
   }
-  .skeletonCard {
+  .movies-skeleton__card {
     width: 296px;
     height: 434px;
   }
-  .skeletonTitle {
+  .movies-skeleton__title {
     width: 252px;
     height: 31px;
   }
-  .skeletonContainer {
+  .movies-skeleton__container {
     height: 498px;
   }
 }
 
 @media (max-width: 720px) {
-  .container {
+  .movies-skeleton__wrap {
     width: 330px;
   }
-  .skeletonCard {
+  .movies-skeleton__card {
     width: 306px;
     height: 448px;
   }
-  .skeletonTitle {
+  .movies-skeleton__title {
     width: 212px;
     height: 26px;
   }
-  .skeletonContainer {
+  .movies-skeleton__container {
     height: 508px;
   }
 }
 
 @media (max-width: 420px) {
-  .container {
+  .movies-skeleton__wrap {
     width: 278px;
   }
-  .skeletonCard {
+  .movies-skeleton__card {
     width: 254px;
     height: 374px;
   }
-  .skeletonContainer {
+  .movies-skeleton__container {
     height: 430px;
   }
 }

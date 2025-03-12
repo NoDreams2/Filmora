@@ -1,12 +1,12 @@
-.ratingWrapper {
+.rating__wrapper {
   position: relative;
   z-index: 2;
 }
 
-.MovieCard__rating {
+.rating__container {
   position: absolute;
   z-index: 1;
-  bottom: 20px;
+  bottom: 15px;
   left: 10px;
   color: #fff;
   padding-inline: 10px;
@@ -16,22 +16,26 @@
   font-size: 16px;
 }
 
-.MovieCard__rating_green_1 {
+.rating__container_bottom {
+  bottom: 23px;
+}
+
+.rating__container_green_1 {
   background-color: #32ba43;
   border: 2px solid #00ff22;
 }
 
-.MovieCard__rating_green_2 {
+.rating__container_green_2 {
   background-color: #89c939;
   border: 2px solid #c1ff75;
 }
 
-.MovieCard__rating_green_3 {
+.rating__container_green_3 {
   background-color: #91a449;
   border: 2px solid #def0a0;
 }
 
-.MovieCard__rating_red {
+.rating__container_red {
   background-color: #b12323;
   border: 2px solid #eb1717;
 }

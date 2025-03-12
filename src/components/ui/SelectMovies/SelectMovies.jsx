@@ -11,7 +11,8 @@ import {
   resetQuery,
   selectQuery,
 } from '../../../features/currentQuerySlice';
-import styles from './SelectMovies.module.scss';
+
+import './select-movies.scss';
 
 export default function SelectMovies({
   countriesList,
@@ -63,9 +64,9 @@ export default function SelectMovies({
   }, [isSortOpen, isCountryOpen, isGenreOpen, isYearOpen]);
 
   return (
-    <div className={styles.select__container}>
+    <div className="select-movies__container">
       <FormControl fullWidth size="small">
-        <InputLabel className={styles.select__inputLabel}>
+        <InputLabel className="select-movies__input-label">
           Сортировка
         </InputLabel>
         <Select
@@ -84,7 +85,7 @@ export default function SelectMovies({
         </Select>
       </FormControl>
       <FormControl fullWidth size="small">
-        <InputLabel className={styles.select__inputLabel}>Страна</InputLabel>
+        <InputLabel className="select-movies__input-label">Страна</InputLabel>
         <Select
           label="Страна"
           value={countries}
@@ -102,7 +103,7 @@ export default function SelectMovies({
       </FormControl>
       {!isCartoonsPage && (
         <FormControl fullWidth size="small">
-          <InputLabel className={styles.select__inputLabel}>Жанр</InputLabel>
+          <InputLabel className="select-movies__input-label">Жанр</InputLabel>
           <Select
             label="Жанр"
             value={genreId}
@@ -120,7 +121,7 @@ export default function SelectMovies({
         </FormControl>
       )}
       <FormControl fullWidth size="small">
-        <InputLabel className={styles.select__inputLabel}>Год</InputLabel>
+        <InputLabel className="select-movies__input-label">Год</InputLabel>
         <Select
           label="Год"
           value={year}
