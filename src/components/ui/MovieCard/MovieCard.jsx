@@ -3,7 +3,8 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import RatingBadge from '../../common/RatingBadge';
-import styles from './MovieCard.module.scss';
+
+import './movie-card.scss';
 
 export default function MovieCard({ movie }) {
   const location = useLocation();
@@ -14,20 +15,20 @@ export default function MovieCard({ movie }) {
 
   return (
     <div
-      className={classNames(styles.MovieCard__container, {
-        [styles.MovieCard__container_size]: isLastSegmentNumber,
+      className={classNames('movie-card__container', {
+        ['movie-card__container_size']: isLastSegmentNumber,
       })}
       key={movie.kinopoiskId}
     >
       <Link to={`/movie/${movie.kinopoiskId}`}>
         <div
-          className={classNames(styles.MovieCard__imgContainer, {
-            [styles.MovieCard__imgContainer_darkened]: isLastSegmentNumber,
+          className={classNames('movie-card__img-container', {
+            ['movie-card__img-container_darkened']: isLastSegmentNumber,
           })}
         >
           <img
-            className={classNames(styles.MovieCard__img, {
-              [styles.MovieCard__img_size]: isLastSegmentNumber,
+            className={classNames('movie-card__img', {
+              ['movie-card__img_size']: isLastSegmentNumber,
             })}
             src={movie.posterUrlPreview}
             alt={movie.nameRu}
@@ -39,14 +40,14 @@ export default function MovieCard({ movie }) {
       </Link>
       <div>
         <h4
-          className={classNames(styles.MovieCard__title, {
-            [styles.MovieCard__title_size]: isLastSegmentNumber,
+          className={classNames('movie-card__title', {
+            ['movie-card__title_size']: isLastSegmentNumber,
           })}
         >
           {movie.nameRu || movie.nameEn || movie.nameOriginal}
         </h4>
         {movie.genres && movie.genres.length > 0 && (
-          <p className={styles.MovieCard__genre}>
+          <p className={'movie-card__genre'}>
             {movie.year + ', '}
             {movie.genres.map(genre => genre.genre).join(', ')}
           </p>

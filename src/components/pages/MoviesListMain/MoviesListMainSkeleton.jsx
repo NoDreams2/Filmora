@@ -1,22 +1,23 @@
 import React from 'react';
 
 import MoviesListSkeleton from '../../ui/MoviesListSkeleton/MoviesListSkeleton';
-import styles from './MoviesListMainSkeleton.module.scss';
+
+import './movies-list-main-skeleton.scss';
 
 export default function MoviesListMainSkeleton() {
   return (
-    <div className={styles.skeleton__container}>
-      <div className={styles.skeleton__header}>
-        <div className={styles.skeleton__title}>
-          <div className={styles.skeleton__button}></div>
-          <div className={styles.skeleton__titleText}></div>
+    <div className="movies-list-main-skeleton__container">
+      <div className="movies-list-main-skeleton__header">
+        <div className="movies-list-main-skeleton__title">
+          <div className="movies-list-main-skeleton__button"></div>
+          <div className="movies-list-main-skeleton__titleText"></div>
         </div>
-        <div className={styles.skeleton__forms}>
-          <div className={styles.skeleton__form}></div>
-          <div className={styles.skeleton__form}></div>
-          <div className={styles.skeleton__form}></div>
-          <div className={styles.skeleton__form}></div>
-          <div className={styles.skeleton__formButton}></div>
+        <div className="movies-list-main-skeleton__forms">
+          <div className="movies-list-main-skeleton__form"></div>
+          <div className="movies-list-main-skeleton__form"></div>
+          <div className="movies-list-main-skeleton__form"></div>
+          <div className="movies-list-main-skeleton__form"></div>
+          <div className="movies-list-main-skeleton__form-button"></div>
         </div>
       </div>
       <MoviesListSkeleton />

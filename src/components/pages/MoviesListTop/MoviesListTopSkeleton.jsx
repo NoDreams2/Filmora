@@ -2,7 +2,7 @@ import React from 'react';
 
 import MoviesListSkeleton from '../../ui/MoviesListSkeleton/MoviesListSkeleton';
 
-import './MoviesListTopSkeleton.scss';
+import './movies-list-top-skeleton.scss';
 
 export default function MoviesListTopSkeleton() {
   return (

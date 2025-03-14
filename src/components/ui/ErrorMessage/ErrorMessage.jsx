@@ -3,29 +3,29 @@ import { Button } from '@mui/material';
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
-import styles from './ErrorMessage.module.scss';
+import './error-message.scss';
 
 export default function ErrorMessage({ message }) {
   return (
-    <div className={styles.error__container}>
-      <div className={styles.error__content}>
-        <ErrorIcon className={styles.error__icon} />
-        <span className={styles.error__title}>Ой, что-то пошло не так!</span>
-        <span className={styles.error__text}>
+    <div className="error-message__container">
+      <div className="error-message__content">
+        <ErrorIcon className="error-message__icon" />
+        <span className="error-message__title">Ой, что-то пошло не так!</span>
+        <span className="error-message__text">
           {message ||
             'Не удалось загрузить данные. Пожалуйста, попробуйте позже.'}
         </span>
-        <div className={styles.error__actions}>
+        <div className="error-message__actions">
           <Button
             onClick={() => window.location.reload()}
-            className={styles.error__button}
+            className="error-message__button"
           >
             Обновить страницу
           </Button>
           <Button
             component={RouterLink}
             to="/"
-            className={styles.error__button}
+            className="error-message__button"
           >
             На главную
           </Button>

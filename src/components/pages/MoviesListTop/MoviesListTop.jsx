@@ -10,7 +10,7 @@ import MoviesList from '../../ui/MoviesList';
 import MoviesListTitle from '../../ui/MoviesListTitle';
 import MoviesListTopSkeleton from './MoviesListTopSkeleton';
 
-import './MoviesListTop.scss';
+import './movies-list-top.scss';
 
 export default function MoviesListTop() {
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ export default function MoviesListTop() {
       <ErrorMessage message="Не удалось загрузить список фильмов. Проверьте интернет-соединение и попробуйте снова." />
     );
 
-  if (!isLoading) return <MoviesListTopSkeleton />;
+  if (isLoading) return <MoviesListTopSkeleton />;
 
   return (
     <div className="movies-list-top__container">
