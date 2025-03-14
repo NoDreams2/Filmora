@@ -7,9 +7,9 @@
 }
 
 .movie-card__container_size {
-  max-width: 165px;
-  min-width: 165px;
-  width: 165px;
+  max-width: 205px;
+  min-width: 205px;
+  width: 205px;
 }
 
 .movie-card__img-container {
@@ -21,7 +21,7 @@
   }
 }
 
-.movie-card__imgContainer_darkened {
+.movie-card__img-container_darkened {
   &:hover {
     transform: scale(1);
     opacity: 0.65;
@@ -40,8 +40,9 @@
 }
 
 .movie-card__img_size {
-  height: 250px;
+  height: 305px;
   box-shadow: none;
+  margin: 0;
 }
 
 .movie-card__title {
@@ -55,7 +56,7 @@
 }
 
 .movie-card__title_size {
-  font-size: 13px;
+  font-size: 15px;
   padding-inline: 5px;
 }
 
