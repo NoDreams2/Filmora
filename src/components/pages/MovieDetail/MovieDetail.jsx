@@ -17,7 +17,8 @@ import {
 } from '../../../utils/utils';
 import ErrorMessage from '../../ui/ErrorMessage';
 import MovieCard from '../../ui/MovieCard';
-import styles from './MovieDetail.module.scss';
+
+import './movie-detail.scss';
 
 export default function MovieDetail() {
   const scrollRef = useRef(null);
@@ -105,13 +106,13 @@ export default function MovieDetail() {
   console.log(oscarWins);
 
   return (
-    <div className={styles.MovieDetail__container}>
-      <div className={styles.MovieDetail__leftPart}>
+    <div className="movie-detail__container">
+      <div className="movie-detail__left-part">
         <img
-          className={styles.MovieDetail__leftPartPoster}
+          className="movie-detail__left-part-poster"
           src={responseDataFilm.data.posterUrlPreview}
         />
-        <div className={styles.MovieDetail__leftPartButtons}>
+        <div className="movie-detail__left-part-buttons">
           <a
             target="_blank"
             rel="noopener noreferrer"
@@ -128,60 +129,41 @@ export default function MovieDetail() {
           </a>
         </div>
       </div>
-      <div className={styles.MovieDetail__rightPart}>
-        <div className={styles.MovieDetail__rightPartMainTitle}>
-          <div className={styles.MovieDetail__rightPartTitleDesc}>
-            <h2 className={styles.MovieDetail__rightPartTitle}>
+      <div className="movie-detail__center-part">
+        <div className="movie-detail__center-part-main-title">
+          <div className="movie-detail__center-part-title-desc">
+            <h2 className="movie-detail__center-part-title">
               {responseDataFilm.data.nameRu ||
                 responseDataFilm.data.nameEn ||
                 responseDataFilm.data.nameOriginal}{' '}
               ({responseDataFilm.data.year})
             </h2>
             {responseDataFilm.data.shortDescription ? (
-              <p className={styles.MovieDetail__rightPartdescription}>
+              <p className="movie-detail__center-part-description">
                 {responseDataFilm.data.shortDescription}
               </p>
             ) : (
               <span>Описание отсутствует</span>
             )}
           </div>
-          {responseDataFilm.data.ratingKinopoisk && (
-            <div className={styles.MovieDetail__rightPartRating}>
-              <span className={styles.MovieDetail__rightPartRatingKinopoisk}>
-                {formatRating(responseDataFilm.data.ratingKinopoisk)}
-              </span>
-              {responseDataFilm.data.ratingKinopoiskVoteCount && (
-                <span className={styles.MovieDetail__rightPartVoteCount}>
-                  {responseDataFilm.data.ratingKinopoiskVoteCount.toLocaleString(
-                    'ru-RU',
-                  )}{' '}
-                  {getDeclensionRatingText(
-                    responseDataFilm.data.ratingKinopoiskVoteCount,
-                  )}
-                </span>
-              )}
-            </div>
-          )}
         </div>
-        <div className={styles.MovieDetail__rightPartAboutFilm}>
-          <div className={styles.MovieDetail__rightPartAboutFilmContainer}>
-            <h3 className={styles.MovieDetail__rightPartTitleAbout}>
-              О фильме
-            </h3>
+        <div className="movie-detail__center-part-about-film">
+          <div className="movie-detail__center-part-about-film-container">
+            <h3 className="movie-detail__center-part-title-about">О фильме</h3>
             {responseDataFilm.data.year && (
-              <div className={styles.MovieDetail__rightPartAboutContainer}>
-                <span className={styles.MovieDetail__rightPartKey}>
+              <div className="movie-detail__center-part-about-container">
+                <span className="movie-detail__center-part-key">
                   Год Производства
                 </span>
-                <span className={styles.MovieDetail__rightPartValue}>
+                <span className="movie-detail__center-part-value">
                   {responseDataFilm.data.year}
                 </span>
               </div>
             )}
             {responseDataFilm.data.country && (
-              <div className={styles.MovieDetail__rightPartAboutContainer}>
-                <span className={styles.MovieDetail__rightPartKey}>Страна</span>
-                <span className={styles.MovieDetail__rightPartValue}>
+              <div className="movie-detail__center-part-about-container">
+                <span className="movie-detail__center-part-key">Страна</span>
+                <span className="movie-detail__center-part-value">
                   {responseDataFilm.data.countries
                     .map(country => country.country)
                     .join(', ')}
@@ -189,9 +171,9 @@ export default function MovieDetail() {
               </div>
             )}
             {responseDataFilm.data.genre && (
-              <div className={styles.MovieDetail__rightPartAboutContainer}>
-                <span className={styles.MovieDetail__rightPartKey}>Жанр</span>
-                <span className={styles.MovieDetail__rightPartValue}>
+              <div className="movie-detail__center-part-about-container">
+                <span className="movie-detail__center-part-key">Жанр</span>
+                <span className="movie-detail__center-part-value">
                   {responseDataFilm.data.genres
                     .map(genre => genre.genre)
                     .join(', ')}
@@ -199,19 +181,17 @@ export default function MovieDetail() {
               </div>
             )}
             {responseDataFilm.data.slogan && (
-              <div className={styles.MovieDetail__rightPartAboutContainer}>
-                <span className={styles.MovieDetail__rightPartKey}>Слоган</span>
-                <span className={styles.MovieDetail__rightPartValue}>
+              <div className="movie-detail__center-part-about-container">
+                <span className="movie-detail__center-part-key">Слоган</span>
+                <span className="movie-detail__center-part-value">
                   {responseDataFilm.data.slogan}
                 </span>
               </div>
             )}
             {responseStaff.data.some(el => el.professionKey === 'DIRECTOR') && (
-              <div className={styles.MovieDetail__rightPartAboutContainer}>
-                <span className={styles.MovieDetail__rightPartKey}>
-                  Режиссер
-                </span>
-                <span className={styles.MovieDetail__rightPartValue}>
+              <div className="movie-detail__center-part-about-container">
+                <span className="movie-detail__center-part-key">Режиссер</span>
+                <span className="movie-detail__center-part-value">
                   {staffSlice(
                     responseStaff.data.filter(
                       el => el.professionKey === 'DIRECTOR',
@@ -221,11 +201,9 @@ export default function MovieDetail() {
               </div>
             )}
             {responseStaff.data.some(el => el.professionKey === 'WRITER') && (
-              <div className={styles.MovieDetail__rightPartAboutContainer}>
-                <span className={styles.MovieDetail__rightPartKey}>
-                  Сценарий
-                </span>
-                <span className={styles.MovieDetail__rightPartValue}>
+              <div className="movie-detail__center-part-about-container">
+                <span className="movie-detail__center-part-key">Сценарий</span>
+                <span className="movie-detail__center-part-value">
                   {staffSlice(
                     responseStaff.data.filter(
                       el => el.professionKey === 'WRITER',
@@ -235,11 +213,9 @@ export default function MovieDetail() {
               </div>
             )}
             {responseStaff.data.some(el => el.professionKey === 'PRODUCER') && (
-              <div className={styles.MovieDetail__rightPartAboutContainer}>
-                <span className={styles.MovieDetail__rightPartKey}>
-                  Продюсер
-                </span>
-                <span className={styles.MovieDetail__rightPartValue}>
+              <div className="movie-detail__center-part-about-container">
+                <span className="movie-detail__center-part-key">Продюсер</span>
+                <span className="movie-detail__center-part-value">
                   {staffSlice(
                     responseStaff.data.filter(
                       el => el.professionKey === 'PRODUCER',
@@ -249,11 +225,9 @@ export default function MovieDetail() {
               </div>
             )}
             {responseStaff.data.some(el => el.professionKey === 'OPERATOR') && (
-              <div className={styles.MovieDetail__rightPartAboutContainer}>
-                <span className={styles.MovieDetail__rightPartKey}>
-                  Оператор
-                </span>
-                <span className={styles.MovieDetail__rightPartValue}>
+              <div className="movie-detail__center-part-about-container">
+                <span className="movie-detail__center-part-key">Оператор</span>
+                <span className="movie-detail__center-part-value">
                   {staffSlice(
                     responseStaff.data.filter(
                       el => el.professionKey === 'OPERATOR',
@@ -263,11 +237,11 @@ export default function MovieDetail() {
               </div>
             )}
             {responseStaff.data.some(el => el.professionKey === 'COMPOSER') && (
-              <div className={styles.MovieDetail__rightPartAboutContainer}>
-                <span className={styles.MovieDetail__rightPartKey}>
+              <div className="movie-detail__center-part-about-container">
+                <span className="movie-detail__center-part-key">
                   Композитор
                 </span>
-                <span className={styles.MovieDetail__rightPartValue}>
+                <span className="movie-detail__center-part-value">
                   {staffSlice(
                     responseStaff.data.filter(
                       el => el.professionKey === 'COMPOSER',
@@ -277,11 +251,9 @@ export default function MovieDetail() {
               </div>
             )}
             {responseStaff.data.some(el => el.professionKey === 'DESIGN') && (
-              <div className={styles.MovieDetail__rightPartAboutContainer}>
-                <span className={styles.MovieDetail__rightPartKey}>
-                  Художник
-                </span>
-                <span className={styles.MovieDetail__rightPartValue}>
+              <div className="movie-detail__center-part-about-container">
+                <span className="movie-detail__center-part-key">Художник</span>
+                <span className="movie-detail__center-part-value">
                   {staffSlice(
                     responseStaff.data.filter(
                       el => el.professionKey === 'DESIGN',
@@ -291,9 +263,9 @@ export default function MovieDetail() {
               </div>
             )}
             {responseStaff.data.some(el => el.professionKey === 'EDITOR') && (
-              <div className={styles.MovieDetail__rightPartAboutContainer}>
-                <span className={styles.MovieDetail__rightPartKey}>Монтаж</span>
-                <span className={styles.MovieDetail__rightPartValue}>
+              <div className="movie-detail__center-part-about-container">
+                <span className="movie-detail__center-part-key">Монтаж</span>
+                <span className="movie-detail__center-part-value">
                   {staffSlice(
                     responseStaff.data.filter(
                       el => el.professionKey === 'EDITOR',
@@ -305,9 +277,9 @@ export default function MovieDetail() {
             {responseBudgetAndFees.data.items.some(
               el => el.type === 'BUDGET',
             ) && (
-              <div className={styles.MovieDetail__rightPartAboutContainer}>
-                <span className={styles.MovieDetail__rightPartKey}>Бюджет</span>
-                <span className={styles.MovieDetail__rightPartValue}>
+              <div className="movie-detail__center-part-about-container">
+                <span className="movie-detail__center-part-key">Бюджет</span>
+                <span className="movie-detail__center-part-value">
                   $
                   {responseBudgetAndFees.data.items
                     .find(el => el.type === 'BUDGET')
@@ -316,11 +288,11 @@ export default function MovieDetail() {
               </div>
             )}
             {responseBudgetAndFees.data.items.some(el => el.type === 'USA') && (
-              <div className={styles.MovieDetail__rightPartAboutContainer}>
-                <span className={styles.MovieDetail__rightPartKey}>
+              <div className="movie-detail__center-part-about-container">
+                <span className="movie-detail__center-part-key">
                   Сборы в США
                 </span>
-                <span className={styles.MovieDetail__rightPartValue}>
+                <span className="movie-detail__center-part-value">
                   $
                   {responseBudgetAndFees.data.items
                     .find(el => el.type === 'USA')
@@ -331,11 +303,11 @@ export default function MovieDetail() {
             {responseBudgetAndFees.data.items.some(
               el => el.type === 'WORLD',
             ) && (
-              <div className={styles.MovieDetail__rightPartAboutContainer}>
-                <span className={styles.MovieDetail__rightPartKey}>
+              <div className="movie-detail__center-part-about-container">
+                <span className="movie-detail__center-part-key">
                   Сборы в мире
                 </span>
-                <span className={styles.MovieDetail__rightPartValue}>
+                <span className="movie-detail__center-part-value">
                   $
                   {responseBudgetAndFees.data.items
                     .find(el => el.type === 'WORLD')
@@ -344,11 +316,11 @@ export default function MovieDetail() {
               </div>
             )}
             {responseBudgetAndFees.data.items.some(el => el.type === 'RUS') && (
-              <div className={styles.MovieDetail__rightPartAboutContainer}>
-                <span className={styles.MovieDetail__rightPartKey}>
+              <div className="movie-detail__center-part-about-container">
+                <span className="movie-detail__center-part-key">
                   Сборы в России
                 </span>
-                <span className={styles.MovieDetail__rightPartValue}>
+                <span className="movie-detail__center-part-value">
                   $
                   {responseBudgetAndFees.data.items
                     .find(el => el.type === 'RUS')
@@ -357,111 +329,30 @@ export default function MovieDetail() {
               </div>
             )}
             {responseDataFilm.data.filmLength && (
-              <div className={styles.MovieDetail__rightPartAboutContainer}>
-                <span className={styles.MovieDetail__rightPartKey}>Время</span>
-                <span className={styles.MovieDetail__rightPartValue}>
+              <div className="movie-detail__center-part-about-container">
+                <span className="movie-detail__center-part-key">Время</span>
+                <span className="movie-detail__center-part-value">
                   {responseDataFilm.data.filmLength} мин
                 </span>
               </div>
             )}
           </div>
-          <div className={styles.MovieDetail__rightPartActorsContainer}>
-            <div
-              className={styles.MovieDetail__rightPartActorsAndOscarsContainer}
-            >
-              <h3 className={styles.MovieDetail__rightPartActorsTitle}>
-                В главных ролях
-              </h3>
-              {responseStaff.data.some(el => el.professionKey === 'ACTOR') && (
-                <div className={styles.MovieDetail__rightPartActorsList}>
-                  {responseStaff.data
-                    .filter(el => el.professionKey === 'ACTOR')
-                    .slice(0, 10)
-                    .map(actor => (
-                      <div
-                        key={actor.staffId}
-                        className={styles.MovieDetail__rightPartActorsName}
-                      >
-                        {actor.nameRu ? actor.nameRu : actor.nameEn}
-                      </div>
-                    ))}
-                </div>
-              )}
-              {responseStaff.data.some(el => el.professionKey === 'ACTOR') && (
-                <span className={styles.MovieDetail__rightPartNumActors}>
-                  {
-                    responseStaff.data.filter(
-                      el => el.professionKey === 'ACTOR',
-                    ).length
-                  }{' '}
-                  {getDeclensionActorsText(
-                    responseStaff.data.filter(
-                      el => el.professionKey === 'ACTOR',
-                    ).length,
-                  )}
-                </span>
-              )}
-            </div>
-            {oscarWins && oscarWins.length > 0 && (
-              <div className={styles.MovieDetail__rightPartOscarContainer}>
-                <div>
-                  <img
-                    className={styles.MovieDetail__rightPartOscarImg}
-                    src={oscar}
-                    alt="Статуэтка"
-                  />
-                  <span className={styles.MovieDetail__rightPartOscarNum}>
-                    {oscarWins.length}
-                  </span>
-                  <div className={styles.MovieDetail__rightPartOscarText}>
-                    <h5 className={styles.MovieDetail__rightPartOscarTitle}>
-                      Оскар
-                    </h5>
-                    <div
-                      className={styles.MovieDetail__rightPartOscarYearsAndWins}
-                    >
-                      <time className={styles.MovieDetail__rightPartOscarYear}>
-                        {oscarWins[0].year}
-                      </time>
-                      <div className={styles.MovieDetail__rightPartOscarWins}>
-                        <h6
-                          className={
-                            styles.MovieDetail__rightPartOscarWinsTitle
-                          }
-                        >
-                          Победитель
-                        </h6>
-                        {oscarWins.map(win => (
-                          <span
-                            key={win.nominationName}
-                            className={styles.MovieDetail__rightPartNominations}
-                          >
-                            {win.nominationName}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
         </div>
         {responseSequelsAndPrequels.data && (
-          <div className={styles.MovieDetail__SequelsAndPrequelsContainer}>
-            <h4
-              className={styles.MovieDetail__SequelsAndPrequelsContainerTitle}
-            >
+          <div className="movie-detail__center-part-sequels-and-prequels-container">
+            <h4 className="movie-detail__center-part-sequels-and-prequels-container-title">
               Сиквелы, приквелы и ремейки
             </h4>
-            <div className={styles.MovieDetail__SequelsAndPrequelsCardsWrapper}>
+            <div className="movie-detail__center-part-sequels-and-prequels-cards-wrapper">
               <button
                 className={classNames(
-                  styles.MovieDetail__ScrollButton,
-                  styles.MovieDetail__ScrollButtonLeft,
+                  'movie-detail__center-part-scroll-button',
+                  'movie-detail__center-part-scroll-button-left',
                   {
-                    [styles.MovieDetail__ScrollButtonHidden]: isLeftEdge,
-                    [styles.MovieDetail__ScrollButtonVisible]: isLeftEdge,
+                    ['movie-detail__center-part-scroll-button-hidden']:
+                      isLeftEdge,
+                    ['movie-detail__center-part-scroll-button-visible']:
+                      isLeftEdge,
                   },
                 )}
                 onClick={() => scrollContainer('left')}
@@ -469,7 +360,7 @@ export default function MovieDetail() {
                 &lt;
               </button>
               <div
-                className={styles.MovieDetail__SequelsAndPrequelsCardsContainer}
+                className="movie-detail__center-part-sequels-and-prequels-cards-container"
                 ref={scrollRef}
               >
                 {responseSequelsAndPrequels.data.map(el => (
@@ -478,11 +369,13 @@ export default function MovieDetail() {
               </div>
               <button
                 className={classNames(
-                  styles.MovieDetail__ScrollButton,
-                  styles.MovieDetail__ScrollButtonRight,
+                  'movie-detail__center-part-scroll-button',
+                  'movie-detail__center-part-scroll-button-right',
                   {
-                    [styles.MovieDetail__ScrollButtonHidden]: isRightEdge,
-                    [styles.MovieDetail__ScrollButtonVisible]: isRightEdge,
+                    ['movie-detail__center-part-scroll-button-hidden']:
+                      isRightEdge,
+                    ['movie-detail__center-part-scroll-button-visible']:
+                      isRightEdge,
                   },
                 )}
                 onClick={() => scrollContainer('right')}
@@ -492,6 +385,96 @@ export default function MovieDetail() {
             </div>
           </div>
         )}
+      </div>
+      <div className="movie-detail__right-part">
+        {responseDataFilm.data.ratingKinopoisk && (
+          <div className="movie-detail__right-part-rating">
+            <span className="movie-detail__right-part-rating-kinopoisk">
+              {formatRating(responseDataFilm.data.ratingKinopoisk)}
+            </span>
+            {responseDataFilm.data.ratingKinopoiskVoteCount && (
+              <span className="movie-detail__right-part-vote-count">
+                {responseDataFilm.data.ratingKinopoiskVoteCount.toLocaleString(
+                  'ru-RU',
+                )}{' '}
+                {getDeclensionRatingText(
+                  responseDataFilm.data.ratingKinopoiskVoteCount,
+                )}
+              </span>
+            )}
+          </div>
+        )}
+        <div className="movie-detail__right-part-actors-container">
+          <div className="movie-detail__right-part-actors-and-oscars-container">
+            <h3 className="movie-detail__right-part-actors-title">
+              В главных ролях
+            </h3>
+            {responseStaff.data.some(el => el.professionKey === 'ACTOR') && (
+              <div className="movie-detail__right-part-actors-list">
+                {responseStaff.data
+                  .filter(el => el.professionKey === 'ACTOR')
+                  .slice(0, 10)
+                  .map(actor => (
+                    <div
+                      key={actor.staffId}
+                      className="movie-detail__right-part-actors-name"
+                    >
+                      {actor.nameRu ? actor.nameRu : actor.nameEn}
+                    </div>
+                  ))}
+              </div>
+            )}
+            {responseStaff.data.some(el => el.professionKey === 'ACTOR') && (
+              <span className="movie-detail__right-part-num-actors">
+                {
+                  responseStaff.data.filter(el => el.professionKey === 'ACTOR')
+                    .length
+                }{' '}
+                {getDeclensionActorsText(
+                  responseStaff.data.filter(el => el.professionKey === 'ACTOR')
+                    .length,
+                )}
+              </span>
+            )}
+          </div>
+          {oscarWins && oscarWins.length > 0 && (
+            <div className="movie-detail__right-part-oscar-container">
+              <div>
+                <img
+                  className="movie-detail__right-part-oscar-img"
+                  src={oscar}
+                  alt="Статуэтка"
+                />
+                <span className="movie-detail__right-part-oscar-num">
+                  {oscarWins.length}
+                </span>
+                <div className="movie-detail__right-part-oscar-text">
+                  <h5 className="movie-detail__right-part-oscar-title">
+                    Оскар
+                  </h5>
+                  <div className="movie-detail__right-part-oscar-years-and-wins">
+                    <time className="movie-detail__right-part-oscar-year">
+                      {oscarWins[0].year}
+                    </time>
+                    <div className="movie-detail__right-part-oscar-wins">
+                      <h6 className="movie-detail__right-part-oscar-wins-title">
+                        Победитель
+                      </h6>
+                      {oscarWins.map(win => (
+                        <span
+                          key={win.nominationName}
+                          className="movie-detail__right-part-nominations"
+                        >
+                          {win.nominationName}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

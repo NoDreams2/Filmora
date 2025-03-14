@@ -1,0 +1,295 @@
+.movie-detail__container {
+  display: flex;
+  padding-block-start: 130px;
+  padding-block-end: 60px;
+  padding-inline: 100px;
+  gap: 30px;
+  color: #cbd5e1;
+  width: 1820px;
+}
+
+.movie-detail__left-part {
+  padding-inline: 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      #3b82f680 50%,
+      transparent 100%
+    );
+  }
+}
+
+.movie-detail__left-part-poster {
+  width: 305px;
+  height: 440px;
+  object-fit: cover;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 1);
+}
+
+.movie-detail__left-part-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding-block-end: 10px;
+}
+
+.movie-detail__center-part {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.movie-detail__center-part-main-title {
+  margin-block-end: 48px;
+  display: inline-block;
+  position: relative;
+}
+
+.movie-detail__center-part-title-desc {
+  width: 600px;
+  padding-inline: 9px;
+}
+
+.movie-detail__center-part-title {
+  font-size: 54px;
+  margin-block-end: 16px;
+}
+
+.movie-detail__center-part-description {
+  font-size: 16px;
+}
+
+.movie-detail__center-part-about-film {
+  display: inline;
+}
+
+.movie-detail__center-part-about-film-container {
+  width: 600px;
+  padding-inline: 9px;
+}
+
+.movie-detail__center-part-title-about {
+  font-size: 28px;
+  margin-block-end: 9px;
+}
+
+.movie-detail__center-part-about-container {
+  padding-block: 10px;
+  font-size: 12px;
+  display: flex;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.movie-detail__center-part-key {
+  color: #94a3b8;
+  display: inline-block;
+  min-width: 160px;
+}
+
+.movie-detail__center-part-value {
+  line-height: 18px;
+}
+
+.movie-detail__center-part-sequels-and-prequels-container {
+  padding-inline: 9px;
+  padding-block-start: 40px;
+  overflow: hidden;
+  max-width: 882px;
+  position: relative;
+}
+
+.movie-detail__center-part-sequels-and-prequels-container-title {
+  font-size: 28px;
+  margin-block-end: 16px;
+}
+
+.movie-detail__center-part-sequels-and-prequels-cards-wrapper {
+  display: flex;
+}
+
+.movie-detail__center-part-sequels-and-prequels-cards-container {
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  gap: 9px;
+}
+
+.movie-detail__center-part-sequels-and-prequels-cards-container::-webkit-scrollbar {
+  display: none;
+}
+
+.movie-detail__center-part-scroll-button {
+  height: 44px;
+  width: 44px;
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  border-radius: 50%;
+  border: none;
+  transition: all 0.2s;
+  color: #333;
+  background-color: #cbd5e1;
+  transition: all 0.2s ease-in-out;
+}
+
+.movie-detail__center-part-scroll-button-left {
+  left: 5px;
+  &:hover {
+    transform: translateX(-5px);
+  }
+}
+
+.movie-detail__center-part-scroll-button-right {
+  right: 5px;
+  &:hover {
+    transform: translateX(5px);
+  }
+}
+
+.movie-detail__center-part-scroll-button-hidden {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+.movie-detail__center-part-scroll-button-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.movie-detail__right-part {
+  margin-inline-start: auto;
+}
+
+.movie-detail__right-part-rating {
+  display: flex;
+  flex-direction: column;
+  margin-block-end: 24px;
+}
+
+.movie-detail__right-part-rating-kinopoisk {
+  font-size: 52px;
+  font-weight: 800;
+}
+
+.movie-detail__right-part-vote-count {
+  font-size: 14px;
+}
+
+.movie-detail__right-part-actors-container {
+  position: relative;
+}
+
+.movie-detail__right-part-actors-and-oscars-container {
+  margin-bottom: 36px;
+}
+
+.movie-detail__right-part-actors-title {
+  margin-block-end: 14px;
+  font-size: 17px;
+}
+
+.movie-detail__right-part-actors-list {
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-block-end: 5px;
+}
+
+.movie-detail__right-part-num-actors {
+  font-size: 13px;
+  color: #00a1e7;
+}
+
+.movie-detail__right-part-oscar-container {
+  position: relative;
+  &:hover {
+    .movie-detail__right-part-oscar-text {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+.movie-detail__right-part-oscar-img {
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  filter: drop-shadow(0 0 10px rgba(0, 161, 231, 0.8));
+}
+
+.movie-detail__right-part-oscar-num {
+  position: absolute;
+  left: 94px;
+  top: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  letter-spacing: -1px;
+  font-size: 14px;
+}
+
+.movie-detail__right-part-oscar-text {
+  position: absolute;
+  background-color: #313d4b;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+  width: 500px;
+  min-height: 260px;
+  left: -380px;
+  top: -24px;
+  padding-block: 24px;
+  padding-inline: 30px;
+  border-radius: 12px;
+  font-size: 14px;
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity 0.2s ease-in-out,
+    visibility 0.2s ease-in-out;
+}
+
+.movie-detail__right-part-oscar-title {
+  font-size: 30px;
+  margin-block-end: 14px;
+}
+
+.movie-detail__right-part-oscar-years-and-wins {
+  display: flex;
+  gap: 20px;
+  padding-inline-start: 30px;
+}
+
+.movie-detail__right-part-oscar-year {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.movie-detail__right-part-oscar-wins-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-block-end: 10px;
+}
+
+.movie-detail__right-part-nominations {
+  display: flex;
+  width: 260px;
+  padding-block: 5px;
+  font-weight: 400;
+}
