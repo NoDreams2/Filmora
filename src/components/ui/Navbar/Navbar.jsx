@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { iconComponents, MOVIE_LISTS, TOP_LISTS } from '../../../constants';
 
-import './navBar.scss';
+import './nav-bar.scss';
 import '../../common/logo.scss';
 
 const Icon = ({ iconName, className }) => {

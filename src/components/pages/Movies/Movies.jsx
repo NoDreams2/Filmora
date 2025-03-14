@@ -9,7 +9,7 @@ import useMoviesQuery from '../../../hooks/useMoviesQuery';
 import RatingBadge from '../../common/RatingBadge';
 import ErrorMessage from '../../ui/ErrorMessage/ErrorMessage';
 
-import './Movies.scss';
+import './movies.scss';
 
 import MoviesSkeleton from './MoviesSkeleton';
 
@@ -118,8 +118,7 @@ export default function Movies() {
               720: { slidesPerView: 2 },
               1120: { slidesPerView: 3 },
               1420: { slidesPerView: 4 },
-              1720: { slidesPerView: 5 },
-              1920: { slidesPerView: 6 },
+              1720: { slidesPerView: 6 },
             }}
           />
         </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './MoviesSkeleton.scss';
+import './movies-skeleton.scss';
 
 export default function MoviesSkeleton() {
   return (
