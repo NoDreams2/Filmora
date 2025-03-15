@@ -7,6 +7,7 @@ import {
   useGetAwardsQuery,
   useGetBudgetAndFeesQuery,
   useGetDataFilmQuery,
+  useGetListSimilarMoviesQuery,
   useGetSequelsAndPrequelsQuery,
   useGetStaffQuery,
 } from '../../../services/kinopoiskApi';
@@ -21,29 +22,60 @@ import MovieCard from '../../ui/MovieCard';
 import './movie-detail.scss';
 
 export default function MovieDetail() {
-  const scrollRef = useRef(null);
+  const sequelsScrollRef = useRef(null);
+  const similarsScrollRef = useRef(null);
   const { id } = useParams();
-  const [isLeftEdge, setIsLeftEdge] = useState(true);
-  const [isRightEdge, setIsRightEdge] = useState(false);
+  const [isSequelsLeftEdge, setIsSequelsLeftEdge] = useState(true);
+  const [isSequelsRightEdge, setIsSequelsRightEdge] = useState(false);
+  const [isSimilarsLeftEdge, setIsSimilarsLeftEdge] = useState(true);
+  const [isSimilarsRightEdge, setIsSimilarsRightEdge] = useState(false);
 
   const responseDataFilm = useGetDataFilmQuery(id);
   const responseSequelsAndPrequels = useGetSequelsAndPrequelsQuery(id);
   const responseStaff = useGetStaffQuery(id);
   const responseBudgetAndFees = useGetBudgetAndFeesQuery(id);
   const responseAwards = useGetAwardsQuery(id);
+  const responseListSimilarMovies = useGetListSimilarMoviesQuery(id);
 
   useEffect(() => {
-    const container = scrollRef.current;
-    if (container) {
-      container.addEventListener('scroll', checkScroll);
-      window.addEventListener('resize', checkScroll);
-      checkScroll();
+    const sequelsContainer = sequelsScrollRef.current;
+    const similarsContainer = similarsScrollRef.current;
+
+    const handleSequelsScroll = () =>
+      checkScroll(
+        sequelsScrollRef,
+        setIsSequelsLeftEdge,
+        setIsSequelsRightEdge,
+      );
+    const handleSimilarsScroll = () =>
+      checkScroll(
+        similarsScrollRef,
+        setIsSimilarsLeftEdge,
+        setIsSimilarsRightEdge,
+      );
+
+    if (sequelsContainer) {
+      sequelsContainer.addEventListener('scroll', handleSequelsScroll);
+      checkScroll(
+        sequelsScrollRef,
+        setIsSequelsLeftEdge,
+        setIsSequelsRightEdge,
+      );
     }
+    if (similarsContainer) {
+      similarsContainer.addEventListener('scroll', handleSimilarsScroll);
+      checkScroll(
+        similarsScrollRef,
+        setIsSimilarsLeftEdge,
+        setIsSimilarsRightEdge,
+      );
+    }
+
     return () => {
-      if (container) {
-        container.removeEventListener('scroll', checkScroll);
-        window.removeEventListener('resize', checkScroll);
-      }
+      if (sequelsContainer)
+        sequelsContainer.removeEventListener('scroll', handleSequelsScroll);
+      if (similarsContainer)
+        similarsContainer.removeEventListener('scroll', handleSimilarsScroll);
     };
   });
 
@@ -78,24 +110,22 @@ export default function MovieDetail() {
     return numberOfStaffs.join(', ');
   };
 
-  const checkScroll = () => {
-    const container = scrollRef.current;
+  const checkScroll = (ref, setIsLeft, setIsRight) => {
+    const container = ref.current;
     if (container) {
       const { scrollLeft, scrollWidth, clientWidth } = container;
-      setIsLeftEdge(scrollLeft === 0);
-      setIsRightEdge(scrollLeft + clientWidth >= scrollWidth - 1);
+      setIsLeft(scrollLeft === 0);
+      setIsRight(scrollLeft + clientWidth >= scrollWidth - 1);
     }
   };
 
-  const scrollContainer = direction => {
-    const container = scrollRef.current;
-    const scrollAmount = 500;
+  const scrollContainer = (ref, direction, scrollAmount = 500) => {
+    const container = ref.current;
     if (container) {
-      if (direction === 'left') {
-        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      } else if (direction === 'right') {
-        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      }
+      container.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -362,46 +392,45 @@ export default function MovieDetail() {
             </div>
           </div>
           {responseSequelsAndPrequels.data && (
-            <div className="movie-detail__center-part-sequels-and-prequels-container">
-              <h3 className="movie-detail__center-part-sequels-and-prequels-container-title">
+            <div className="movie-detail__additional">
+              <h3 className="movie-detail__additional-title">
                 Сиквелы, приквелы и ремейки
               </h3>
-              <div className="movie-detail__center-part-sequels-and-prequels-cards-wrapper">
+              <div className="movie-detail__additional-wrapper">
                 <button
                   className={classNames(
-                    'movie-detail__center-part-scroll-button',
-                    'movie-detail__center-part-scroll-button-left',
+                    'movie-detail__scroll-button',
+                    'movie-detail__scroll-button-left',
                     {
-                      ['movie-detail__center-part-scroll-button-hidden']:
-                        isLeftEdge,
-                      ['movie-detail__center-part-scroll-button-visible']:
-                        isLeftEdge,
+                      ['movie-detail__scroll-button-hidden']: isSequelsLeftEdge,
+                      ['movie-detail__scroll-button-visible']:
+                        isSequelsLeftEdge,
                     },
                   )}
-                  onClick={() => scrollContainer('left')}
+                  onClick={() => scrollContainer(sequelsScrollRef, 'left')}
                 >
                   &lt;
                 </button>
                 <div
-                  className="movie-detail__center-part-sequels-and-prequels-cards-container"
-                  ref={scrollRef}
+                  className="movie-detail__additional-cards-container"
+                  ref={sequelsScrollRef}
                 >
                   {responseSequelsAndPrequels.data.map(el => (
-                    <MovieCard key={el.filmId} movie={el} />
+                    <MovieCard key={el.kinopoiskId} movie={el} />
                   ))}
                 </div>
                 <button
                   className={classNames(
-                    'movie-detail__center-part-scroll-button',
-                    'movie-detail__center-part-scroll-button-right',
+                    'movie-detail__scroll-button',
+                    'movie-detail__scroll-button-right',
                     {
-                      ['movie-detail__center-part-scroll-button-hidden']:
-                        isRightEdge,
-                      ['movie-detail__center-part-scroll-button-visible']:
-                        isRightEdge,
+                      ['movie-detail__scroll-button-hidden']:
+                        isSequelsRightEdge,
+                      ['movie-detail__scroll-button-visible']:
+                        isSequelsRightEdge,
                     },
                   )}
-                  onClick={() => scrollContainer('right')}
+                  onClick={() => scrollContainer(sequelsScrollRef, 'right')}
                 >
                   &gt;
                 </button>
@@ -538,6 +567,50 @@ export default function MovieDetail() {
             })}
           </div>
         </div>
+        {responseListSimilarMovies.data?.items.length > 0 && (
+          <div className="movie-detail__additional detail__additional_padding-not detail__additional_full-width">
+            <h4 className="movie-detail__additional-title">
+              Если вам понравился этот фильм
+            </h4>
+            <div className="movie-detail__additional-wrapper">
+              <button
+                className={classNames(
+                  'movie-detail__scroll-button',
+                  'movie-detail__scroll-button-left',
+                  {
+                    ['movie-detail__scroll-button-hidden']: isSimilarsLeftEdge,
+                    ['movie-detail__scroll-button-visible']: isSimilarsLeftEdge,
+                  },
+                )}
+                onClick={() => scrollContainer(similarsScrollRef, 'left')}
+              >
+                &lt;
+              </button>
+              <div
+                className="movie-detail__additional-cards-container"
+                ref={similarsScrollRef}
+              >
+                {responseListSimilarMovies.data.items.map(el => (
+                  <MovieCard key={el.kinopoiskId} movie={el} />
+                ))}
+              </div>
+              <button
+                className={classNames(
+                  'movie-detail__scroll-button',
+                  'movie-detail__scroll-button-right',
+                  {
+                    ['movie-detail__scroll-button-hidden']: isSimilarsRightEdge,
+                    ['movie-detail__scroll-button-visible']:
+                      isSimilarsRightEdge,
+                  },
+                )}
+                onClick={() => scrollContainer(similarsScrollRef, 'right')}
+              >
+                &gt;
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
