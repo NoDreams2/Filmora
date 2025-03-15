@@ -1,15 +1,17 @@
+.movie-detail__wrap {
+  width: 1820px;
+  padding-inline: 100px;
+  color: #cbd5e1;
+}
+
 .movie-detail__container {
   display: flex;
   padding-block-start: 130px;
   padding-block-end: 60px;
-  padding-inline: 100px;
   gap: 30px;
-  color: #cbd5e1;
-  width: 1820px;
 }
 
 .movie-detail__left-part {
-  padding-inline: 9px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -68,6 +70,7 @@
 
 .movie-detail__center-part-description {
   font-size: 16px;
+  line-height: 1.6;
 }
 
 .movie-detail__center-part-about-film {
@@ -75,7 +78,6 @@
 }
 
 .movie-detail__center-part-about-film-container {
-  width: 600px;
   padding-inline: 9px;
 }
 
@@ -173,6 +175,9 @@
 
 .movie-detail__right-part {
   margin-inline-start: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 110px;
 }
 
 .movie-detail__right-part-rating {
@@ -292,4 +297,287 @@
   width: 260px;
   padding-block: 5px;
   font-weight: 400;
+}
+
+.movie-detail__bottom-part-movie-description {
+  font-size: 18px;
+  line-height: 1.4;
+  margin-block-end: 50px;
+}
+
+.movie-detail__bottom-part-rating-title {
+  font-size: 30px;
+  margin-block-end: 14px;
+}
+
+.movie-detail__bottom-part-stars-container {
+  display: flex;
+  gap: 6px;
+}
+
+.movie-detail__bottom-part-star {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background-color: #cbd5e1;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+.movie-detail__bottom-part-star-filled {
+  background-color: #00a1e7;
+}
+
+@media (max-width: 1900px) {
+  .movie-detail__wrap {
+    width: 1720px;
+  }
+}
+
+@media (max-width: 1720px) {
+  .movie-detail__wrap {
+    width: 1520px;
+    padding-inline: 50px;
+  }
+  .movie-detail__left-part-poster {
+    width: 280px;
+    height: 400px;
+  }
+  .movie-detail__center-part-title {
+    font-size: 48px;
+  }
+  .movie-detail__center-part-description {
+    font-size: 15px;
+  }
+  .movie-detail__center-part-title-about {
+    font-size: 26px;
+  }
+  .movie-detail__center-part-sequels-and-prequels-container-title {
+    font-size: 26px;
+  }
+  .movie-detail__right-part-rating-kinopoisk {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 1520px) {
+  .movie-detail__wrap {
+    width: 1320px;
+  }
+  .movie-detail__center-part {
+    gap: 20px;
+    width: 600px;
+  }
+  .movie-detail__left-part-poster {
+    width: 260px;
+    height: 370px;
+  }
+  .movie-detail__center-part-title {
+    font-size: 40px;
+  }
+  .movie-detail__center-part-title-about {
+    font-size: 24px;
+  }
+  .movie-detail__center-part-sequels-and-prequels-container-title {
+    font-size: 24px;
+  }
+  .movie-detail__right-part-rating-kinopoisk {
+    font-size: 40px;
+  }
+  .movie-detail__right-part-vote-count {
+    font-size: 13px;
+  }
+  .movie-detail__right-part-actors-title {
+    font-size: 16px;
+  }
+  .movie-detail__right-part-actors-name {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 1420px) {
+  .movie-detail__container {
+    padding-block-start: 110px;
+  }
+}
+
+@media (max-width: 1320px) {
+  .movie-detail__wrap {
+    width: 1120px;
+    padding-inline: 20px;
+  }
+  .movie-detail__center-part {
+    gap: 10px;
+    width: 500px;
+  }
+  .movie-detail__left-part-poster {
+    width: 230px;
+    height: 340px;
+  }
+  .movie-detail__center-part-title {
+    font-size: 30px;
+    margin-block-end: 10px;
+  }
+  .movie-detail__center-part-description {
+    font-size: 13px;
+  }
+  .movie-detail__center-part-title-about {
+    font-size: 20px;
+  }
+  .movie-detail__center-part-sequels-and-prequels-container-title {
+    font-size: 20px;
+  }
+  .movie-detail__right-part-rating-kinopoisk {
+    font-size: 30px;
+  }
+  .movie-detail__right-part-vote-count {
+    font-size: 11px;
+  }
+  .movie-detail__center-part-about-container {
+    padding-block: 8px;
+    font-size: 11px;
+  }
+  .movie-detail__right-part-actors-title {
+    font-size: 14px;
+  }
+  .movie-detail__right-part-actors-name {
+    font-size: 12px;
+  }
+  .movie-detail__right-part-num-actors {
+    font-size: 12px;
+  }
+  .movie-detail__center-part-title-desc {
+    width: 100%;
+    padding-inline: 0px;
+  }
+  .movie-detail__center-part-about-film-container {
+    padding-inline: 0px;
+  }
+}
+
+@media (max-width: 1120px) {
+  .movie-detail__wrap {
+    width: 920px;
+  }
+  .movie-detail__left-part-poster {
+    width: 200px;
+    height: 300px;
+  }
+  .movie-detail__center-part {
+    gap: 0px;
+    width: 400px;
+  }
+  .movie-detail__center-part-title {
+    font-size: 24px;
+  }
+  .movie-detail__center-part-description {
+    font-size: 12px;
+  }
+  .movie-detail__right-part-actors-title {
+    font-size: 13px;
+  }
+  .movie-detail__right-part-actors-name {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 920px) {
+  .movie-detail__wrap {
+    width: 600px;
+  }
+  .movie-detail__container {
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  .movie-detail__center-part {
+    width: 100%;
+  }
+  .movie-detail__right-part {
+    position: absolute;
+    order: 2;
+    margin-inline-start: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding-inline: 20px;
+  }
+  .movie-detail__center-part {
+    order: 3;
+  }
+  .movie-detail__right-part-actors-list {
+    align-items: end;
+  }
+  .movie-detail__right-part-actors-and-oscars-container {
+    margin-bottom: 0;
+  }
+  .movie-detail__right-part-num-actors {
+    position: absolute;
+    right: 0;
+  }
+  .movie-detail__left-part {
+    gap: 30px;
+  }
+  .movie-detail__right-part-oscar-img {
+    display: none;
+  }
+  .movie-detail__right-part-oscar-num {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .movie-detail__container {
+    padding-block-start: 100px;
+  }
+}
+
+@media (max-width: 600px) {
+  .movie-detail__wrap {
+    width: 450px;
+  }
+  .movie-detail__right-part-actors-and-oscars-container {
+    display: none;
+  }
+  .movie-detail__right-part-rating {
+    order: 2;
+  }
+  .movie-detail__right-part-vote-count {
+    display: none;
+  }
+}
+
+@media (max-width: 450px) {
+  .movie-detail__wrap {
+    width: 350px;
+  }
+  .movie-detail__right-part {
+    display: none;
+  }
+  .movie-detail__right-part-rating-kinopoisk {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 350px) {
+  .movie-detail__wrap {
+    width: 310px;
+  }
+  .movie-detail__right-part {
+    top: 364px;
+    right: 60px;
+  }
+  .movie-detail__right-part-rating-kinopoisk {
+    font-size: 26px;
+  }
 }
