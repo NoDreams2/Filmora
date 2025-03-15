@@ -106,7 +106,7 @@
   line-height: 18px;
 }
 
-.movie-detail__center-part-sequels-and-prequels-container {
+.movie-detail__additional {
   padding-inline: 9px;
   padding-block-start: 40px;
   overflow: hidden;
@@ -114,27 +114,35 @@
   position: relative;
 }
 
-.movie-detail__center-part-sequels-and-prequels-container-title {
+.detail__additional_padding-not {
+  padding: 0;
+}
+
+.detail__additional_full-width {
+  max-width: 100%;
+}
+
+.movie-detail__additional-title {
   font-size: 28px;
   margin-block-end: 16px;
 }
 
-.movie-detail__center-part-sequels-and-prequels-cards-wrapper {
+.movie-detail__additional-wrapper {
   display: flex;
 }
 
-.movie-detail__center-part-sequels-and-prequels-cards-container {
+.movie-detail__additional-cards-container {
   display: flex;
   overflow-x: scroll;
   scroll-behavior: smooth;
   gap: 9px;
 }
 
-.movie-detail__center-part-sequels-and-prequels-cards-container::-webkit-scrollbar {
+.movie-detail__additional-cards-container::-webkit-scrollbar {
   display: none;
 }
 
-.movie-detail__center-part-scroll-button {
+.movie-detail__scroll-button {
   height: 44px;
   width: 44px;
   cursor: pointer;
@@ -149,26 +157,26 @@
   transition: all 0.2s ease-in-out;
 }
 
-.movie-detail__center-part-scroll-button-left {
+.movie-detail__scroll-button-left {
   left: 5px;
   &:hover {
     transform: translateX(-5px);
   }
 }
 
-.movie-detail__center-part-scroll-button-right {
+.movie-detail__scroll-button-right {
   right: 5px;
   &:hover {
     transform: translateX(5px);
   }
 }
 
-.movie-detail__center-part-scroll-button-hidden {
+.movie-detail__scroll-button-hidden {
   opacity: 0 !important;
   pointer-events: none;
 }
 
-.movie-detail__center-part-scroll-button-visible {
+.movie-detail__scroll-button-visible {
   opacity: 1;
   pointer-events: auto;
 }
@@ -313,6 +321,7 @@
 .movie-detail__bottom-part-stars-container {
   display: flex;
   gap: 6px;
+  margin-block-end: 50px;
 }
 
 .movie-detail__bottom-part-star {
@@ -336,6 +345,10 @@
 
 .movie-detail__bottom-part-star-filled {
   background-color: #00a1e7;
+}
+
+.movie-detail__bottom-part-similars-title {
+  font-size: 30px;
 }
 
 @media (max-width: 1900px) {
