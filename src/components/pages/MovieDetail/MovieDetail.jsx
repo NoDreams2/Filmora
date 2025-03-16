@@ -7,6 +7,7 @@ import {
   useGetAwardsQuery,
   useGetBudgetAndFeesQuery,
   useGetDataFilmQuery,
+  useGetFactsAndBloopersQuery,
   useGetListSimilarMoviesQuery,
   useGetSequelsAndPrequelsQuery,
   useGetStaffQuery,
@@ -29,6 +30,13 @@ export default function MovieDetail() {
   const [isSequelsRightEdge, setIsSequelsRightEdge] = useState(false);
   const [isSimilarsLeftEdge, setIsSimilarsLeftEdge] = useState(true);
   const [isSimilarsRightEdge, setIsSimilarsRightEdge] = useState(false);
+  const [
+    visibleFactsWithoutSpoilersCount,
+    setVisibleFactsWithoutSpoilersCount,
+  ] = useState(3);
+  const [visibleFactsWithSpoilersCount, setVisibleFactsWithSpoilersCount] =
+    useState(0);
+  const [bloopersCount, setBloopersCount] = useState(3);
 
   const responseDataFilm = useGetDataFilmQuery(id);
   const responseSequelsAndPrequels = useGetSequelsAndPrequelsQuery(id);
@@ -36,6 +44,7 @@ export default function MovieDetail() {
   const responseBudgetAndFees = useGetBudgetAndFeesQuery(id);
   const responseAwards = useGetAwardsQuery(id);
   const responseListSimilarMovies = useGetListSimilarMoviesQuery(id);
+  const responseFactsAndBloopers = useGetFactsAndBloopersQuery(id);
 
   useEffect(() => {
     const sequelsContainer = sequelsScrollRef.current;
@@ -84,7 +93,8 @@ export default function MovieDetail() {
     responseSequelsAndPrequels.isLoading ||
     responseStaff.isLoading ||
     responseBudgetAndFees.isLoading ||
-    responseAwards.isLoading
+    responseAwards.isLoading ||
+    responseListSimilarMovies.isLoading
   ) {
     return <div>Загрузка...</div>;
   }
@@ -95,10 +105,41 @@ export default function MovieDetail() {
     // responseSequelsAndPrequels.error ||
     responseStaff.error ||
     responseBudgetAndFees.error ||
-    responseAwards.error
+    responseAwards.error ||
+    responseListSimilarMovies.error
   ) {
     return <ErrorMessage />;
   }
+
+  const filteredFacts =
+    responseFactsAndBloopers.data?.items.filter(el => el.type === 'FACT') || [];
+  const factsWithoutSpoilers = filteredFacts.filter(el => el.spoiler === false);
+  const factsWithSpoilers = filteredFacts.filter(el => el.spoiler === true);
+  const visibleFactsWithoutSpoilers = factsWithoutSpoilers.slice(
+    0,
+    visibleFactsWithoutSpoilersCount,
+  );
+  const visibleFactsWithSpoilers = factsWithSpoilers.slice(
+    0,
+    visibleFactsWithSpoilersCount,
+  );
+  const loadMoreFacts = () => {
+    if (visibleFactsWithoutSpoilersCount < factsWithoutSpoilers.length) {
+      setVisibleFactsWithoutSpoilersCount(prevCount => prevCount + 10);
+    } else {
+      setVisibleFactsWithSpoilersCount(prevCount => prevCount + 10);
+    }
+  };
+
+  const filteredBloopers =
+    responseFactsAndBloopers.data?.items.filter(el => el.type === 'BLOOPER') ||
+    [];
+  const visiblefilteredBloopers = filteredBloopers.slice(0, bloopersCount);
+  const loadMoreBloopers = () => {
+    if (bloopersCount < filteredBloopers.length) {
+      setBloopersCount(prevCount => prevCount + 10);
+    }
+  };
 
   const staffSlice = staffs => {
     const numberOfStaffs = staffs.map(staff =>
@@ -399,7 +440,7 @@ export default function MovieDetail() {
               <div className="movie-detail__additional-wrapper">
                 <button
                   className={classNames(
-                    'movie-detail__scroll-button',
+                    'movie-detail__scroll-button ',
                     'movie-detail__scroll-button-left',
                     {
                       ['movie-detail__scroll-button-hidden']: isSequelsLeftEdge,
@@ -568,14 +609,14 @@ export default function MovieDetail() {
           </div>
         </div>
         {responseListSimilarMovies.data?.items.length > 0 && (
-          <div className="movie-detail__additional detail__additional_padding-not detail__additional_full-width">
+          <div className="movie-detail__additional detail__additional_padding-not detail__additional_full-width movie-detail__additional_margin-bottom">
             <h4 className="movie-detail__additional-title">
               Если вам понравился этот фильм
             </h4>
             <div className="movie-detail__additional-wrapper">
               <button
                 className={classNames(
-                  'movie-detail__scroll-button',
+                  'movie-detail__scroll-button movie-detail__scroll-button_top',
                   'movie-detail__scroll-button-left',
                   {
                     ['movie-detail__scroll-button-hidden']: isSimilarsLeftEdge,
@@ -596,7 +637,7 @@ export default function MovieDetail() {
               </div>
               <button
                 className={classNames(
-                  'movie-detail__scroll-button',
+                  'movie-detail__scroll-button movie-detail__scroll-button_top',
                   'movie-detail__scroll-button-right',
                   {
                     ['movie-detail__scroll-button-hidden']: isSimilarsRightEdge,
@@ -611,6 +652,79 @@ export default function MovieDetail() {
             </div>
           </div>
         )}
+        {responseFactsAndBloopers.data?.items.length > 0 &&
+          filteredFacts.length > 0 && (
+            <div className="movie-detail__bottom-part-knows">
+              <h4 className="movie-detail__bottom-part-knows-title">
+                Знаете ли вы, что...
+              </h4>
+              <ul className="movie-detail__bottom-part-knows-list">
+                {visibleFactsWithoutSpoilers.map((fact, index) => (
+                  <li
+                    key={index}
+                    className="movie-detail__bottom-part-knows-item"
+                    dangerouslySetInnerHTML={{ __html: fact.text }}
+                  />
+                ))}
+
+                {factsWithoutSpoilers.length ===
+                  visibleFactsWithoutSpoilers.length &&
+                  factsWithSpoilers.length > 0 && (
+                    <div className="movie-detail__bottom-part-knows-attention">
+                      Внимание! Дальнейший список фактов о фильме содержит
+                      спойлеры. Будьте осторожны.
+                    </div>
+                  )}
+
+                {visibleFactsWithSpoilers.map((fact, index) => (
+                  <li
+                    key={index + visibleFactsWithoutSpoilers.length}
+                    className="movie-detail__bottom-part-knows-item"
+                    dangerouslySetInnerHTML={{ __html: fact.text }}
+                  />
+                ))}
+              </ul>
+              {(factsWithoutSpoilers.length >
+                visibleFactsWithoutSpoilersCount ||
+                factsWithSpoilers.length > visibleFactsWithSpoilersCount) && (
+                <button
+                  className="button movie-detail__bottom-part-button"
+                  onClick={loadMoreFacts}
+                >
+                  Показать еще
+                </button>
+              )}
+            </div>
+          )}
+        {responseFactsAndBloopers.data?.items.length > 0 &&
+          filteredBloopers.length > 0 && (
+            <div className="movie-detail__bottom-part-knows">
+              <h4 className="movie-detail__bottom-part-knows-title movie-detail__bottom-part-knows-title_maring-bottom">
+                Ошибки в фильме
+              </h4>
+              <div className="movie-detail__bottom-part-knows-attention">
+                Внимание! Список ошибок в фильме может содержать спойлеры.
+                Будьте осторожны.
+              </div>
+              <ul className="movie-detail__bottom-part-knows-list">
+                {visiblefilteredBloopers.map((fact, index) => (
+                  <li
+                    key={index}
+                    className="movie-detail__bottom-part-knows-item"
+                    dangerouslySetInnerHTML={{ __html: fact.text }}
+                  />
+                ))}
+              </ul>
+              {filteredBloopers.length > visiblefilteredBloopers && (
+                <button
+                  className="button movie-detail__bottom-part-button"
+                  onClick={loadMoreBloopers}
+                >
+                  Показать еще
+                </button>
+              )}
+            </div>
+          )}
       </div>
     </div>
   );
