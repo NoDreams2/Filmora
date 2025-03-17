@@ -1,3 +1,4 @@
+import CircularProgress from '@mui/material/CircularProgress';
 import classNames from 'classnames';
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -96,7 +97,12 @@ export default function MovieDetail() {
     responseAwards.isLoading ||
     responseListSimilarMovies.isLoading
   ) {
-    return <div>Загрузка...</div>;
+    return (
+      <CircularProgress
+        size="60px"
+        sx={{ position: 'absolute', marginTop: '22%' }}
+      />
+    );
   }
 
   if (
@@ -715,7 +721,7 @@ export default function MovieDetail() {
                   />
                 ))}
               </ul>
-              {filteredBloopers.length > visiblefilteredBloopers && (
+              {filteredBloopers.length > visiblefilteredBloopers.length && (
                 <button
                   className="button movie-detail__bottom-part-button"
                   onClick={loadMoreBloopers}
