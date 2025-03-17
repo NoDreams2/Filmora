@@ -7,7 +7,7 @@
 .movie-detail__container {
   display: flex;
   padding-block-start: 130px;
-  padding-block-end: 60px;
+  padding-block-end: 50px;
   gap: 30px;
 }
 
@@ -123,7 +123,7 @@
 }
 
 .movie-detail__additional_margin-bottom {
-  margin-block-end: 50px;
+  margin-block-end: 20px;
 }
 
 .movie-detail__additional-title {
@@ -317,12 +317,12 @@
 
 .movie-detail__bottom-part-movie-description {
   font-size: 18px;
-  line-height: 1.4;
+  line-height: 1.6;
   margin-block-end: 50px;
 }
 
 .movie-detail__bottom-part-rating-title {
-  font-size: 30px;
+  font-size: 28px;
   margin-block-end: 14px;
 }
 
@@ -364,7 +364,7 @@
 }
 
 .movie-detail__bottom-part-knows-title {
-  font-size: 30px;
+  font-size: 28px;
 }
 
 .movie-detail__bottom-part-knows-title_maring-bottom {
@@ -523,6 +523,30 @@
   .movie-detail__center-part-about-film-container {
     padding-inline: 0px;
   }
+  .movie-detail__additional-title {
+    font-size: 26px;
+  }
+  .movie-detail__bottom-part-movie-description {
+    font-size: 16px;
+  }
+  .movie-detail__bottom-part-rating-title {
+    font-size: 26px;
+    margin-block-end: 10px;
+  }
+  .movie-detail__bottom-part-knows-title {
+    font-size: 26px;
+  }
+  .movie-detail__bottom-part-star {
+    width: 32px;
+    height: 32px;
+  }
+  .movie-detail__bottom-part-knows-item {
+    font-size: 16px;
+  }
+  .movie-detail__bottom-part-knows-attention {
+    font-size: 16px;
+    padding-block: 14px;
+  }
 }
 
 @media (max-width: 1120px) {
@@ -548,6 +572,32 @@
   }
   .movie-detail__right-part-actors-name {
     font-size: 11px;
+  }
+  .movie-detail__additional-title {
+    font-size: 24px;
+    margin-block-end: 10px;
+  }
+  .movie-detail__bottom-part-movie-description {
+    font-size: 15px;
+  }
+  .movie-detail__bottom-part-rating-title {
+    font-size: 24px;
+    margin-block-end: 6px;
+  }
+  .movie-detail__bottom-part-star {
+    width: 30px;
+    height: 30px;
+  }
+  .movie-detail__bottom-part-knows-title {
+    font-size: 24px;
+  }
+  .movie-detail__bottom-part-knows-item {
+    font-size: 15px;
+    padding-block: 13px;
+  }
+  .movie-detail__bottom-part-knows-attention {
+    font-size: 15px;
+    padding-block: 13px;
   }
 }
 
@@ -594,6 +644,36 @@
   .movie-detail__right-part-oscar-num {
     display: none;
   }
+  .movie-detail__additional-title {
+    font-size: 22px;
+  }
+  .movie-detail__bottom-part-movie-description {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .movie-detail__bottom-part-rating-title {
+    font-size: 22px;
+  }
+  .movie-detail__bottom-part-star {
+    width: 26px;
+    height: 26px;
+  }
+  .movie-detail__bottom-part-knows-title {
+    font-size: 22px;
+  }
+  .movie-detail__bottom-part-knows-item {
+    font-size: 14px;
+    padding-block: 12px;
+  }
+  .movie-detail__bottom-part-knows-attention {
+    font-size: 14px;
+    padding-block: 12px;
+    padding-inline: 12px;
+    text-align: center;
+  }
+  .movie-detail__bottom-part-knows-list {
+    padding-inline-start: 30px;
+  }
 }
 
 @media (max-width: 720px) {
@@ -615,6 +695,15 @@
   .movie-detail__right-part-vote-count {
     display: none;
   }
+  .movie-detail__bottom-part-knows-item {
+    padding-block: 11px;
+  }
+  .movie-detail__center-part-key {
+    min-width: 130px;
+  }
+  .movie-detail__bottom-part-knows-list {
+    padding-inline-start: 20px;
+  }
 }
 
 @media (max-width: 450px) {
@@ -626,6 +715,49 @@
   }
   .movie-detail__right-part-rating-kinopoisk {
     font-size: 26px;
+  }
+  .movie-detail__additional-title {
+    font-size: 19px;
+  }
+  .movie-detail__container {
+    padding-block-end: 40px;
+  }
+  .movie-detail__bottom-part-movie-description {
+    font-size: 13px;
+    margin-block-end: 40px;
+  }
+  .movie-detail__bottom-part-rating-title {
+    font-size: 19px;
+  }
+  .movie-detail__bottom-part-star {
+    width: 24px;
+    height: 24px;
+  }
+  .movie-detail__bottom-part-stars-container {
+    margin-block-end: 40px;
+  }
+  .movie-detail__additional_margin-bottom {
+    margin-block-end: 10px;
+  }
+  .movie-detail__bottom-part-knows-title {
+    font-size: 19px;
+  }
+  .movie-detail__bottom-part-knows-item {
+    font-size: 12px;
+    line-height: 1.5;
+    padding-block: 10px;
+  }
+  .movie-detail__bottom-part-knows-attention {
+    font-size: 10px;
+    padding: 9px;
+  }
+  .movie-detail__center-part-about-container {
+    font-size: 9px;
+    padding-block: 6px;
+    line-height: 1.67;
+  }
+  .movie-detail__center-part-key {
+    min-width: 100px;
   }
 }
 
@@ -639,5 +771,8 @@
   }
   .movie-detail__right-part-rating-kinopoisk {
     font-size: 26px;
+  }
+  .movie-detail__center-part-about-container {
+    padding-block: 4px;
   }
 }
