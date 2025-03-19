@@ -120,6 +120,13 @@
   }
 }
 
+.navbar__logo-search {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
 @media (max-width: 1420px) {
   .navbar__toolbar {
     height: 80px;

@@ -45,6 +45,7 @@ export const kinopoiskApi = createApi({
         type = 'FILM',
         year,
         page = 1,
+        keyword = '',
       }) => {
         const params = new URLSearchParams({
           countries,
@@ -52,6 +53,7 @@ export const kinopoiskApi = createApi({
           order,
           type,
           page,
+          keyword,
         });
         if (year) {
           params.append('yearFrom', year);

@@ -25,7 +25,7 @@ export const routes = [
     element: <MovieDetail />,
   },
   {
-    path: '/actor/:id',
+    path: '/name/:id',
     element: <ActorDetail />,
   },
 ];
