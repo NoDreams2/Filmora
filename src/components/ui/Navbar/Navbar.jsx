@@ -6,6 +6,8 @@ import { iconComponents, MOVIE_LISTS, TOP_LISTS } from '../../../constants';
 import './nav-bar.scss';
 import '../../common/logo.scss';
 
+import Search from '../Search';
+
 const Icon = ({ iconName, className }) => {
   const IconComponent = iconComponents[iconName];
   return <IconComponent className={className} />;
@@ -105,9 +107,12 @@ export default function Navbar() {
               </ul>
             </div>
           </nav>
-          <Link className="logo" to="/" aria-label="logo Filmora">
-            Filmora
-          </Link>
+          <div className="navbar__logo-search">
+            <Link className="logo" to="/" aria-label="logo Filmora">
+              Filmora
+            </Link>
+            <Search />
+          </div>
         </div>
       </div>
     </nav>
