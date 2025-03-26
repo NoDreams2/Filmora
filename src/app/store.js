@@ -8,7 +8,7 @@ export const store = configureStore({
   reducer: {
     [kinopoiskApi.reducerPath]: kinopoiskApi.reducer,
     currentQuery: currentQueryReducer,
-    searchQuery: searchQueryReducer,
+    searchQuerySlice: searchQueryReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat(kinopoiskApi.middleware),
