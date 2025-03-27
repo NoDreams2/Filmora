@@ -112,6 +112,7 @@ export default function Navbar() {
               Filmora
             </Link>
             <Search />
+            <span className="navbar__theme">тема</span>
           </div>
         </div>
       </div>

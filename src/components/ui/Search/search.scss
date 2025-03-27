@@ -1,7 +1,24 @@
+.search__overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.search__overlay_focused {
+  opacity: 1;
+}
+
 .search__form {
   position: relative;
   width: 100%;
   max-width: 344px;
+  transition: max-width 0.3s;
+}
+
+.search__form_focused {
+  max-width: 460px;
 }
 
 .search__input {
@@ -12,6 +29,7 @@
   background-color: #29333d;
   border-radius: 6px;
   outline: none;
+  color: #cbd5e1;
   &::placeholder {
     color: #94a3b8;
   }
@@ -30,6 +48,16 @@
   max-height: 80vh;
   overflow-y: auto;
   scrollbar-width: none;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease;
+}
+
+.search__list_visible {
+  opacity: 1;
+  visibility: visible;
 }
 
 .search__item {
