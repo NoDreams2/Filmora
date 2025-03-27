@@ -48,6 +48,12 @@ export default function MovieDetail() {
   const responseFactsAndBloopers = useGetFactsAndBloopersQuery(id);
 
   useEffect(() => {
+    setVisibleFactsWithoutSpoilersCount(3);
+    setVisibleFactsWithSpoilersCount(0);
+    setBloopersCount(3);
+  }, [id]);
+
+  useEffect(() => {
     const sequelsContainer = sequelsScrollRef.current;
     const similarsContainer = similarsScrollRef.current;
 
@@ -486,7 +492,7 @@ export default function MovieDetail() {
           )}
         </div>
         <div className="movie-detail__right-part">
-          {responseDataFilm.data.ratingKinopoisk && (
+          {responseDataFilm.data.ratingKinopoisk ? (
             <div className="movie-detail__right-part-rating">
               <span className="movie-detail__right-part-rating-kinopoisk">
                 {formatRating(responseDataFilm.data.ratingKinopoisk)}
@@ -502,6 +508,8 @@ export default function MovieDetail() {
                 </span>
               )}
             </div>
+          ) : (
+            <span className="movie-detail__right-part-rating-kinopoisk">0</span>
           )}
           <div className="movie-detail__right-part-actors-container">
             <div className="movie-detail__right-part-actors-and-oscars-container">
