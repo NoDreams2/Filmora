@@ -5,6 +5,7 @@ import { useGetFilmsQuery } from '../../../services/kinopoiskApi';
 
 import './search.scss';
 
+import { CircularProgress } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export default function Search() {
@@ -20,9 +21,8 @@ export default function Search() {
   const searchRef = useRef(null);
   const expandTimeout = useRef(null);
   const resultsTimeout = useRef(null);
-  const overlayTimeout = useRef(null);
 
-  const { data, isLoading } = useGetFilmsQuery({
+  const { data, isFetching, isError } = useGetFilmsQuery({
     countries,
     genreId,
     order,
@@ -38,18 +38,11 @@ export default function Search() {
   };
 
   const handleFocus = () => {
-    overlayTimeout.current = setTimeout(() => {
-      setShowOverlay(true);
-    }, 300);
-
-    expandTimeout.current = setTimeout(() => {
-      setIsExpanded(true);
-    }, 700);
-
+    setShowOverlay(true);
+    setIsExpanded(true);
     resultsTimeout.current = setTimeout(() => {
       setShowResults(true);
-    }, 700);
-
+    }, 300);
     setIsFocused(true);
   };
 
@@ -57,9 +50,9 @@ export default function Search() {
     clearTimeout(expandTimeout.current);
     clearTimeout(resultsTimeout.current);
     setIsExpanded(false);
-    setShowResults(false);
     setIsFocused(false);
     setShowOverlay(false);
+    setShowResults(false);
   };
 
   useEffect(() => {
@@ -90,34 +83,56 @@ export default function Search() {
         onSubmit={handleSubmit}
         ref={searchRef}
       >
-        <input
-          className="search__input"
-          type="text"
-          value={inputValue}
-          onChange={e => setInputValue(e.target.value)}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          placeholder="Поиск"
-        />
+        <div className="search__input-container">
+          <input
+            className="search__input"
+            type="text"
+            value={inputValue}
+            onChange={e => setInputValue(e.target.value)}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            placeholder="Поиск"
+          />
+          {isFetching && (
+            <div className="search__progress">
+              <CircularProgress
+                size={20}
+                sx={{
+                  color: '#00a1e7',
+                }}
+              />
+            </div>
+          )}
+        </div>
 
         <ul
           className={`search__list ${showResults ? 'search__list_visible' : ''}`}
         >
-          {data?.items?.map(film => (
-            <li className="search__item" key={film.kinopoiskId}>
-              <Link
-                className="search__link"
-                to={`/movie/${film.kinopoiskId}`}
-                onClick={() => {
-                  setShowResults(false);
-                  setInputValue('');
-                  setIsExpanded(false);
-                }}
-              >
-                {film.nameRu}
-              </Link>
-            </li>
-          ))}
+          {isError ? (
+            <li className="search__error">Ошибка загрузки</li>
+          ) : data?.items?.length > 0 ? (
+            data.items.map(film => (
+              <li className="search__item" key={film.kinopoiskId}>
+                <Link
+                  className="search__link"
+                  to={`/movie/${film.kinopoiskId}`}
+                  onMouseDown={() => {
+                    setShowResults(false);
+                    setInputValue('');
+                    setIsExpanded(false);
+                    setTimeout(() => {
+                      window.location.href = `/movie/${film.kinopoiskId}`;
+                    }, 0);
+                  }}
+                >
+                  {`${film.nameRu || film.nameEn || film.nameOriginal} ${film.year ? ` - ${film.year}` : ''}`}
+                </Link>
+              </li>
+            ))
+          ) : (
+            inputValue &&
+            !isFetching && <li className="search__empty">Ничего не найдено</li>
+          )}
         </ul>
       </form>
     </>
