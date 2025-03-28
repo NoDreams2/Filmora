@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import imgSearch from '../../../assets/images/search.svg';
 import { iconComponents, MOVIE_LISTS, TOP_LISTS } from '../../../constants';
 
 import './nav-bar.scss';
@@ -15,6 +16,7 @@ const Icon = ({ iconName, className }) => {
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
 
   const handleDrawerToggle = useCallback(() => {
     setIsOpen(prevState => !prevState);
@@ -22,6 +24,10 @@ export default function Navbar() {
 
   const closeDrawer = useCallback(() => {
     setIsOpen(false);
+  }, []);
+
+  const toggleSearch = useCallback(() => {
+    setIsSearchVisible(prev => !prev);
   }, []);
 
   useEffect(() => {
@@ -111,8 +117,19 @@ export default function Navbar() {
             <Link className="logo" to="/" aria-label="logo Filmora">
               Filmora
             </Link>
-            <Search />
-            <span className="navbar__theme">тема</span>
+            <Search
+              isMobileVisible={isSearchVisible}
+              onClose={() => setIsSearchVisible(false)}
+            />
+            <div className="navbar__search-theme">
+              <img
+                className="navbar__search-img"
+                src={imgSearch}
+                alt="Поиск"
+                onClick={toggleSearch}
+              />
+              <span className="navbar__theme">тема</span>
+            </div>
           </div>
         </div>
       </div>

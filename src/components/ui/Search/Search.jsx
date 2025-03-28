@@ -8,7 +8,7 @@ import './search.scss';
 import { CircularProgress } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-export default function Search() {
+export default function Search({ isMobileVisible, onClose }) {
   const { countries, genreId, order, type, year, page, keyword } = useSelector(
     state => state.searchQuerySlice,
   );
@@ -19,6 +19,7 @@ export default function Search() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const searchRef = useRef(null);
+  const inputRef = useRef(null);
   const expandTimeout = useRef(null);
   const resultsTimeout = useRef(null);
 
@@ -32,6 +33,13 @@ export default function Search() {
     keyword: inputValue,
   });
 
+  useEffect(() => {
+    if (isMobileVisible && inputRef.current) {
+      inputRef.current.focus();
+      handleFocus();
+    }
+  }, [isMobileVisible]);
+
   const handleSubmit = e => {
     e.preventDefault();
     setShowResults(true);
@@ -40,10 +48,14 @@ export default function Search() {
   const handleFocus = () => {
     setShowOverlay(true);
     setIsExpanded(true);
-    resultsTimeout.current = setTimeout(() => {
-      setShowResults(true);
-    }, 300);
     setIsFocused(true);
+    if (isMobileVisible) {
+      setShowResults(true);
+    } else {
+      resultsTimeout.current = setTimeout(() => {
+        setShowResults(true);
+      }, 300);
+    }
   };
 
   const handleBlur = () => {
@@ -53,6 +65,9 @@ export default function Search() {
     setIsFocused(false);
     setShowOverlay(false);
     setShowResults(false);
+    if (window.innerWidth <= 920 && onClose) {
+      onClose();
+    }
   };
 
   useEffect(() => {
@@ -79,12 +94,13 @@ export default function Search() {
         ></div>
       )}
       <form
-        className={`search__form ${isExpanded ? 'search__form_focused' : ''}`}
+        className={`search__form ${isExpanded ? 'search__form_focused' : ''} ${isMobileVisible ? 'search__form_visible' : ''}`}
         onSubmit={handleSubmit}
         ref={searchRef}
       >
         <div className="search__input-container">
           <input
+            ref={inputRef}
             className="search__input"
             type="text"
             value={inputValue}
@@ -105,35 +121,39 @@ export default function Search() {
           )}
         </div>
 
-        <ul
-          className={`search__list ${showResults ? 'search__list_visible' : ''}`}
-        >
-          {isError ? (
-            <li className="search__error">Ошибка загрузки</li>
-          ) : data?.items?.length > 0 ? (
-            data.items.map(film => (
-              <li className="search__item" key={film.kinopoiskId}>
-                <Link
-                  className="search__link"
-                  to={`/movie/${film.kinopoiskId}`}
-                  onMouseDown={() => {
-                    setShowResults(false);
-                    setInputValue('');
-                    setIsExpanded(false);
-                    setTimeout(() => {
-                      window.location.href = `/movie/${film.kinopoiskId}`;
-                    }, 0);
-                  }}
-                >
-                  {`${film.nameRu || film.nameEn || film.nameOriginal} ${film.year ? ` - ${film.year}` : ''}`}
-                </Link>
-              </li>
-            ))
-          ) : (
-            inputValue &&
-            !isFetching && <li className="search__empty">Ничего не найдено</li>
-          )}
-        </ul>
+        <div className="search__list-wrapper">
+          <ul
+            className={`search__list ${showResults ? 'search__list_visible' : ''}`}
+          >
+            {isError ? (
+              <li className="search__error">Ошибка загрузки</li>
+            ) : data?.items?.length > 0 ? (
+              data.items.map(film => (
+                <li className="search__item" key={film.kinopoiskId}>
+                  <Link
+                    className="search__link"
+                    to={`/movie/${film.kinopoiskId}`}
+                    onMouseDown={() => {
+                      setShowResults(false);
+                      setInputValue('');
+                      setIsExpanded(false);
+                      setTimeout(() => {
+                        window.location.href = `/movie/${film.kinopoiskId}`;
+                      }, 0);
+                    }}
+                  >
+                    {`${film.nameRu || film.nameEn || film.nameOriginal} ${film.year ? ` - ${film.year}` : ''}`}
+                  </Link>
+                </li>
+              ))
+            ) : (
+              inputValue &&
+              !isFetching && (
+                <li className="search__empty">Ничего не найдено</li>
+              )
+            )}
+          </ul>
+        </div>
       </form>
     </>
   );
