@@ -1,7 +1,7 @@
 import CircularProgress from '@mui/material/CircularProgress';
 import classNames from 'classnames';
 import React, { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import oscar from '../../../assets/images/oscar.svg';
 import {
@@ -522,12 +522,13 @@ export default function MovieDetail() {
                     .filter(el => el.professionKey === 'ACTOR')
                     .slice(0, 10)
                     .map(actor => (
-                      <div
+                      <Link
                         key={actor.staffId}
+                        to={'/name/266079'}
                         className="movie-detail__right-part-actors-name"
                       >
                         {actor.nameRu ? actor.nameRu : actor.nameEn}
-                      </div>
+                      </Link>
                     ))}
                 </div>
               )}

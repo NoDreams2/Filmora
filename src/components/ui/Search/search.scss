@@ -92,3 +92,68 @@
   justify-content: center;
   padding-block: 10px;
 }
+
+@media (max-width: 1420px) {
+  .search__form {
+    max-width: 320px;
+  }
+  .search__form_focused {
+    max-width: 430px;
+  }
+  .search__input {
+    padding: 8px;
+    &::placeholder {
+      font-size: 15px;
+    }
+  }
+  .search__list {
+    font-size: 15px;
+  }
+  .search__item {
+    padding-block: 7px;
+    padding-inline: 13px;
+  }
+}
+
+@media (max-width: 1120px) {
+  .search__form {
+    max-width: 280px;
+  }
+  .search__form_focused {
+    max-width: 380px;
+  }
+  .search__input {
+    padding: 7px;
+    &::placeholder {
+      font-size: 14px;
+    }
+  }
+  .search__list {
+    font-size: 14px;
+  }
+  .search__item {
+    padding-block: 6px;
+    padding-inline: 12px;
+  }
+}
+
+@media (max-width: 920px) {
+  .search__form {
+    position: absolute;
+    max-width: 100%;
+    left: 0;
+    padding-inline: 20px;
+    display: none;
+  }
+  .search__form_visible {
+    display: block;
+  }
+  .search__list-wrapper {
+    position: relative;
+  }
+  .search__list {
+    position: absolute;
+    top: 5px;
+    max-height: 40vh;
+  }
+}
