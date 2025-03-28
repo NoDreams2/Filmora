@@ -58,7 +58,7 @@ export default function MoviesListMain() {
       <ErrorMessage message="Не удалось загрузить список фильмов. Проверьте интернет-соединение и попробуйте снова." />
     );
 
-  if (responseFilms.isLoading || responseGenresAndCountries.isLoading)
+  if (responseFilms.isLoading && responseGenresAndCountries.isLoading)
     return (
       <>
         <MoviesListMainSkeleton />
@@ -68,14 +68,16 @@ export default function MoviesListMain() {
   return (
     <div className="movies-list-main__container">
       <MoviesListTitle title={movieType.title} />
-      <SelectMovies
-        countriesList={responseGenresAndCountries.data.countries}
-        genresList={responseGenresAndCountries.data.genres}
-        order={order}
-        year={year}
-        genreId={genreId}
-        countries={countries}
-      />
+      {responseGenresAndCountries.data && (
+        <SelectMovies
+          countriesList={responseGenresAndCountries.data.countries}
+          genresList={responseGenresAndCountries.data.genres}
+          order={order}
+          year={year}
+          genreId={genreId}
+          countries={countries}
+        />
+      )}
       {responseFilms.data && (
         <MoviesList
           movies={responseFilms.data.items}
