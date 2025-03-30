@@ -1,0 +1,53 @@
+.name-detail__center-part {
+  width: 100%;
+}
+
+.detail__bottom-part-films {
+  font-size: 12px;
+  margin-block-end: 60px;
+}
+
+.detail__bottom-part-films-title {
+  font-size: 28px;
+  margin-block-end: 9px;
+  margin-inline: auto;
+}
+
+.name-detail__bottom-part-knows-list {
+  padding: 0;
+}
+
+.detail__bottom-part-films-container {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 10px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.detail__bottom-part-films-num {
+  min-width: 21px;
+  max-width: 21px;
+  text-align: left;
+}
+
+.detail__bottom-part-films-name {
+  text-decoration: none;
+  color: #cbd5e1;
+  transition: color 0.2s ease;
+  &:hover {
+    color: #00a1e7;
+  }
+}
+
+.detail__bottom-part-films-rating {
+  min-width: 21px;
+  max-width: 21px;
+  text-align: right;
+}
+
+.name-detail__bottom-part-button {
+  margin-block-start: 20px;
+}
