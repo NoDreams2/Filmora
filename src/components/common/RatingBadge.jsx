@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 
 import { formatRating, getRatingColor } from '../../utils/utils';
 
-import './RatingBadge.scss';
+import './rating-badge.scss';
 
 export default function RatingBadge({ rating }) {
   const location = useLocation();
