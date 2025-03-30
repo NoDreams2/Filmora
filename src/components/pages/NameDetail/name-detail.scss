@@ -36,6 +36,8 @@
 .detail__bottom-part-films-name {
   text-decoration: none;
   color: #cbd5e1;
+  text-align: center;
+  padding-inline: 20px;
   transition: color 0.2s ease;
   &:hover {
     color: #00a1e7;
@@ -50,4 +52,28 @@
 
 .name-detail__bottom-part-button {
   margin-block-start: 20px;
+}
+
+@media (max-width: 1720px) {
+  .detail__bottom-part-films-title {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 1520px) {
+  .detail__bottom-part-films-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 1320px) {
+  .detail__bottom-part-films-title {
+    font-size: 20px;
+  }
+  .detail__bottom-part-films {
+    font-size: 11px;
+  }
+  .detail__bottom-part-films-container {
+    padding-block: 8px;
+  }
 }

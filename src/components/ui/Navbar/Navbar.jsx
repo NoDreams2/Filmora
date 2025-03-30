@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import imgPlug from '../../../assets/images/plug.svg';
 import imgSearch from '../../../assets/images/search.svg';
 import { iconComponents, MOVIE_LISTS, TOP_LISTS } from '../../../constants';
 
@@ -128,7 +129,7 @@ export default function Navbar() {
                 alt="Поиск"
                 onClick={toggleSearch}
               />
-              <span className="navbar__theme">тема</span>
+              <img src={imgPlug} alt="" />
             </div>
           </div>
         </div>
