@@ -1,3 +1,23 @@
-.actor-detail {
-  padding-block-start: 100px;
+.actor-detail__center-part {
+  width: 100%;
+}
+
+.detail__bottom-part-films {
+  font-size: 12px;
+  margin-block-end: 60px;
+}
+
+.detail__bottom-part-films-title {
+  font-size: 28px;
+  margin-block-end: 9px;
+}
+
+.detail__bottom-part-films-container {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 10px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+  &:last-child {
+    border-bottom: none;
+  }
 }

@@ -21,7 +21,7 @@ import {
 import ErrorMessage from '../../ui/ErrorMessage';
 import MovieCard from '../../ui/MovieCard';
 
-import './movie-detail.scss';
+import './detail.scss';
 
 export default function MovieDetail() {
   const sequelsScrollRef = useRef(null);
@@ -106,7 +106,7 @@ export default function MovieDetail() {
     return (
       <CircularProgress
         size="60px"
-        sx={{ position: 'absolute', marginTop: '22%' }}
+        sx={{ position: 'absolute', marginTop: '22%', color: '#00a1e7' }}
       />
     );
   }
@@ -187,14 +187,14 @@ export default function MovieDetail() {
   );
 
   return (
-    <div className="movie-detail__wrap">
-      <div className="movie-detail__container">
-        <div className="movie-detail__left-part">
+    <div className="detail__wrap">
+      <div className="detail__container">
+        <div className="detail__left-part">
           <img
-            className="movie-detail__left-part-poster"
+            className="detail__left-part-poster"
             src={responseDataFilm.data.posterUrlPreview}
           />
-          <div className="movie-detail__left-part-buttons">
+          <div className="detail__left-part-buttons">
             <a
               target="_blank"
               rel="noopener noreferrer"
@@ -211,17 +211,17 @@ export default function MovieDetail() {
             </a>
           </div>
         </div>
-        <div className="movie-detail__center-part">
-          <div className="movie-detail__center-part-main-title">
-            <div className="movie-detail__center-part-title-desc">
-              <h2 className="movie-detail__center-part-title">
+        <div className="detail__center-part">
+          <div className="detail__center-part-main-title">
+            <div className="detail__center-part-title-desc">
+              <h2 className="detail__center-part-title">
                 {responseDataFilm.data.nameRu ||
                   responseDataFilm.data.nameEn ||
                   responseDataFilm.data.nameOriginal}{' '}
                 ({responseDataFilm.data.year})
               </h2>
               {responseDataFilm.data.shortDescription ? (
-                <p className="movie-detail__center-part-description">
+                <p className="detail__center-part-description">
                   {responseDataFilm.data.shortDescription}
                 </p>
               ) : (
@@ -229,25 +229,23 @@ export default function MovieDetail() {
               )}
             </div>
           </div>
-          <div className="movie-detail__center-part-about-film">
-            <div className="movie-detail__center-part-about-film-container">
-              <h3 className="movie-detail__center-part-title-about">
-                О фильме
-              </h3>
+          <div className="detail__center-part-about-detail">
+            <div className="detail__center-part-about-detail-container">
+              <h3 className="detail__center-part-title-about">О фильме</h3>
               {responseDataFilm.data.year && (
-                <div className="movie-detail__center-part-about-container">
-                  <span className="movie-detail__center-part-key">
+                <div className="detail__center-part-about-container">
+                  <span className="detail__center-part-key">
                     Год Производства
                   </span>
-                  <span className="movie-detail__center-part-value">
+                  <span className="detail__center-part-value">
                     {responseDataFilm.data.year}
                   </span>
                 </div>
               )}
               {responseDataFilm.data.country && (
-                <div className="movie-detail__center-part-about-container">
-                  <span className="movie-detail__center-part-key">Страна</span>
-                  <span className="movie-detail__center-part-value">
+                <div className="detail__center-part-about-container">
+                  <span className="detail__center-part-key">Страна</span>
+                  <span className="detail__center-part-value">
                     {responseDataFilm.data.countries
                       .map(country => country.country)
                       .join(', ')}
@@ -255,9 +253,9 @@ export default function MovieDetail() {
                 </div>
               )}
               {responseDataFilm.data.genre && (
-                <div className="movie-detail__center-part-about-container">
-                  <span className="movie-detail__center-part-key">Жанр</span>
-                  <span className="movie-detail__center-part-value">
+                <div className="detail__center-part-about-container">
+                  <span className="detail__center-part-key">Жанр</span>
+                  <span className="detail__center-part-value">
                     {responseDataFilm.data.genres
                       .map(genre => genre.genre)
                       .join(', ')}
@@ -265,9 +263,9 @@ export default function MovieDetail() {
                 </div>
               )}
               {responseDataFilm.data.slogan && (
-                <div className="movie-detail__center-part-about-container">
-                  <span className="movie-detail__center-part-key">Слоган</span>
-                  <span className="movie-detail__center-part-value">
+                <div className="detail__center-part-about-container">
+                  <span className="detail__center-part-key">Слоган</span>
+                  <span className="detail__center-part-value">
                     {responseDataFilm.data.slogan}
                   </span>
                 </div>
@@ -275,11 +273,9 @@ export default function MovieDetail() {
               {responseStaff.data.some(
                 el => el.professionKey === 'DIRECTOR',
               ) && (
-                <div className="movie-detail__center-part-about-container">
-                  <span className="movie-detail__center-part-key">
-                    Режиссер
-                  </span>
-                  <span className="movie-detail__center-part-value">
+                <div className="detail__center-part-about-container">
+                  <span className="detail__center-part-key">Режиссер</span>
+                  <span className="detail__center-part-value">
                     {staffSlice(
                       responseStaff.data.filter(
                         el => el.professionKey === 'DIRECTOR',
@@ -289,11 +285,9 @@ export default function MovieDetail() {
                 </div>
               )}
               {responseStaff.data.some(el => el.professionKey === 'WRITER') && (
-                <div className="movie-detail__center-part-about-container">
-                  <span className="movie-detail__center-part-key">
-                    Сценарий
-                  </span>
-                  <span className="movie-detail__center-part-value">
+                <div className="detail__center-part-about-container">
+                  <span className="detail__center-part-key">Сценарий</span>
+                  <span className="detail__center-part-value">
                     {staffSlice(
                       responseStaff.data.filter(
                         el => el.professionKey === 'WRITER',
@@ -305,11 +299,9 @@ export default function MovieDetail() {
               {responseStaff.data.some(
                 el => el.professionKey === 'PRODUCER',
               ) && (
-                <div className="movie-detail__center-part-about-container">
-                  <span className="movie-detail__center-part-key">
-                    Продюсер
-                  </span>
-                  <span className="movie-detail__center-part-value">
+                <div className="detail__center-part-about-container">
+                  <span className="detail__center-part-key">Продюсер</span>
+                  <span className="detail__center-part-value">
                     {staffSlice(
                       responseStaff.data.filter(
                         el => el.professionKey === 'PRODUCER',
@@ -321,11 +313,9 @@ export default function MovieDetail() {
               {responseStaff.data.some(
                 el => el.professionKey === 'OPERATOR',
               ) && (
-                <div className="movie-detail__center-part-about-container">
-                  <span className="movie-detail__center-part-key">
-                    Оператор
-                  </span>
-                  <span className="movie-detail__center-part-value">
+                <div className="detail__center-part-about-container">
+                  <span className="detail__center-part-key">Оператор</span>
+                  <span className="detail__center-part-value">
                     {staffSlice(
                       responseStaff.data.filter(
                         el => el.professionKey === 'OPERATOR',
@@ -337,11 +327,9 @@ export default function MovieDetail() {
               {responseStaff.data.some(
                 el => el.professionKey === 'COMPOSER',
               ) && (
-                <div className="movie-detail__center-part-about-container">
-                  <span className="movie-detail__center-part-key">
-                    Композитор
-                  </span>
-                  <span className="movie-detail__center-part-value">
+                <div className="detail__center-part-about-container">
+                  <span className="detail__center-part-key">Композитор</span>
+                  <span className="detail__center-part-value">
                     {staffSlice(
                       responseStaff.data.filter(
                         el => el.professionKey === 'COMPOSER',
@@ -351,11 +339,9 @@ export default function MovieDetail() {
                 </div>
               )}
               {responseStaff.data.some(el => el.professionKey === 'DESIGN') && (
-                <div className="movie-detail__center-part-about-container">
-                  <span className="movie-detail__center-part-key">
-                    Художник
-                  </span>
-                  <span className="movie-detail__center-part-value">
+                <div className="detail__center-part-about-container">
+                  <span className="detail__center-part-key">Художник</span>
+                  <span className="detail__center-part-value">
                     {staffSlice(
                       responseStaff.data.filter(
                         el => el.professionKey === 'DESIGN',
@@ -365,9 +351,9 @@ export default function MovieDetail() {
                 </div>
               )}
               {responseStaff.data.some(el => el.professionKey === 'EDITOR') && (
-                <div className="movie-detail__center-part-about-container">
-                  <span className="movie-detail__center-part-key">Монтаж</span>
-                  <span className="movie-detail__center-part-value">
+                <div className="detail__center-part-about-container">
+                  <span className="detail__center-part-key">Монтаж</span>
+                  <span className="detail__center-part-value">
                     {staffSlice(
                       responseStaff.data.filter(
                         el => el.professionKey === 'EDITOR',
@@ -379,9 +365,9 @@ export default function MovieDetail() {
               {responseBudgetAndFees.data.items.some(
                 el => el.type === 'BUDGET',
               ) && (
-                <div className="movie-detail__center-part-about-container">
-                  <span className="movie-detail__center-part-key">Бюджет</span>
-                  <span className="movie-detail__center-part-value">
+                <div className="detail__center-part-about-container">
+                  <span className="detail__center-part-key">Бюджет</span>
+                  <span className="detail__center-part-value">
                     $
                     {responseBudgetAndFees.data.items
                       .find(el => el.type === 'BUDGET')
@@ -392,11 +378,9 @@ export default function MovieDetail() {
               {responseBudgetAndFees.data.items.some(
                 el => el.type === 'USA',
               ) && (
-                <div className="movie-detail__center-part-about-container">
-                  <span className="movie-detail__center-part-key">
-                    Сборы в США
-                  </span>
-                  <span className="movie-detail__center-part-value">
+                <div className="detail__center-part-about-container">
+                  <span className="detail__center-part-key">Сборы в США</span>
+                  <span className="detail__center-part-value">
                     $
                     {responseBudgetAndFees.data.items
                       .find(el => el.type === 'USA')
@@ -407,11 +391,9 @@ export default function MovieDetail() {
               {responseBudgetAndFees.data.items.some(
                 el => el.type === 'WORLD',
               ) && (
-                <div className="movie-detail__center-part-about-container">
-                  <span className="movie-detail__center-part-key">
-                    Сборы в мире
-                  </span>
-                  <span className="movie-detail__center-part-value">
+                <div className="detail__center-part-about-container">
+                  <span className="detail__center-part-key">Сборы в мире</span>
+                  <span className="detail__center-part-value">
                     $
                     {responseBudgetAndFees.data.items
                       .find(el => el.type === 'WORLD')
@@ -422,11 +404,11 @@ export default function MovieDetail() {
               {responseBudgetAndFees.data.items.some(
                 el => el.type === 'RUS',
               ) && (
-                <div className="movie-detail__center-part-about-container">
-                  <span className="movie-detail__center-part-key">
+                <div className="detail__center-part-about-container">
+                  <span className="detail__center-part-key">
                     Сборы в России
                   </span>
-                  <span className="movie-detail__center-part-value">
+                  <span className="detail__center-part-value">
                     $
                     {responseBudgetAndFees.data.items
                       .find(el => el.type === 'RUS')
@@ -435,9 +417,9 @@ export default function MovieDetail() {
                 </div>
               )}
               {responseDataFilm.data.filmLength && (
-                <div className="movie-detail__center-part-about-container">
-                  <span className="movie-detail__center-part-key">Время</span>
-                  <span className="movie-detail__center-part-value">
+                <div className="detail__center-part-about-container">
+                  <span className="detail__center-part-key">Время</span>
+                  <span className="detail__center-part-value">
                     {responseDataFilm.data.filmLength} мин
                   </span>
                 </div>
@@ -445,19 +427,18 @@ export default function MovieDetail() {
             </div>
           </div>
           {responseSequelsAndPrequels.data && (
-            <div className="movie-detail__additional">
-              <h3 className="movie-detail__additional-title">
+            <div className="detail__additional">
+              <h3 className="detail__additional-title">
                 Сиквелы, приквелы и ремейки
               </h3>
-              <div className="movie-detail__additional-wrapper">
+              <div className="detail__additional-wrapper">
                 <button
                   className={classNames(
-                    'movie-detail__scroll-button ',
-                    'movie-detail__scroll-button-left',
+                    'detail__scroll-button ',
+                    'detail__scroll-button-left',
                     {
-                      ['movie-detail__scroll-button-hidden']: isSequelsLeftEdge,
-                      ['movie-detail__scroll-button-visible']:
-                        isSequelsLeftEdge,
+                      ['detail__scroll-button-hidden']: isSequelsLeftEdge,
+                      ['detail__scroll-button-visible']: isSequelsLeftEdge,
                     },
                   )}
                   onClick={() => scrollContainer(sequelsScrollRef, 'left')}
@@ -465,7 +446,7 @@ export default function MovieDetail() {
                   &lt;
                 </button>
                 <div
-                  className="movie-detail__additional-cards-container"
+                  className="detail__additional-cards-container"
                   ref={sequelsScrollRef}
                 >
                   {responseSequelsAndPrequels.data.map(el => (
@@ -474,13 +455,11 @@ export default function MovieDetail() {
                 </div>
                 <button
                   className={classNames(
-                    'movie-detail__scroll-button',
-                    'movie-detail__scroll-button-right',
+                    'detail__scroll-button',
+                    'detail__scroll-button-right',
                     {
-                      ['movie-detail__scroll-button-hidden']:
-                        isSequelsRightEdge,
-                      ['movie-detail__scroll-button-visible']:
-                        isSequelsRightEdge,
+                      ['detail__scroll-button-hidden']: isSequelsRightEdge,
+                      ['detail__scroll-button-visible']: isSequelsRightEdge,
                     },
                   )}
                   onClick={() => scrollContainer(sequelsScrollRef, 'right')}
@@ -491,14 +470,14 @@ export default function MovieDetail() {
             </div>
           )}
         </div>
-        <div className="movie-detail__right-part">
+        <div className="detail__right-part">
           {responseDataFilm.data.ratingKinopoisk ? (
-            <div className="movie-detail__right-part-rating">
-              <span className="movie-detail__right-part-rating-kinopoisk">
+            <div className="detail__right-part-rating">
+              <span className="detail__right-part-rating-kinopoisk">
                 {formatRating(responseDataFilm.data.ratingKinopoisk)}
               </span>
               {responseDataFilm.data.ratingKinopoiskVoteCount && (
-                <span className="movie-detail__right-part-vote-count">
+                <span className="detail__right-part-vote-count">
                   {responseDataFilm.data.ratingKinopoiskVoteCount.toLocaleString(
                     'ru-RU',
                   )}{' '}
@@ -509,23 +488,23 @@ export default function MovieDetail() {
               )}
             </div>
           ) : (
-            <span className="movie-detail__right-part-rating-kinopoisk">0</span>
+            <span className="detail__right-part-rating-kinopoisk">0</span>
           )}
-          <div className="movie-detail__right-part-actors-container">
-            <div className="movie-detail__right-part-actors-and-oscars-container">
-              <h3 className="movie-detail__right-part-actors-title">
+          <div className="detail__right-part-actors-container">
+            <div className="detail__right-part-actors-and-oscars-container">
+              <h3 className="detail__right-part-actors-title">
                 В главных ролях
               </h3>
               {responseStaff.data.some(el => el.professionKey === 'ACTOR') && (
-                <div className="movie-detail__right-part-actors-list">
+                <div className="detail__right-part-actors-list">
                   {responseStaff.data
                     .filter(el => el.professionKey === 'ACTOR')
                     .slice(0, 10)
                     .map(actor => (
                       <Link
                         key={actor.staffId}
-                        to={'/name/266079'}
-                        className="movie-detail__right-part-actors-name"
+                        to={`/name/${actor.staffId}`}
+                        className="detail__right-part-actors-name"
                       >
                         {actor.nameRu ? actor.nameRu : actor.nameEn}
                       </Link>
@@ -533,7 +512,7 @@ export default function MovieDetail() {
                 </div>
               )}
               {responseStaff.data.some(el => el.professionKey === 'ACTOR') && (
-                <span className="movie-detail__right-part-num-actors">
+                <span className="detail__right-part-num-actors">
                   {
                     responseStaff.data.filter(
                       el => el.professionKey === 'ACTOR',
@@ -548,32 +527,30 @@ export default function MovieDetail() {
               )}
             </div>
             {oscarWins && oscarWins.length > 0 && (
-              <div className="movie-detail__right-part-oscar-container">
+              <div className="detail__right-part-oscar-container">
                 <div>
                   <img
-                    className="movie-detail__right-part-oscar-img"
+                    className="detail__right-part-oscar-img"
                     src={oscar}
                     alt="Статуэтка"
                   />
-                  <span className="movie-detail__right-part-oscar-num">
+                  <span className="detail__right-part-oscar-num">
                     {oscarWins.length}
                   </span>
-                  <div className="movie-detail__right-part-oscar-text">
-                    <h5 className="movie-detail__right-part-oscar-title">
-                      Оскар
-                    </h5>
-                    <div className="movie-detail__right-part-oscar-years-and-wins">
-                      <time className="movie-detail__right-part-oscar-year">
+                  <div className="detail__right-part-oscar-text">
+                    <h5 className="detail__right-part-oscar-title">Оскар</h5>
+                    <div className="detail__right-part-oscar-years-and-wins">
+                      <time className="detail__right-part-oscar-year">
                         {oscarWins[0].year}
                       </time>
-                      <div className="movie-detail__right-part-oscar-wins">
-                        <h6 className="movie-detail__right-part-oscar-wins-title">
+                      <div className="detail__right-part-oscar-wins">
+                        <h6 className="detail__right-part-oscar-wins-title">
                           Победитель
                         </h6>
                         {oscarWins.map(win => (
                           <span
                             key={win.nominationName}
-                            className="movie-detail__right-part-nominations"
+                            className="detail__right-part-nominations"
                           >
                             {win.nominationName}
                           </span>
@@ -587,17 +564,15 @@ export default function MovieDetail() {
           </div>
         </div>
       </div>
-      <div className="movie-detail__bottom-part">
+      <div className="detail__bottom-part">
         {responseDataFilm.data.description && (
-          <p className="movie-detail__bottom-part-movie-description">
+          <p className="detail__bottom-part-description">
             {responseDataFilm.data.description}
           </p>
         )}
-        <div className="movie-detail__bottom-part-rating">
-          <h4 className="movie-detail__bottom-part-rating-title">
-            Рейтинг фильма
-          </h4>
-          <div className="movie-detail__bottom-part-stars-container">
+        <div className="detail__bottom-part-rating">
+          <h4 className="detail__bottom-part-rating-title">Рейтинг фильма</h4>
+          <div className="detail__bottom-part-stars-container">
             {Array.from({ length: 10 }, (_, index) => {
               const rating = responseDataFilm.data.ratingKinopoisk;
               const isFilled = index < Math.floor(rating);
@@ -608,9 +583,9 @@ export default function MovieDetail() {
               return (
                 <span
                   key={index}
-                  className={classNames('movie-detail__bottom-part-star', {
-                    'movie-detail__bottom-part-star-filled': isFilled,
-                    'movie-detail__bottom-part-star-partially-filled':
+                  className={classNames('detail__bottom-part-star', {
+                    'detail__bottom-part-star-filled': isFilled,
+                    'detail__bottom-part-star-partially-filled':
                       isPartiallyFilled,
                   })}
                   style={{
@@ -624,18 +599,18 @@ export default function MovieDetail() {
           </div>
         </div>
         {responseListSimilarMovies.data?.items.length > 0 && (
-          <div className="movie-detail__additional detail__additional_padding-not detail__additional_full-width movie-detail__additional_margin-bottom">
-            <h4 className="movie-detail__additional-title">
+          <div className="detail__additional detail__additional_padding-not detail__additional_full-width detail__additional_margin-bottom">
+            <h4 className="detail__additional-title">
               Если вам понравился этот фильм
             </h4>
-            <div className="movie-detail__additional-wrapper">
+            <div className="detail__additional-wrapper">
               <button
                 className={classNames(
-                  'movie-detail__scroll-button movie-detail__scroll-button_top',
-                  'movie-detail__scroll-button-left',
+                  'detail__scroll-button detail__scroll-button_top',
+                  'detail__scroll-button-left',
                   {
-                    ['movie-detail__scroll-button-hidden']: isSimilarsLeftEdge,
-                    ['movie-detail__scroll-button-visible']: isSimilarsLeftEdge,
+                    ['detail__scroll-button-hidden']: isSimilarsLeftEdge,
+                    ['detail__scroll-button-visible']: isSimilarsLeftEdge,
                   },
                 )}
                 onClick={() => scrollContainer(similarsScrollRef, 'left')}
@@ -643,7 +618,7 @@ export default function MovieDetail() {
                 &lt;
               </button>
               <div
-                className="movie-detail__additional-cards-container"
+                className="detail__additional-cards-container"
                 ref={similarsScrollRef}
               >
                 {responseListSimilarMovies.data.items.map(el => (
@@ -652,12 +627,11 @@ export default function MovieDetail() {
               </div>
               <button
                 className={classNames(
-                  'movie-detail__scroll-button movie-detail__scroll-button_top',
-                  'movie-detail__scroll-button-right',
+                  'detail__scroll-button detail__scroll-button_top',
+                  'detail__scroll-button-right',
                   {
-                    ['movie-detail__scroll-button-hidden']: isSimilarsRightEdge,
-                    ['movie-detail__scroll-button-visible']:
-                      isSimilarsRightEdge,
+                    ['detail__scroll-button-hidden']: isSimilarsRightEdge,
+                    ['detail__scroll-button-visible']: isSimilarsRightEdge,
                   },
                 )}
                 onClick={() => scrollContainer(similarsScrollRef, 'right')}
@@ -669,15 +643,15 @@ export default function MovieDetail() {
         )}
         {responseFactsAndBloopers.data?.items.length > 0 &&
           filteredFacts.length > 0 && (
-            <div className="movie-detail__bottom-part-knows">
-              <h4 className="movie-detail__bottom-part-knows-title">
+            <div className="detail__bottom-part-knows">
+              <h4 className="detail__bottom-part-knows-title">
                 Знаете ли вы, что...
               </h4>
-              <ul className="movie-detail__bottom-part-knows-list">
+              <ul className="detail__bottom-part-knows-list">
                 {visibleFactsWithoutSpoilers.map((fact, index) => (
                   <li
                     key={index}
-                    className="movie-detail__bottom-part-knows-item"
+                    className="detail__bottom-part-knows-item"
                     dangerouslySetInnerHTML={{ __html: fact.text }}
                   />
                 ))}
@@ -685,7 +659,7 @@ export default function MovieDetail() {
                 {factsWithoutSpoilers.length ===
                   visibleFactsWithoutSpoilers.length &&
                   factsWithSpoilers.length > 0 && (
-                    <div className="movie-detail__bottom-part-knows-attention">
+                    <div className="detail__bottom-part-knows-attention">
                       Внимание! Дальнейший список фактов о фильме содержит
                       спойлеры. Будьте осторожны.
                     </div>
@@ -694,7 +668,7 @@ export default function MovieDetail() {
                 {visibleFactsWithSpoilers.map((fact, index) => (
                   <li
                     key={index + visibleFactsWithoutSpoilers.length}
-                    className="movie-detail__bottom-part-knows-item"
+                    className="detail__bottom-part-knows-item"
                     dangerouslySetInnerHTML={{ __html: fact.text }}
                   />
                 ))}
@@ -703,7 +677,7 @@ export default function MovieDetail() {
                 visibleFactsWithoutSpoilersCount ||
                 factsWithSpoilers.length > visibleFactsWithSpoilersCount) && (
                 <button
-                  className="button movie-detail__bottom-part-button"
+                  className="button detail__bottom-part-button"
                   onClick={loadMoreFacts}
                 >
                   Показать еще
@@ -713,26 +687,26 @@ export default function MovieDetail() {
           )}
         {responseFactsAndBloopers.data?.items.length > 0 &&
           filteredBloopers.length > 0 && (
-            <div className="movie-detail__bottom-part-knows">
-              <h4 className="movie-detail__bottom-part-knows-title movie-detail__bottom-part-knows-title_maring-bottom">
+            <div className="detail__bottom-part-knows">
+              <h4 className="detail__bottom-part-knows-title detail__bottom-part-knows-title_maring-bottom">
                 Ошибки в фильме
               </h4>
-              <div className="movie-detail__bottom-part-knows-attention">
+              <div className="detail__bottom-part-knows-attention">
                 Внимание! Список ошибок в фильме может содержать спойлеры.
                 Будьте осторожны.
               </div>
-              <ul className="movie-detail__bottom-part-knows-list">
+              <ul className="detail__bottom-part-knows-list">
                 {visiblefilteredBloopers.map((fact, index) => (
                   <li
                     key={index}
-                    className="movie-detail__bottom-part-knows-item"
+                    className="detail__bottom-part-knows-item"
                     dangerouslySetInnerHTML={{ __html: fact.text }}
                   />
                 ))}
               </ul>
               {filteredBloopers.length > visiblefilteredBloopers.length && (
                 <button
-                  className="button movie-detail__bottom-part-button"
+                  className="button detail__bottom-part-button"
                   onClick={loadMoreBloopers}
                 >
                   Показать еще
