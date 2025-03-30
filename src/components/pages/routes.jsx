@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { MOVIE_LISTS, TOP_LISTS } from '../../constants';
-import ActorDetail from './ActorDetail';
 import MovieDetail from './MovieDetail';
 import Movies from './Movies';
 import MoviesListMain from './MoviesListMain';
 import MoviesListTop from './MoviesListTop';
+import NameDetail from './NameDetail/NameDetail';
 
 export const routes = [
   {
@@ -26,6 +26,6 @@ export const routes = [
   },
   {
     path: '/name/:id',
-    element: <ActorDetail />,
+    element: <NameDetail />,
   },
 ];

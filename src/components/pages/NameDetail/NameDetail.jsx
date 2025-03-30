@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import './actor-detail.scss';
+import './name-detail.scss';
 
 import { CircularProgress } from '@mui/material';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import { useGetStaffByIdQuery } from '../../../services/kinopoiskApi';
 import ErrorMessage from '../../ui/ErrorMessage';
 
-export default function ActorDetail() {
+export default function NameDetail() {
+  const [filmsCount, setFilmsCount] = useState(20);
+  const [factsCount, setFactsCount] = useState(3);
   const { id } = useParams();
 
   const { data, isLoading, isError } = useGetStaffByIdQuery(id);
@@ -37,9 +39,25 @@ export default function ActorDetail() {
       ),
   );
 
+  const sliceFilms = uniqueFilms.slice(0, filmsCount);
+
+  const loadMoreFilms = () => {
+    if (filmsCount < uniqueFilms.length) {
+      setFilmsCount(prevCount => prevCount + 20);
+    }
+  };
+
+  const sliceFacts = data.facts.slice(0, factsCount);
+
+  const loadMoreFacts = () => {
+    if (factsCount < data.facts.length) {
+      setFactsCount(prevCount => prevCount + 20);
+    }
+  };
+
   return (
     <div className="detail__wrap">
-      <div className="detail__container actor-detail__container">
+      <div className="detail__container name-detail__container">
         <div className="detail__left-part">
           <img className="detail__left-part-poster" src={data.posterUrl} />
           <div className="detail__left-part-buttons">
@@ -48,7 +66,7 @@ export default function ActorDetail() {
             </a>
           </div>
         </div>
-        <div className="detail__center-part actor-detail__center-part">
+        <div className="detail__center-part name-detail__center-part">
           <div className="detail__center-part-main-title">
             <div className="detail__center-part-title-desc">
               <h2 className="detail__center-part-title">{data.nameRu}</h2>
@@ -122,7 +140,7 @@ export default function ActorDetail() {
                   </span>
                 </div>
               )}
-              {data.hasAwards && (
+              {data.hasAwards > 0 && (
                 <div className="detail__center-part-about-container">
                   <span className="detail__center-part-key">
                     Количество наград
@@ -136,22 +154,63 @@ export default function ActorDetail() {
           </div>
         </div>
       </div>
-      <div className="detail__bottom-part-films">
-        <h3 className="detail__bottom-part-films-title">Фильмы</h3>
-        {uniqueFilms.map((film, index) => (
-          <div
-            key={film.filmId}
-            className="detail__bottom-part-films-container"
-          >
-            <span className="detail__bottom-part-films-num">{index + 1}</span>
-            <span className="detail__bottom-part-films-name">
-              {film.nameRu ? film.nameRu : film.nameEn}
-            </span>
-            <span className="detail__bottom-part-films-rating">
-              {film.rating || '-'}
-            </span>
+      <div className="detail__bottom-part-wrap">
+        <div className="detail__bottom-part-films">
+          <h3 className="detail__bottom-part-films-title">Фильмы</h3>
+          <ul className="detail__bottom-part-knows-list name-detail__bottom-part-knows-list">
+            {sliceFilms.map((film, index) => (
+              <li
+                key={film.filmId}
+                className="detail__bottom-part-films-container"
+              >
+                <span className="detail__bottom-part-films-num">
+                  {index + 1}
+                </span>
+                <Link
+                  to={`/movie/${film.filmId}`}
+                  className="detail__bottom-part-films-name"
+                >
+                  {film.nameRu ? film.nameRu : film.nameEn}
+                </Link>
+                <span className="detail__bottom-part-films-rating">
+                  {film.rating || '-'}
+                </span>
+              </li>
+            ))}
+          </ul>
+          {filmsCount < uniqueFilms.length && (
+            <button
+              className="button name-detail__bottom-part-button"
+              onClick={loadMoreFilms}
+            >
+              Показать еще
+            </button>
+          )}
+        </div>
+        {data.facts && data.facts.length > 0 && (
+          <div className="detail__bottom-part-knows">
+            <h4 className="detail__bottom-part-knows-title">
+              Знаете ли вы, что...
+            </h4>
+            <ul className="detail__bottom-part-knows-list">
+              {sliceFacts.map((fact, index) => (
+                <li
+                  key={index}
+                  className="detail__bottom-part-knows-item"
+                  dangerouslySetInnerHTML={{ __html: fact }}
+                />
+              ))}
+            </ul>
+            {factsCount < data.facts.length && (
+              <button
+                className="button detail__bottom-part-button"
+                onClick={loadMoreFacts}
+              >
+                Показать еще
+              </button>
+            )}
           </div>
-        ))}
+        )}
       </div>
     </div>
   );
