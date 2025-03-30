@@ -118,8 +118,13 @@ export const kinopoiskApi = createApi({
         };
       },
     }),
+
     getFactsAndBloopers: builder.query({
       query: id => `/v2.2/films/${id}/facts`,
+    }),
+
+    getStaffById: builder.query({
+      query: id => `/v1/staff/${id}`,
     }),
   }),
 });
@@ -135,4 +140,5 @@ export const {
   useGetAwardsQuery,
   useGetListSimilarMoviesQuery,
   useGetFactsAndBloopersQuery,
+  useGetStaffByIdQuery,
 } = kinopoiskApi;

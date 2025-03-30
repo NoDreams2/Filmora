@@ -63,6 +63,12 @@
   transition: opacity 0.4s ease;
 }
 
+.search__error {
+  display: flex;
+  justify-content: center;
+  padding-block: 10px;
+}
+
 .search__list_visible {
   opacity: 1;
   visibility: visible;

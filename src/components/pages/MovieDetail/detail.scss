@@ -1,17 +1,17 @@
-.movie-detail__wrap {
+.detail__wrap {
   width: 1820px;
   padding-inline: 100px;
   color: #cbd5e1;
 }
 
-.movie-detail__container {
+.detail__container {
   display: flex;
   padding-block-start: 130px;
   padding-block-end: 50px;
   gap: 30px;
 }
 
-.movie-detail__left-part {
+.detail__left-part {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -32,14 +32,14 @@
   }
 }
 
-.movie-detail__left-part-poster {
+.detail__left-part-poster {
   width: 305px;
   height: 440px;
   object-fit: cover;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 1);
 }
 
-.movie-detail__left-part-buttons {
+.detail__left-part-buttons {
   display: flex;
   justify-content: center;
   gap: 12px;
@@ -47,47 +47,47 @@
   margin-block-start: 50px;
 }
 
-.movie-detail__center-part {
+.detail__center-part {
   display: flex;
   flex-direction: column;
   gap: 40px;
 }
 
-.movie-detail__center-part-main-title {
+.detail__center-part-main-title {
   margin-block-end: 48px;
   display: inline-block;
   position: relative;
 }
 
-.movie-detail__center-part-title-desc {
+.detail__center-part-title-desc {
   width: 600px;
   padding-inline: 9px;
 }
 
-.movie-detail__center-part-title {
+.detail__center-part-title {
   font-size: 54px;
   margin-block-end: 16px;
 }
 
-.movie-detail__center-part-description {
+.detail__center-part-description {
   font-size: 16px;
   line-height: 1.6;
 }
 
-.movie-detail__center-part-about-film {
+.detail__center-part-about-detail {
   display: inline;
 }
 
-.movie-detail__center-part-about-film-container {
+.detail__center-part-about-detail-container {
   padding-inline: 9px;
 }
 
-.movie-detail__center-part-title-about {
+.detail__center-part-title-about {
   font-size: 28px;
   margin-block-end: 9px;
 }
 
-.movie-detail__center-part-about-container {
+.detail__center-part-about-container {
   padding-block: 10px;
   font-size: 12px;
   display: flex;
@@ -97,17 +97,17 @@
   }
 }
 
-.movie-detail__center-part-key {
+.detail__center-part-key {
   color: #94a3b8;
   display: inline-block;
   min-width: 160px;
 }
 
-.movie-detail__center-part-value {
+.detail__center-part-value {
   line-height: 18px;
 }
 
-.movie-detail__additional {
+.detail__additional {
   padding-inline: 9px;
   padding-block-start: 40px;
   overflow: hidden;
@@ -123,31 +123,31 @@
   max-width: 100%;
 }
 
-.movie-detail__additional_margin-bottom {
+.detail__additional_margin-bottom {
   margin-block-end: 40px;
 }
 
-.movie-detail__additional-title {
+.detail__additional-title {
   font-size: 28px;
   margin-block-end: 16px;
 }
 
-.movie-detail__additional-wrapper {
+.detail__additional-wrapper {
   display: flex;
 }
 
-.movie-detail__additional-cards-container {
+.detail__additional-cards-container {
   display: flex;
   overflow-x: scroll;
   scroll-behavior: smooth;
   gap: 9px;
 }
 
-.movie-detail__additional-cards-container::-webkit-scrollbar {
+.detail__additional-cards-container::-webkit-scrollbar {
   display: none;
 }
 
-.movie-detail__scroll-button {
+.detail__scroll-button {
   height: 44px;
   width: 44px;
   cursor: pointer;
@@ -162,70 +162,70 @@
   transition: all 0.2s ease-in-out;
 }
 
-.movie-detail__scroll-button_top {
+.detail__scroll-button_top {
   top: 45%;
 }
 
-.movie-detail__scroll-button-left {
+.detail__scroll-button-left {
   left: 5px;
   &:hover {
     transform: translateX(-5px);
   }
 }
 
-.movie-detail__scroll-button-right {
+.detail__scroll-button-right {
   right: 5px;
   &:hover {
     transform: translateX(5px);
   }
 }
 
-.movie-detail__scroll-button-hidden {
+.detail__scroll-button-hidden {
   opacity: 0 !important;
   pointer-events: none;
 }
 
-.movie-detail__scroll-button-visible {
+.detail__scroll-button-visible {
   opacity: 1;
   pointer-events: auto;
 }
 
-.movie-detail__right-part {
+.detail__right-part {
   margin-inline-start: auto;
   display: flex;
   flex-direction: column;
   gap: 110px;
 }
 
-.movie-detail__right-part-rating {
+.detail__right-part-rating {
   display: flex;
   flex-direction: column;
   margin-block-end: 24px;
 }
 
-.movie-detail__right-part-rating-kinopoisk {
+.detail__right-part-rating-kinopoisk {
   font-size: 52px;
   font-weight: 800;
 }
 
-.movie-detail__right-part-vote-count {
+.detail__right-part-vote-count {
   font-size: 14px;
 }
 
-.movie-detail__right-part-actors-container {
+.detail__right-part-actors-container {
   position: relative;
 }
 
-.movie-detail__right-part-actors-and-oscars-container {
+.detail__right-part-actors-and-oscars-container {
   margin-bottom: 36px;
 }
 
-.movie-detail__right-part-actors-title {
+.detail__right-part-actors-title {
   margin-block-end: 14px;
   font-size: 17px;
 }
 
-.movie-detail__right-part-actors-list {
+.detail__right-part-actors-list {
   font-size: 13px;
   display: flex;
   flex-direction: column;
@@ -233,7 +233,7 @@
   margin-block-end: 5px;
 }
 
-.movie-detail__right-part-actors-name {
+.detail__right-part-actors-name {
   text-decoration: none;
   color: #cbd5e1;
   transition: color 0.2s ease;
@@ -242,29 +242,29 @@
   }
 }
 
-.movie-detail__right-part-num-actors {
+.detail__right-part-num-actors {
   font-size: 13px;
   color: #00a1e7;
 }
 
-.movie-detail__right-part-oscar-container {
+.detail__right-part-oscar-container {
   position: relative;
   &:hover {
-    .movie-detail__right-part-oscar-text {
+    .detail__right-part-oscar-text {
       visibility: visible;
       opacity: 1;
     }
   }
 }
 
-.movie-detail__right-part-oscar-img {
+.detail__right-part-oscar-img {
   cursor: pointer;
   position: absolute;
   z-index: 1;
   filter: drop-shadow(0 0 10px rgba(0, 161, 231, 0.8));
 }
 
-.movie-detail__right-part-oscar-num {
+.detail__right-part-oscar-num {
   position: absolute;
   left: 94px;
   top: 90px;
@@ -276,7 +276,7 @@
   font-size: 14px;
 }
 
-.movie-detail__right-part-oscar-text {
+.detail__right-part-oscar-text {
   position: absolute;
   background-color: #313d4b;
   backdrop-filter: blur(10px);
@@ -296,53 +296,53 @@
     visibility 0.2s ease-in-out;
 }
 
-.movie-detail__right-part-oscar-title {
+.detail__right-part-oscar-title {
   font-size: 30px;
   margin-block-end: 14px;
 }
 
-.movie-detail__right-part-oscar-years-and-wins {
+.detail__right-part-oscar-years-and-wins {
   display: flex;
   gap: 20px;
   padding-inline-start: 30px;
 }
 
-.movie-detail__right-part-oscar-year {
+.detail__right-part-oscar-year {
   font-size: 16px;
   font-weight: 400;
 }
 
-.movie-detail__right-part-oscar-wins-title {
+.detail__right-part-oscar-wins-title {
   font-size: 16px;
   font-weight: 700;
   margin-block-end: 10px;
 }
 
-.movie-detail__right-part-nominations {
+.detail__right-part-nominations {
   display: flex;
   width: 260px;
   padding-block: 5px;
   font-weight: 400;
 }
 
-.movie-detail__bottom-part-movie-description {
+.detail__bottom-part-description {
   font-size: 18px;
   line-height: 1.6;
   margin-block-end: 50px;
 }
 
-.movie-detail__bottom-part-rating-title {
+.detail__bottom-part-rating-title {
   font-size: 28px;
   margin-block-end: 14px;
 }
 
-.movie-detail__bottom-part-stars-container {
+.detail__bottom-part-stars-container {
   display: flex;
   gap: 6px;
   margin-block-end: 50px;
 }
 
-.movie-detail__bottom-part-star {
+.detail__bottom-part-star {
   display: inline-block;
   width: 35px;
   height: 35px;
@@ -361,26 +361,26 @@
   );
 }
 
-.movie-detail__bottom-part-star-filled {
+.detail__bottom-part-star-filled {
   background-color: #00a1e7;
 }
 
-.movie-detail__bottom-part-similars-title {
+.detail__bottom-part-similars-title {
   font-size: 30px;
 }
 
-.movie-detail__bottom-part-knows {
+.detail__bottom-part-knows {
   margin-block-end: 50px;
 }
 
-.movie-detail__bottom-part-knows-title {
+.detail__bottom-part-knows-title {
   font-size: 28px;
 }
 
-.movie-detail__bottom-part-knows-title_maring-bottom {
+.detail__bottom-part-knows-title_maring-bottom {
   margin-block-end: 14px;
 }
-.movie-detail__bottom-part-knows-item {
+.detail__bottom-part-knows-item {
   font-size: 18px;
   padding-block: 14px;
   border-bottom: 1px solid rgba(148, 163, 184, 0.1);
@@ -390,12 +390,12 @@
   }
 }
 
-.movie-detail__bottom-part-knows-item a {
+.detail__bottom-part-knows-item a {
   color: #00a1e7;
   text-decoration: none;
 }
 
-.movie-detail__bottom-part-knows-attention {
+.detail__bottom-part-knows-attention {
   background-color: rgba(60, 71, 85, 0.6);
   padding-block: 16px;
   font-size: 18px;
@@ -403,227 +403,227 @@
   justify-content: center;
 }
 
-.movie-detail__bottom-part-button {
+.detail__bottom-part-button {
   margin-inline-start: 40px;
   margin-block-start: 10px;
 }
 
 @media (max-width: 1900px) {
-  .movie-detail__wrap {
+  .detail__wrap {
     width: 1720px;
   }
 }
 
 @media (max-width: 1720px) {
-  .movie-detail__wrap {
+  .detail__wrap {
     width: 1520px;
     padding-inline: 50px;
   }
-  .movie-detail__left-part-poster {
+  .detail__left-part-poster {
     width: 280px;
     height: 400px;
   }
-  .movie-detail__center-part-title {
+  .detail__center-part-title {
     font-size: 48px;
   }
-  .movie-detail__center-part-description {
+  .detail__center-part-description {
     font-size: 15px;
   }
-  .movie-detail__center-part-title-about {
+  .detail__center-part-title-about {
     font-size: 26px;
   }
-  .movie-detail__center-part-sequels-and-prequels-container-title {
+  .detail__center-part-sequels-and-prequels-container-title {
     font-size: 26px;
   }
-  .movie-detail__right-part-rating-kinopoisk {
+  .detail__right-part-rating-kinopoisk {
     font-size: 48px;
   }
 }
 
 @media (max-width: 1520px) {
-  .movie-detail__wrap {
+  .detail__wrap {
     width: 1320px;
   }
-  .movie-detail__center-part {
+  .detail__center-part {
     gap: 20px;
     width: 600px;
   }
-  .movie-detail__left-part-poster {
+  .detail__left-part-poster {
     width: 260px;
     height: 370px;
   }
-  .movie-detail__center-part-title {
+  .detail__center-part-title {
     font-size: 40px;
   }
-  .movie-detail__center-part-title-about {
+  .detail__center-part-title-about {
     font-size: 24px;
   }
-  .movie-detail__center-part-sequels-and-prequels-container-title {
+  .detail__center-part-sequels-and-prequels-container-title {
     font-size: 24px;
   }
-  .movie-detail__right-part-rating-kinopoisk {
+  .detail__right-part-rating-kinopoisk {
     font-size: 40px;
   }
-  .movie-detail__right-part-vote-count {
+  .detail__right-part-vote-count {
     font-size: 13px;
   }
-  .movie-detail__right-part-actors-title {
+  .detail__right-part-actors-title {
     font-size: 16px;
   }
-  .movie-detail__right-part-actors-name {
+  .detail__right-part-actors-name {
     font-size: 13px;
   }
 }
 
 @media (max-width: 1420px) {
-  .movie-detail__container {
+  .detail__container {
     padding-block-start: 110px;
   }
 }
 
 @media (max-width: 1320px) {
-  .movie-detail__wrap {
+  .detail__wrap {
     width: 1120px;
     padding-inline: 20px;
   }
-  .movie-detail__center-part {
+  .detail__center-part {
     gap: 10px;
     width: 500px;
   }
-  .movie-detail__left-part-poster {
+  .detail__left-part-poster {
     width: 230px;
     height: 340px;
   }
-  .movie-detail__center-part-title {
+  .detail__center-part-title {
     font-size: 30px;
     margin-block-end: 10px;
   }
-  .movie-detail__center-part-description {
+  .detail__center-part-description {
     font-size: 13px;
   }
-  .movie-detail__center-part-title-about {
+  .detail__center-part-title-about {
     font-size: 20px;
   }
-  .movie-detail__center-part-sequels-and-prequels-container-title {
+  .detail__center-part-sequels-and-prequels-container-title {
     font-size: 20px;
   }
-  .movie-detail__right-part-rating-kinopoisk {
+  .detail__right-part-rating-kinopoisk {
     font-size: 30px;
   }
-  .movie-detail__right-part-vote-count {
+  .detail__right-part-vote-count {
     font-size: 11px;
   }
-  .movie-detail__center-part-about-container {
+  .detail__center-part-about-container {
     padding-block: 8px;
     font-size: 11px;
   }
-  .movie-detail__right-part-actors-title {
+  .detail__right-part-actors-title {
     font-size: 14px;
   }
-  .movie-detail__right-part-actors-name {
+  .detail__right-part-actors-name {
     font-size: 12px;
   }
-  .movie-detail__right-part-num-actors {
+  .detail__right-part-num-actors {
     font-size: 12px;
   }
-  .movie-detail__center-part-title-desc {
+  .detail__center-part-title-desc {
     width: 100%;
     padding-inline: 0px;
   }
-  .movie-detail__center-part-about-film-container {
+  .detail__center-part-about-detail-container {
     padding-inline: 0px;
   }
-  .movie-detail__additional-title {
+  .detail__additional-title {
     font-size: 26px;
   }
-  .movie-detail__bottom-part-movie-description {
+  .detail__bottom-part-description {
     font-size: 16px;
   }
-  .movie-detail__bottom-part-rating-title {
+  .detail__bottom-part-rating-title {
     font-size: 26px;
     margin-block-end: 10px;
   }
-  .movie-detail__bottom-part-knows-title {
+  .detail__bottom-part-knows-title {
     font-size: 26px;
   }
-  .movie-detail__bottom-part-star {
+  .detail__bottom-part-star {
     width: 32px;
     height: 32px;
   }
-  .movie-detail__bottom-part-knows-item {
+  .detail__bottom-part-knows-item {
     font-size: 16px;
   }
-  .movie-detail__bottom-part-knows-attention {
+  .detail__bottom-part-knows-attention {
     font-size: 16px;
     padding-block: 14px;
   }
 }
 
 @media (max-width: 1120px) {
-  .movie-detail__wrap {
+  .detail__wrap {
     width: 920px;
   }
-  .movie-detail__left-part-poster {
+  .detail__left-part-poster {
     width: 200px;
     height: 300px;
   }
-  .movie-detail__center-part {
+  .detail__center-part {
     gap: 0px;
     width: 400px;
   }
-  .movie-detail__center-part-title {
+  .detail__center-part-title {
     font-size: 24px;
   }
-  .movie-detail__center-part-description {
+  .detail__center-part-description {
     font-size: 12px;
   }
-  .movie-detail__right-part-actors-title {
+  .detail__right-part-actors-title {
     font-size: 13px;
   }
-  .movie-detail__right-part-actors-name {
+  .detail__right-part-actors-name {
     font-size: 11px;
   }
-  .movie-detail__additional-title {
+  .detail__additional-title {
     font-size: 24px;
     margin-block-end: 10px;
   }
-  .movie-detail__bottom-part-movie-description {
+  .detail__bottom-part-description {
     font-size: 15px;
   }
-  .movie-detail__bottom-part-rating-title {
+  .detail__bottom-part-rating-title {
     font-size: 24px;
     margin-block-end: 6px;
   }
-  .movie-detail__bottom-part-star {
+  .detail__bottom-part-star {
     width: 30px;
     height: 30px;
   }
-  .movie-detail__bottom-part-knows-title {
+  .detail__bottom-part-knows-title {
     font-size: 24px;
   }
-  .movie-detail__bottom-part-knows-item {
+  .detail__bottom-part-knows-item {
     font-size: 15px;
     padding-block: 13px;
   }
-  .movie-detail__bottom-part-knows-attention {
+  .detail__bottom-part-knows-attention {
     font-size: 15px;
     padding-block: 13px;
   }
 }
 
 @media (max-width: 920px) {
-  .movie-detail__wrap {
+  .detail__wrap {
     width: 600px;
   }
-  .movie-detail__container {
+  .detail__container {
     flex-direction: column;
     align-items: center;
     position: relative;
   }
-  .movie-detail__center-part {
+  .detail__center-part {
     width: 100%;
   }
-  .movie-detail__right-part {
+  .detail__right-part {
     position: absolute;
     order: 2;
     margin-inline-start: 0;
@@ -632,157 +632,157 @@
     width: 100%;
     padding-inline: 20px;
   }
-  .movie-detail__center-part {
+  .detail__center-part {
     order: 3;
   }
-  .movie-detail__right-part-actors-list {
+  .detail__right-part-actors-list {
     align-items: end;
   }
-  .movie-detail__right-part-actors-and-oscars-container {
+  .detail__right-part-actors-and-oscars-container {
     margin-bottom: 0;
   }
-  .movie-detail__right-part-num-actors {
+  .detail__right-part-num-actors {
     position: absolute;
     right: 0;
   }
-  .movie-detail__left-part {
+  .detail__left-part {
     gap: 30px;
   }
-  .movie-detail__right-part-oscar-img {
+  .detail__right-part-oscar-img {
     display: none;
   }
-  .movie-detail__right-part-oscar-num {
+  .detail__right-part-oscar-num {
     display: none;
   }
-  .movie-detail__additional-title {
+  .detail__additional-title {
     font-size: 22px;
   }
-  .movie-detail__bottom-part-movie-description {
+  .detail__bottom-part-description {
     font-size: 14px;
     line-height: 1.4;
   }
-  .movie-detail__bottom-part-rating-title {
+  .detail__bottom-part-rating-title {
     font-size: 22px;
   }
-  .movie-detail__bottom-part-star {
+  .detail__bottom-part-star {
     width: 26px;
     height: 26px;
   }
-  .movie-detail__bottom-part-knows-title {
+  .detail__bottom-part-knows-title {
     font-size: 22px;
   }
-  .movie-detail__bottom-part-knows-item {
+  .detail__bottom-part-knows-item {
     font-size: 14px;
     padding-block: 12px;
   }
-  .movie-detail__bottom-part-knows-attention {
+  .detail__bottom-part-knows-attention {
     font-size: 14px;
     padding-block: 12px;
     padding-inline: 12px;
     text-align: center;
   }
-  .movie-detail__bottom-part-knows-list {
+  .detail__bottom-part-knows-list {
     padding-inline-start: 30px;
   }
 }
 
 @media (max-width: 720px) {
-  .movie-detail__container {
+  .detail__container {
     padding-block-start: 100px;
   }
 }
 
 @media (max-width: 600px) {
-  .movie-detail__wrap {
+  .detail__wrap {
     width: 450px;
   }
-  .movie-detail__right-part-actors-and-oscars-container {
+  .detail__right-part-actors-and-oscars-container {
     display: none;
   }
-  .movie-detail__right-part-rating {
+  .detail__right-part-rating {
     order: 2;
   }
-  .movie-detail__right-part-vote-count {
+  .detail__right-part-vote-count {
     display: none;
   }
-  .movie-detail__bottom-part-knows-item {
+  .detail__bottom-part-knows-item {
     padding-block: 11px;
   }
-  .movie-detail__center-part-key {
+  .detail__center-part-key {
     min-width: 130px;
   }
-  .movie-detail__bottom-part-knows-list {
+  .detail__bottom-part-knows-list {
     padding-inline-start: 20px;
   }
 }
 
 @media (max-width: 450px) {
-  .movie-detail__wrap {
+  .detail__wrap {
     width: 350px;
   }
-  .movie-detail__right-part {
+  .detail__right-part {
     display: none;
   }
-  .movie-detail__right-part-rating-kinopoisk {
+  .detail__right-part-rating-kinopoisk {
     font-size: 26px;
   }
-  .movie-detail__additional-title {
+  .detail__additional-title {
     font-size: 19px;
   }
-  .movie-detail__container {
+  .detail__container {
     padding-block-end: 40px;
   }
-  .movie-detail__bottom-part-movie-description {
+  .detail__bottom-part-description {
     font-size: 13px;
     margin-block-end: 40px;
   }
-  .movie-detail__bottom-part-rating-title {
+  .detail__bottom-part-rating-title {
     font-size: 19px;
   }
-  .movie-detail__bottom-part-star {
+  .detail__bottom-part-star {
     width: 24px;
     height: 24px;
   }
-  .movie-detail__bottom-part-stars-container {
+  .detail__bottom-part-stars-container {
     margin-block-end: 40px;
   }
-  .movie-detail__additional_margin-bottom {
+  .detail__additional_margin-bottom {
     margin-block-end: 10px;
   }
-  .movie-detail__bottom-part-knows-title {
+  .detail__bottom-part-knows-title {
     font-size: 19px;
   }
-  .movie-detail__bottom-part-knows-item {
+  .detail__bottom-part-knows-item {
     font-size: 12px;
     line-height: 1.5;
     padding-block: 10px;
   }
-  .movie-detail__bottom-part-knows-attention {
+  .detail__bottom-part-knows-attention {
     font-size: 10px;
     padding: 9px;
   }
-  .movie-detail__center-part-about-container {
+  .detail__center-part-about-container {
     font-size: 9px;
     padding-block: 6px;
     line-height: 1.67;
   }
-  .movie-detail__center-part-key {
+  .detail__center-part-key {
     min-width: 100px;
   }
 }
 
 @media (max-width: 350px) {
-  .movie-detail__wrap {
+  .detail__wrap {
     width: 310px;
   }
-  .movie-detail__right-part {
+  .detail__right-part {
     top: 364px;
     right: 60px;
   }
-  .movie-detail__right-part-rating-kinopoisk {
+  .detail__right-part-rating-kinopoisk {
     font-size: 26px;
   }
-  .movie-detail__center-part-about-container {
+  .detail__center-part-about-container {
     padding-block: 4px;
   }
 }
