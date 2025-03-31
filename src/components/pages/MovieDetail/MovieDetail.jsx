@@ -51,10 +51,6 @@ export default function MovieDetail() {
   const responseListSimilarMovies = useGetListSimilarMoviesQuery(id);
   const responseFactsAndBloopers = useGetFactsAndBloopersQuery(id);
 
-  fetch('https://openrouter.ai/api/v1/models').then(res =>
-    res.json().then(console(res)),
-  );
-
   useEffect(() => {
     setVisibleFactsWithoutSpoilersCount(3);
     setVisibleFactsWithSpoilersCount(0);

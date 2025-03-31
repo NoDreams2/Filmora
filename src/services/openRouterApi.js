@@ -1,3 +1,5 @@
+const openRouterApiKey = import.meta.env.VITE_OPENROUTER_KEY;
+
 export const generateAlternativeEnding = async (
   movieTitle,
   movieDescription,
@@ -8,6 +10,7 @@ export const generateAlternativeEnding = async (
     Стиль концовок: фан-фикшн.
     Не спойлери оригинальный сюжет.
     Ответ должен быть на русском языке.
+    Не используй кавычки в своем ответе.
     Формат ответа:
     1) [Краткое название концовки из 2-4 слов]:
        [Подробное описание на 2-3 предложения]
@@ -24,7 +27,7 @@ export const generateAlternativeEnding = async (
       {
         method: 'POST',
         headers: {
-          Authorization: `Bearer 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`,
+          Authorization: `Bearer ${openRouterApiKey}`,
           'Content-Type': 'application/json',
           'HTTP-Referer': 'https://filmora-app.com',
           'X-Title': 'Filmora AI Endings',
