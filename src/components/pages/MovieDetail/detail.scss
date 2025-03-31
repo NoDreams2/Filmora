@@ -408,6 +408,30 @@
   margin-block-start: 10px;
 }
 
+.detail__bottom-part-alternative {
+  background: rgba(0, 161, 231, 0.1);
+  border-radius: 16px;
+  padding: 20px;
+  margin-block-end: 30px;
+  border: 1px solid rgba(0, 161, 231, 0.3);
+}
+
+.detail__bottom-part-alternative-title {
+  font-size: 22px;
+  margin-block-end: 15px;
+  color: #00a1e7;
+}
+
+.detail__bottom-part-alternative-text {
+  font-size: 16px;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.detail__bottom-part-alternative-button {
+  margin: 0;
+}
+
 @media (max-width: 1900px) {
   .detail__wrap {
     width: 1720px;

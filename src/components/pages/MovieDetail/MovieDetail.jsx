@@ -23,7 +23,11 @@ import MovieCard from '../../ui/MovieCard';
 
 import './detail.scss';
 
+import { generateAlternativeEnding } from '../../../services/openRouterApi';
+
 export default function MovieDetail() {
+  const [alternativeEndings, setAlternativeEndings] = useState('');
+  const [isGeneratingEndings, setIsGeneratingEndings] = useState(false);
   const sequelsScrollRef = useRef(null);
   const similarsScrollRef = useRef(null);
   const { id } = useParams();
@@ -46,6 +50,10 @@ export default function MovieDetail() {
   const responseAwards = useGetAwardsQuery(id);
   const responseListSimilarMovies = useGetListSimilarMoviesQuery(id);
   const responseFactsAndBloopers = useGetFactsAndBloopersQuery(id);
+
+  fetch('https://openrouter.ai/api/v1/models').then(res =>
+    res.json().then(console(res)),
+  );
 
   useEffect(() => {
     setVisibleFactsWithoutSpoilersCount(3);
@@ -185,6 +193,22 @@ export default function MovieDetail() {
   const oscarWins = responseAwards.data?.items.filter(
     award => award.name === 'Оскар' && award.win === true,
   );
+
+  const handleGenerateEndings = async () => {
+    setIsGeneratingEndings(true);
+    try {
+      const endings = await generateAlternativeEnding(
+        responseDataFilm.data.nameRu ||
+          responseDataFilm.data.nameEn ||
+          responseDataFilm.data.nameOriginal,
+        responseDataFilm.data.description ||
+          responseDataFilm.data.shortDescription,
+      );
+      setAlternativeEndings(endings);
+    } finally {
+      setIsGeneratingEndings(false);
+    }
+  };
 
   return (
     <div className="detail__wrap">
@@ -714,6 +738,36 @@ export default function MovieDetail() {
               )}
             </div>
           )}
+        <div className="detail__bottom-part-alternative">
+          <h4 className="detail__bottom-part-alternative-title">
+            «Что, если?»: Альтернативные концовки от ИИ
+          </h4>
+          {alternativeEndings ? (
+            <p className="detail__bottom-part-alternative-text">
+              {alternativeEndings
+                ?.replace(/(\d+\))/g, '\n$1')
+                .split('\n')
+                .map((paragraph, i) => (
+                  <React.Fragment key={i}>
+                    {i > 0 && <br />}
+                    {paragraph}
+                  </React.Fragment>
+                ))}
+            </p>
+          ) : (
+            <button
+              className="button detail__bottom-part-alternative-button"
+              onClick={handleGenerateEndings}
+              disabled={isGeneratingEndings}
+            >
+              {isGeneratingEndings ? (
+                <CircularProgress size={20} color="inherit" />
+              ) : (
+                'Сгенерировать концовку'
+              )}
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
