@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 
 import './name-detail.scss';
 
-import { CircularProgress } from '@mui/material';
 import { Link, useParams } from 'react-router-dom';
 
 import { useGetStaffByIdQuery } from '../../../services/kinopoiskApi';
 import ErrorMessage from '../../ui/ErrorMessage';
+import Loader from '../../ui/Loader/Loader';
 
 export default function NameDetail() {
   const [filmsCount, setFilmsCount] = useState(20);
@@ -16,12 +16,7 @@ export default function NameDetail() {
   const { data, isLoading, isError } = useGetStaffByIdQuery(id);
 
   if (isLoading) {
-    return (
-      <CircularProgress
-        size="60px"
-        sx={{ position: 'absolute', marginTop: '22%', color: '#00a1e7' }}
-      />
-    );
+    return <Loader />;
   }
 
   if (isError) {
