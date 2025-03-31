@@ -16,7 +16,7 @@
 ## 🛠 Технологии
 
 - **Ядро**: React 18 + JavaScript
-- **AI-интеграция**: OpenRouter API + DeepSeek Chat
+- **AI-интеграция**: OpenRouter API
 - **Стили**: SCSS Modules + CSS-переменные
 - **UI**: Material UI v6 + Кастомная дизайн-система
 - **Анимации**: CSS Transitions + Keyframes
