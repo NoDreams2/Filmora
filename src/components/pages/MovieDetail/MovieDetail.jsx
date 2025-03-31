@@ -24,6 +24,7 @@ import MovieCard from '../../ui/MovieCard';
 import './detail.scss';
 
 import { generateAlternativeEnding } from '../../../services/openRouterApi';
+import Loader from '../../ui/Loader/Loader';
 
 export default function MovieDetail() {
   const [alternativeEndings, setAlternativeEndings] = useState('');
@@ -108,12 +109,7 @@ export default function MovieDetail() {
     responseAwards.isLoading ||
     responseListSimilarMovies.isLoading
   ) {
-    return (
-      <CircularProgress
-        size="60px"
-        sx={{ position: 'absolute', marginTop: '22%', color: '#00a1e7' }}
-      />
-    );
+    return <Loader />;
   }
 
   if (
@@ -765,7 +761,7 @@ export default function MovieDetail() {
                   disabled={isGeneratingEndings}
                 >
                   {isGeneratingEndings ? (
-                    <CircularProgress size={20} color="inherit" />
+                    <CircularProgress size={16} color="inherit" />
                   ) : (
                     'Попробовать еще раз'
                   )}
@@ -782,7 +778,7 @@ export default function MovieDetail() {
               disabled={isGeneratingEndings}
             >
               {isGeneratingEndings ? (
-                <CircularProgress size={20} color="inherit" />
+                <CircularProgress size={16} color="inherit" />
               ) : (
                 'Сгенерировать концовку'
               )}
