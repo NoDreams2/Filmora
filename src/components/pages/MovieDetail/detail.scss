@@ -426,6 +426,12 @@
   font-size: 16px;
   line-height: 1.6;
   font-style: italic;
+  margin-block-end: 20px;
+}
+
+.detail__bottom-part-buttons {
+  display: flex;
+  gap: 10px;
 }
 
 .detail__bottom-part-alternative-button {
@@ -633,6 +639,9 @@
     font-size: 15px;
     padding-block: 13px;
   }
+  .detail__bottom-part-alternative-text {
+    font-size: 15px;
+  }
 }
 
 @media (max-width: 920px) {
@@ -707,6 +716,15 @@
   }
   .detail__bottom-part-knows-list {
     padding-inline-start: 30px;
+  }
+  .detail__bottom-part-alternative-title {
+    font-size: 20px;
+  }
+  .detail__bottom-part-alternative-text {
+    font-size: 14px;
+  }
+  .detail__bottom-part-buttons {
+    flex-direction: column;
   }
 }
 
@@ -792,6 +810,9 @@
   }
   .detail__center-part-key {
     min-width: 100px;
+  }
+  .detail__bottom-part-knows {
+    margin-block-start: 50px;
   }
 }
 

@@ -28,6 +28,7 @@ import { generateAlternativeEnding } from '../../../services/openRouterApi';
 export default function MovieDetail() {
   const [alternativeEndings, setAlternativeEndings] = useState('');
   const [isGeneratingEndings, setIsGeneratingEndings] = useState(false);
+  const [showEndings, setShowEndings] = useState(false);
   const sequelsScrollRef = useRef(null);
   const similarsScrollRef = useRef(null);
   const { id } = useParams();
@@ -201,9 +202,15 @@ export default function MovieDetail() {
           responseDataFilm.data.shortDescription,
       );
       setAlternativeEndings(endings);
+      setShowEndings(true);
     } finally {
       setIsGeneratingEndings(false);
     }
+  };
+
+  const handleHideEdings = () => {
+    setShowEndings(false);
+    setAlternativeEndings('');
   };
 
   return (
@@ -738,18 +745,36 @@ export default function MovieDetail() {
           <h4 className="detail__bottom-part-alternative-title">
             «Что, если?»: Альтернативные концовки от ИИ
           </h4>
-          {alternativeEndings ? (
-            <p className="detail__bottom-part-alternative-text">
-              {alternativeEndings
-                ?.replace(/(\d+\))/g, '\n$1')
-                .split('\n')
-                .map((paragraph, i) => (
-                  <React.Fragment key={i}>
-                    {i > 0 && <br />}
-                    {paragraph}
-                  </React.Fragment>
-                ))}
-            </p>
+          {showEndings && alternativeEndings ? (
+            <>
+              <p className="detail__bottom-part-alternative-text">
+                {alternativeEndings
+                  ?.replace(/(\d+\))/g, '\n$1')
+                  .split('\n')
+                  .map((paragraph, i) => (
+                    <React.Fragment key={i}>
+                      {i > 0 && <br />}
+                      {paragraph}
+                    </React.Fragment>
+                  ))}
+              </p>
+              <div className="detail__bottom-part-buttons">
+                <button
+                  className="button detail__bottom-part-alternative-button"
+                  onClick={handleGenerateEndings}
+                  disabled={isGeneratingEndings}
+                >
+                  {isGeneratingEndings ? (
+                    <CircularProgress size={20} color="inherit" />
+                  ) : (
+                    'Попробовать еще раз'
+                  )}
+                </button>
+                <button className="button" onClick={handleHideEdings}>
+                  Скрыть
+                </button>
+              </div>
+            </>
           ) : (
             <button
               className="button detail__bottom-part-alternative-button"
