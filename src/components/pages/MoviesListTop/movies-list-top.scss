@@ -1,18 +1,41 @@
-.movies-list-top__container {
-  max-width: 1920px;
-  padding-block-start: 100px;
-  padding-block-end: 40px;
-  padding-inline: 20px;
+.movies-top {
+  width: 100%;
+  min-height: 100vh;
+  padding: 120px 40px 60px;
+  color: #e2e8f0;
 }
 
-@media (max-width: 1420px) {
-  .movies-list-top__container {
-    padding-block-start: 80px;
+.movies-top__content {
+  max-width: 1800px;
+  margin: 0 auto;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (max-width: 720px) {
-  .movies-list-top__container {
-    padding-block-start: 70px;
+@media (max-width: 1200px) {
+  .movies-top {
+    padding: 100px 30px 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .movies-top {
+    padding: 90px 20px 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .movies-top {
+    padding: 80px 15px 30px;
   }
 }

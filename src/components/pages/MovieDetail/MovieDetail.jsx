@@ -255,7 +255,7 @@ export default function MovieDetail() {
         {responseDataFilm.data.ratingKinopoisk ? (
           <MovieRating rating={responseDataFilm.data.ratingKinopoisk} />
         ) : (
-          <span className="detail__right-part-rating-kinopoisk">0</span>
+          <span className="detail__right-part-rating-kinopoisk"></span>
         )}
 
         {responseListSimilarMovies.data?.items.length > 0 && (

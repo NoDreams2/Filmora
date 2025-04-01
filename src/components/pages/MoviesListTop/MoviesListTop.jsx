@@ -40,16 +40,18 @@ export default function MoviesListTop() {
   if (isLoading) return <MoviesListTopSkeleton />;
 
   return (
-    <div className="movies-list-top__container">
-      <MoviesListTitle title={movieType.title} />
-      {data && (
-        <MoviesList
-          movies={data.items}
-          totalPages={data.totalPages}
-          page={page}
-          setPage={handlePageChange}
-        />
-      )}
+    <div className="movies-top">
+      <div className="movies-top__content">
+        <MoviesListTitle title={movieType.title} />
+        {data && (
+          <MoviesList
+            movies={data.items}
+            totalPages={data.totalPages}
+            page={page}
+            setPage={handlePageChange}
+          />
+        )}
+      </div>
     </div>
   );
 }

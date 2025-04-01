@@ -9,17 +9,16 @@ import { formatRating } from '../../utils/format/text';
 
 export default function RatingBadge({ rating }) {
   const location = useLocation();
-
-  const checkCurrentPath = location.pathname === '/';
+  const isHomePage = location.pathname === '/';
 
   return (
-    <div className="rating__wrapper">
+    <div
+      className={classNames('rating-badge', {
+        'rating-badge--bottom': isHomePage,
+      })}
+    >
       <span
-        className={classNames(
-          'rating__container',
-          `rating__container_${getRatingColor(rating)}`,
-          checkCurrentPath && 'rating__container_bottom',
-        )}
+        className={`rating-badge__value rating-badge__value--${getRatingColor(rating)}`}
       >
         {formatRating(rating)}
       </span>
