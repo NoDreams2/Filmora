@@ -1,0 +1,74 @@
+.detail__right-part-actors-container {
+  position: relative;
+}
+
+.detail__right-part-actors-and-oscars-container {
+  margin-bottom: 36px;
+}
+
+.detail__right-part-actors-title {
+  margin-block-end: 14px;
+  font-size: 17px;
+}
+
+.detail__right-part-actors-list {
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-block-end: 5px;
+}
+
+.detail__right-part-actors-name {
+  text-decoration: none;
+  color: #cbd5e1;
+  transition: color 0.2s ease;
+  &:hover {
+    color: #00a1e7;
+  }
+}
+
+.detail__right-part-num-actors {
+  font-size: 13px;
+  color: #00a1e7;
+}
+
+@media (max-width: 1520px) {
+  .detail__right-part-actors-title {
+    font-size: 14px;
+  }
+  .detail__right-part-actors-name {
+    font-size: 12px;
+  }
+  .detail__right-part-num-actors {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1120px) {
+  .detail__right-part-actors-title {
+    font-size: 13px;
+  }
+  .detail__right-part-actors-name {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 920px) {
+  .detail__right-part-actors-list {
+    align-items: end;
+  }
+  .detail__right-part-actors-and-oscars-container {
+    margin-bottom: 0;
+  }
+  .detail__right-part-num-actors {
+    position: absolute;
+    right: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .detail__right-part-actors-and-oscars-container {
+    display: none;
+  }
+}

@@ -1,0 +1,81 @@
+.detail__bottom-part-rating {
+  margin-block-end: 50px;
+}
+
+.detail__bottom-part-rating-title {
+  font-size: 28px;
+  margin-block-end: 14px;
+}
+
+.detail__bottom-part-stars-container {
+  display: flex;
+  gap: 6px;
+}
+
+.detail__bottom-part-star {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background-color: #cbd5e1;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+.detail__bottom-part-star-filled {
+  background-color: #00a1e7;
+}
+
+@media (max-width: 1320px) {
+  .detail__bottom-part-rating-title {
+    font-size: 26px;
+    margin-block-end: 10px;
+  }
+  .detail__bottom-part-star {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 1120px) {
+  .detail__bottom-part-rating-title {
+    font-size: 24px;
+    margin-block-end: 6px;
+  }
+  .detail__bottom-part-star {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 920px) {
+  .detail__bottom-part-rating-title {
+    font-size: 22px;
+  }
+  .detail__bottom-part-star {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media (max-width: 450px) {
+  .detail__bottom-part-rating-title {
+    font-size: 19px;
+  }
+  .detail__bottom-part-star {
+    width: 24px;
+    height: 24px;
+  }
+  .detail__bottom-part-stars-container {
+    margin-block-end: 40px;
+  }
+}

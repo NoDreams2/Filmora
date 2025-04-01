@@ -1,0 +1,50 @@
+.detail__right-part-rating {
+  display: flex;
+  flex-direction: column;
+  margin-block-end: 24px;
+}
+
+.detail__right-part-rating-kinopoisk {
+  font-size: 52px;
+  font-weight: 800;
+}
+
+.detail__right-part-vote-count {
+  font-size: 14px;
+}
+
+@media (max-width: 1720px) {
+  .detail__right-part-rating-kinopoisk {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 1520px) {
+  .detail__right-part-rating-kinopoisk {
+    font-size: 40px;
+  }
+  .detail__right-part-vote-count {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 1320px) {
+  .detail__right-part-rating-kinopoisk {
+    font-size: 30px;
+  }
+  .detail__right-part-vote-count {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 600px) {
+  .detail__right-part-vote-count {
+    display: none;
+  }
+}
+
+@media (max-width: 450px) {
+  .detail__right-part-rating-kinopoisk {
+    font-size: 26px;
+  }
+}
