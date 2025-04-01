@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-
-import './name-detail.scss';
-
 import { Link, useParams } from 'react-router-dom';
 
 import { useGetStaffByIdQuery } from '../../../services/kinopoiskApi';
 import ErrorMessage from '../../ui/ErrorMessage';
 import Loader from '../../ui/Loader/Loader';
+
+import './name-detail.scss';
 
 export default function NameDetail() {
   const [filmsCount, setFilmsCount] = useState(20);
@@ -35,6 +34,7 @@ export default function NameDetail() {
   );
 
   const sliceFilms = uniqueFilms.slice(0, filmsCount);
+  const sliceFacts = data.facts?.slice(0, factsCount) || [];
 
   const loadMoreFilms = () => {
     if (filmsCount < uniqueFilms.length) {
@@ -42,106 +42,107 @@ export default function NameDetail() {
     }
   };
 
-  const sliceFacts = data.facts.slice(0, factsCount);
-
   const loadMoreFacts = () => {
-    if (factsCount < data.facts.length) {
+    if (factsCount < data.facts?.length) {
       setFactsCount(prevCount => prevCount + 20);
     }
   };
 
   return (
-    <div className="detail__wrap">
-      <div className="detail__container name-detail__container">
-        <div className="detail__left-part">
-          <img className="detail__left-part-poster" src={data.posterUrl} />
-          <div className="detail__left-part-buttons">
-            <a target="_blank" rel="noopener noreferrer" href={data.webUrl}>
-              <button className="button button_small">Кинопоиск</button>
-            </a>
-          </div>
+    <div className="name-detail">
+      <div className="name-detail__header">
+        <div className="name-detail__poster-container">
+          <img
+            className="name-detail__poster"
+            src={data.posterUrl}
+            alt={data.nameRu || data.nameEn}
+          />
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={data.webUrl}
+            className="name-detail__kinopoisk-link"
+          >
+            Профиль на Кинопоиске
+          </a>
         </div>
-        <div className="detail__center-part name-detail__center-part">
-          <div className="detail__center-part-main-title">
-            <div className="detail__center-part-title-desc">
-              <h2 className="detail__center-part-title">{data.nameRu}</h2>
-              <span>{data.nameEn}</span>
-            </div>
-          </div>
-          <div className="detail__center-part-about-detail">
-            <div className="detail__center-part-about-detail-container">
-              <h3 className="detail__center-part-title-about">О Персоне</h3>
+
+        <div className="name-detail__info">
+          <h1 className="name-detail__title">
+            {data.nameRu}
+            {data.nameEn && (
+              <span className="name-detail__subtitle">{data.nameEn}</span>
+            )}
+          </h1>
+
+          <div className="name-detail__bio">
+            <h2 className="name-detail__section-title">Биография</h2>
+            <div className="name-detail__bio-grid">
               {data.profession && (
-                <div className="detail__center-part-about-container">
-                  <span className="detail__center-part-key">Карьера</span>
-                  <span className="detail__center-part-value">
+                <div className="name-detail__bio-item">
+                  <span className="name-detail__bio-key">Карьера</span>
+                  <span className="name-detail__bio-value">
                     {data.profession}
                   </span>
                 </div>
               )}
-              {data.growth && (
-                <div className="detail__center-part-about-container">
-                  <span className="detail__center-part-key">Рост</span>
-                  <span className="detail__center-part-value">
-                    {data.growth}
-                  </span>
-                </div>
-              )}
               {data.birthday && (
-                <div className="detail__center-part-about-container">
-                  <span className="detail__center-part-key">Дата рождения</span>
-                  <span className="detail__center-part-value">
+                <div className="name-detail__bio-item">
+                  <span className="name-detail__bio-key">Дата рождения</span>
+                  <span className="name-detail__bio-value">
                     {data.birthday}
                   </span>
                 </div>
               )}
-              {data.death && (
-                <div className="detail__center-part-about-container">
-                  <span className="detail__center-part-key">Дата смерти</span>
-                  <span className="detail__center-part-value">
-                    {data.death}
-                  </span>
+              {data.age && (
+                <div className="name-detail__bio-item">
+                  <span className="name-detail__bio-key">Возраст</span>
+                  <span className="name-detail__bio-value">{data.age}</span>
                 </div>
               )}
-              {data.age && (
-                <div className="detail__center-part-about-container">
-                  <span className="detail__center-part-key">Возраст</span>
-                  <span className="detail__center-part-value">{data.age}</span>
+              {data.growth && (
+                <div className="name-detail__bio-item">
+                  <span className="name-detail__bio-key">Рост</span>
+                  <span className="name-detail__bio-value">
+                    {data.growth} см
+                  </span>
                 </div>
               )}
               {data.birthplace && (
-                <div className="detail__center-part-about-container">
-                  <span className="detail__center-part-key">
-                    Место рождения
-                  </span>
-                  <span className="detail__center-part-value">
+                <div className="name-detail__bio-item">
+                  <span className="name-detail__bio-key">Место рождения</span>
+                  <span className="name-detail__bio-value">
                     {data.birthplace}
                   </span>
                 </div>
               )}
+              {data.death && (
+                <div className="name-detail__bio-item">
+                  <span className="name-detail__bio-key">Дата смерти</span>
+                  <span className="name-detail__bio-value">{data.death}</span>
+                </div>
+              )}
               {data.deathplace && (
-                <div className="detail__center-part-about-container">
-                  <span className="detail__center-part-key">Место смерти</span>
-                  <span className="detail__center-part-value">
+                <div className="name-detail__bio-item">
+                  <span className="name-detail__bio-key">Место смерти</span>
+                  <span className="name-detail__bio-value">
                     {data.deathplace}
                   </span>
                 </div>
               )}
-              {data.films && (
-                <div className="detail__center-part-about-container">
-                  <span className="detail__center-part-key">Всего фильмов</span>
-                  <span className="detail__center-part-value">
-                    {uniqueFilms.length}
+              {data.hasAwards > 0 && (
+                <div className="name-detail__bio-item">
+                  <span className="name-detail__bio-key">Награды</span>
+                  <span className="name-detail__bio-value">
+                    {data.hasAwards}
                   </span>
                 </div>
               )}
-              {data.hasAwards > 0 && (
-                <div className="detail__center-part-about-container">
-                  <span className="detail__center-part-key">
-                    Количество наград
-                  </span>
-                  <span className="detail__center-part-value">
-                    {data.hasAwards}
+              {data.films && (
+                <div className="name-detail__bio-item">
+                  <span className="name-detail__bio-key">Всего фильмов</span>
+                  <span className="name-detail__bio-value">
+                    {uniqueFilms.length}
                   </span>
                 </div>
               )}
@@ -149,62 +150,63 @@ export default function NameDetail() {
           </div>
         </div>
       </div>
-      <div className="detail__bottom-part-wrap">
-        <div className="detail__bottom-part-films">
-          <h3 className="detail__bottom-part-films-title">Фильмы</h3>
-          <ul className="detail__bottom-part-knows-list name-detail__bottom-part-knows-list">
+
+      <div className="name-detail__content">
+        <section className="name-detail__films">
+          <h2 className="name-detail__section-title">Фильмография</h2>
+          <div className="name-detail__films-list">
             {sliceFilms.map((film, index) => (
-              <li
+              <Link
+                className="name-detail__film-link"
                 key={film.filmId}
-                className="detail__bottom-part-films-container"
+                to={`/movie/${film.filmId}`}
               >
-                <span className="detail__bottom-part-films-num">
-                  {index + 1}
-                </span>
-                <Link
-                  to={`/movie/${film.filmId}`}
-                  className="detail__bottom-part-films-name"
-                >
-                  {film.nameRu ? film.nameRu : film.nameEn}
-                </Link>
-                <span className="detail__bottom-part-films-rating">
-                  {film.rating || '-'}
-                </span>
-              </li>
+                <div className="name-detail__film-card">
+                  <span className="name-detail__film-number">{index + 1}</span>
+                  <span className="name-detail__film-title">
+                    {film.nameRu || film.nameEn || 'Без названия'}
+                  </span>
+                  {film.rating ? (
+                    <span className="name-detail__film-rating">
+                      {film.rating}
+                    </span>
+                  ) : (
+                    <span className="name-detail__film-rating">-</span>
+                  )}
+                </div>
+              </Link>
             ))}
-          </ul>
+          </div>
           {filmsCount < uniqueFilms.length && (
-            <button
-              className="button name-detail__bottom-part-button"
-              onClick={loadMoreFilms}
-            >
-              Показать еще
+            <button className="name-detail__load-more" onClick={loadMoreFilms}>
+              Показать ещё {Math.min(20, uniqueFilms.length - filmsCount)} из{' '}
+              {uniqueFilms.length - filmsCount}
             </button>
           )}
-        </div>
-        {data.facts && data.facts.length > 0 && (
-          <div className="detail__bottom-part-knows">
-            <h4 className="detail__bottom-part-knows-title">
-              Знаете ли вы, что...
-            </h4>
-            <ul className="detail__bottom-part-knows-list">
+        </section>
+
+        {sliceFacts.length > 0 && (
+          <section className="name-detail__facts">
+            <h2 className="name-detail__section-title">Интересные факты</h2>
+            <ul className="name-detail__facts-list">
               {sliceFacts.map((fact, index) => (
                 <li
                   key={index}
-                  className="detail__bottom-part-knows-item"
+                  className="name-detail__fact-item"
                   dangerouslySetInnerHTML={{ __html: fact }}
                 />
               ))}
             </ul>
             {factsCount < data.facts.length && (
               <button
-                className="button detail__bottom-part-button"
+                className="name-detail__load-more"
                 onClick={loadMoreFacts}
               >
-                Показать еще
+                Показать ещё {Math.min(20, data.facts.length - factsCount)} из{' '}
+                {data.facts.length - factsCount}
               </button>
             )}
-          </div>
+          </section>
         )}
       </div>
     </div>
