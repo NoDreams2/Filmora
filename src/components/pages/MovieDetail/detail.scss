@@ -74,122 +74,6 @@
   line-height: 1.6;
 }
 
-.detail__center-part-about-detail {
-  display: inline;
-}
-
-.detail__center-part-about-detail-container {
-  padding-inline: 9px;
-}
-
-.detail__center-part-title-about {
-  font-size: 28px;
-  margin-block-end: 9px;
-}
-
-.detail__center-part-about-container {
-  padding-block: 10px;
-  font-size: 12px;
-  display: flex;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-  &:last-child {
-    border-bottom: none;
-  }
-}
-
-.detail__center-part-key {
-  color: #94a3b8;
-  display: inline-block;
-  min-width: 160px;
-}
-
-.detail__center-part-value {
-  line-height: 18px;
-}
-
-.detail__additional {
-  padding-inline: 9px;
-  padding-block-start: 40px;
-  overflow: hidden;
-  max-width: 882px;
-  position: relative;
-}
-
-.detail__additional_padding-not {
-  padding: 0;
-}
-
-.detail__additional_full-width {
-  max-width: 100%;
-}
-
-.detail__additional_margin-bottom {
-  margin-block-end: 40px;
-}
-
-.detail__additional-title {
-  font-size: 28px;
-  margin-block-end: 16px;
-}
-
-.detail__additional-wrapper {
-  display: flex;
-}
-
-.detail__additional-cards-container {
-  display: flex;
-  overflow-x: scroll;
-  scroll-behavior: smooth;
-  gap: 9px;
-}
-
-.detail__additional-cards-container::-webkit-scrollbar {
-  display: none;
-}
-
-.detail__scroll-button {
-  height: 44px;
-  width: 44px;
-  cursor: pointer;
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  border-radius: 50%;
-  border: none;
-  transition: all 0.2s;
-  color: #333;
-  background-color: #cbd5e1;
-  transition: all 0.2s ease-in-out;
-}
-
-.detail__scroll-button_top {
-  top: 45%;
-}
-
-.detail__scroll-button-left {
-  left: 5px;
-  &:hover {
-    transform: translateX(-5px);
-  }
-}
-
-.detail__scroll-button-right {
-  right: 5px;
-  &:hover {
-    transform: translateX(5px);
-  }
-}
-
-.detail__scroll-button-hidden {
-  opacity: 0 !important;
-  pointer-events: none;
-}
-
-.detail__scroll-button-visible {
-  opacity: 1;
-  pointer-events: auto;
-}
-
 .detail__right-part {
   margin-inline-start: auto;
   display: flex;
@@ -197,245 +81,10 @@
   gap: 110px;
 }
 
-.detail__right-part-rating {
-  display: flex;
-  flex-direction: column;
-  margin-block-end: 24px;
-}
-
-.detail__right-part-rating-kinopoisk {
-  font-size: 52px;
-  font-weight: 800;
-}
-
-.detail__right-part-vote-count {
-  font-size: 14px;
-}
-
-.detail__right-part-actors-container {
-  position: relative;
-}
-
-.detail__right-part-actors-and-oscars-container {
-  margin-bottom: 36px;
-}
-
-.detail__right-part-actors-title {
-  margin-block-end: 14px;
-  font-size: 17px;
-}
-
-.detail__right-part-actors-list {
-  font-size: 13px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-block-end: 5px;
-}
-
-.detail__right-part-actors-name {
-  text-decoration: none;
-  color: #cbd5e1;
-  transition: color 0.2s ease;
-  &:hover {
-    color: #00a1e7;
-  }
-}
-
-.detail__right-part-num-actors {
-  font-size: 13px;
-  color: #00a1e7;
-}
-
-.detail__right-part-oscar-container {
-  position: relative;
-  &:hover {
-    .detail__right-part-oscar-text {
-      visibility: visible;
-      opacity: 1;
-    }
-  }
-}
-
-.detail__right-part-oscar-img {
-  cursor: pointer;
-  position: absolute;
-  z-index: 1;
-  filter: drop-shadow(0 0 10px rgba(0, 161, 231, 0.8));
-}
-
-.detail__right-part-oscar-num {
-  position: absolute;
-  left: 94px;
-  top: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-  letter-spacing: -1px;
-  font-size: 14px;
-}
-
-.detail__right-part-oscar-text {
-  position: absolute;
-  background-color: #313d4b;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
-  width: 500px;
-  min-height: 260px;
-  left: -380px;
-  top: -24px;
-  padding-block: 24px;
-  padding-inline: 30px;
-  border-radius: 12px;
-  font-size: 14px;
-  visibility: hidden;
-  opacity: 0;
-  transition:
-    opacity 0.2s ease-in-out,
-    visibility 0.2s ease-in-out;
-}
-
-.detail__right-part-oscar-title {
-  font-size: 30px;
-  margin-block-end: 14px;
-}
-
-.detail__right-part-oscar-years-and-wins {
-  display: flex;
-  gap: 20px;
-  padding-inline-start: 30px;
-}
-
-.detail__right-part-oscar-year {
-  font-size: 16px;
-  font-weight: 400;
-}
-
-.detail__right-part-oscar-wins-title {
-  font-size: 16px;
-  font-weight: 700;
-  margin-block-end: 10px;
-}
-
-.detail__right-part-nominations {
-  display: flex;
-  width: 260px;
-  padding-block: 5px;
-  font-weight: 400;
-}
-
 .detail__bottom-part-description {
   font-size: 18px;
   line-height: 1.6;
   margin-block-end: 50px;
-}
-
-.detail__bottom-part-rating-title {
-  font-size: 28px;
-  margin-block-end: 14px;
-}
-
-.detail__bottom-part-stars-container {
-  display: flex;
-  gap: 6px;
-  margin-block-end: 50px;
-}
-
-.detail__bottom-part-star {
-  display: inline-block;
-  width: 35px;
-  height: 35px;
-  background-color: #cbd5e1;
-  clip-path: polygon(
-    50% 0%,
-    61% 35%,
-    98% 35%,
-    68% 57%,
-    79% 91%,
-    50% 70%,
-    21% 91%,
-    32% 57%,
-    2% 35%,
-    39% 35%
-  );
-}
-
-.detail__bottom-part-star-filled {
-  background-color: #00a1e7;
-}
-
-.detail__bottom-part-similars-title {
-  font-size: 30px;
-}
-
-.detail__bottom-part-knows {
-  margin-block-end: 50px;
-}
-
-.detail__bottom-part-knows-title {
-  font-size: 28px;
-}
-
-.detail__bottom-part-knows-title_maring-bottom {
-  margin-block-end: 14px;
-}
-.detail__bottom-part-knows-item {
-  font-size: 18px;
-  padding-block: 14px;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-  line-height: 1.6;
-  &:last-child {
-    border: none;
-  }
-}
-
-.detail__bottom-part-knows-item a {
-  color: #00a1e7;
-  text-decoration: none;
-}
-
-.detail__bottom-part-knows-attention {
-  background-color: rgba(60, 71, 85, 0.6);
-  padding-block: 16px;
-  font-size: 18px;
-  display: flex;
-  justify-content: center;
-}
-
-.detail__bottom-part-button {
-  margin-inline-start: 40px;
-  margin-block-start: 10px;
-}
-
-.detail__bottom-part-alternative {
-  background: rgba(0, 161, 231, 0.1);
-  border-radius: 16px;
-  padding: 20px;
-  margin-block-end: 30px;
-  border: 1px solid rgba(0, 161, 231, 0.3);
-}
-
-.detail__bottom-part-alternative-title {
-  font-size: 22px;
-  margin-block-end: 15px;
-  color: #00a1e7;
-}
-
-.detail__bottom-part-alternative-text {
-  font-size: 16px;
-  line-height: 1.6;
-  font-style: italic;
-  margin-block-end: 20px;
-}
-
-.detail__bottom-part-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.detail__bottom-part-alternative-button {
-  margin: 0;
 }
 
 @media (max-width: 1900px) {
@@ -459,15 +108,6 @@
   .detail__center-part-description {
     font-size: 15px;
   }
-  .detail__center-part-title-about {
-    font-size: 26px;
-  }
-  .detail__center-part-sequels-and-prequels-container-title {
-    font-size: 26px;
-  }
-  .detail__right-part-rating-kinopoisk {
-    font-size: 48px;
-  }
 }
 
 @media (max-width: 1520px) {
@@ -484,24 +124,6 @@
   }
   .detail__center-part-title {
     font-size: 40px;
-  }
-  .detail__center-part-title-about {
-    font-size: 24px;
-  }
-  .detail__center-part-sequels-and-prequels-container-title {
-    font-size: 24px;
-  }
-  .detail__right-part-rating-kinopoisk {
-    font-size: 40px;
-  }
-  .detail__right-part-vote-count {
-    font-size: 13px;
-  }
-  .detail__right-part-actors-title {
-    font-size: 16px;
-  }
-  .detail__right-part-actors-name {
-    font-size: 13px;
   }
 }
 
@@ -531,61 +153,12 @@
   .detail__center-part-description {
     font-size: 13px;
   }
-  .detail__center-part-title-about {
-    font-size: 20px;
-  }
-  .detail__center-part-sequels-and-prequels-container-title {
-    font-size: 20px;
-  }
-  .detail__right-part-rating-kinopoisk {
-    font-size: 30px;
-  }
-  .detail__right-part-vote-count {
-    font-size: 11px;
-  }
-  .detail__center-part-about-container {
-    padding-block: 8px;
-    font-size: 11px;
-  }
-  .detail__right-part-actors-title {
-    font-size: 14px;
-  }
-  .detail__right-part-actors-name {
-    font-size: 12px;
-  }
-  .detail__right-part-num-actors {
-    font-size: 12px;
-  }
   .detail__center-part-title-desc {
     width: 100%;
     padding-inline: 0px;
   }
-  .detail__center-part-about-detail-container {
-    padding-inline: 0px;
-  }
-  .detail__additional-title {
-    font-size: 26px;
-  }
   .detail__bottom-part-description {
     font-size: 16px;
-  }
-  .detail__bottom-part-rating-title {
-    font-size: 26px;
-    margin-block-end: 10px;
-  }
-  .detail__bottom-part-knows-title {
-    font-size: 26px;
-  }
-  .detail__bottom-part-star {
-    width: 32px;
-    height: 32px;
-  }
-  .detail__bottom-part-knows-item {
-    font-size: 16px;
-  }
-  .detail__bottom-part-knows-attention {
-    font-size: 16px;
-    padding-block: 14px;
   }
 }
 
@@ -607,39 +180,7 @@
   .detail__center-part-description {
     font-size: 12px;
   }
-  .detail__right-part-actors-title {
-    font-size: 13px;
-  }
-  .detail__right-part-actors-name {
-    font-size: 11px;
-  }
-  .detail__additional-title {
-    font-size: 24px;
-    margin-block-end: 10px;
-  }
   .detail__bottom-part-description {
-    font-size: 15px;
-  }
-  .detail__bottom-part-rating-title {
-    font-size: 24px;
-    margin-block-end: 6px;
-  }
-  .detail__bottom-part-star {
-    width: 30px;
-    height: 30px;
-  }
-  .detail__bottom-part-knows-title {
-    font-size: 24px;
-  }
-  .detail__bottom-part-knows-item {
-    font-size: 15px;
-    padding-block: 13px;
-  }
-  .detail__bottom-part-knows-attention {
-    font-size: 15px;
-    padding-block: 13px;
-  }
-  .detail__bottom-part-alternative-text {
     font-size: 15px;
   }
 }
@@ -668,63 +209,12 @@
   .detail__center-part {
     order: 3;
   }
-  .detail__right-part-actors-list {
-    align-items: end;
-  }
-  .detail__right-part-actors-and-oscars-container {
-    margin-bottom: 0;
-  }
-  .detail__right-part-num-actors {
-    position: absolute;
-    right: 0;
-  }
   .detail__left-part {
     gap: 30px;
-  }
-  .detail__right-part-oscar-img {
-    display: none;
-  }
-  .detail__right-part-oscar-num {
-    display: none;
-  }
-  .detail__additional-title {
-    font-size: 22px;
   }
   .detail__bottom-part-description {
     font-size: 14px;
     line-height: 1.4;
-  }
-  .detail__bottom-part-rating-title {
-    font-size: 22px;
-  }
-  .detail__bottom-part-star {
-    width: 26px;
-    height: 26px;
-  }
-  .detail__bottom-part-knows-title {
-    font-size: 22px;
-  }
-  .detail__bottom-part-knows-item {
-    font-size: 14px;
-    padding-block: 12px;
-  }
-  .detail__bottom-part-knows-attention {
-    font-size: 14px;
-    padding-block: 12px;
-    padding-inline: 12px;
-    text-align: center;
-  }
-  .detail__bottom-part-knows-list {
-    padding-inline-start: 30px;
-  }
-  .detail__bottom-part-alternative-title {
-    font-size: 20px;
-  }
-  .detail__bottom-part-alternative-text {
-    font-size: 14px;
-  }
-  .detail__bottom-part-buttons {
-    flex-direction: column;
   }
 }
 
@@ -738,23 +228,8 @@
   .detail__wrap {
     width: 450px;
   }
-  .detail__right-part-actors-and-oscars-container {
-    display: none;
-  }
   .detail__right-part-rating {
     order: 2;
-  }
-  .detail__right-part-vote-count {
-    display: none;
-  }
-  .detail__bottom-part-knows-item {
-    padding-block: 11px;
-  }
-  .detail__center-part-key {
-    min-width: 130px;
-  }
-  .detail__bottom-part-knows-list {
-    padding-inline-start: 20px;
   }
 }
 
@@ -765,51 +240,12 @@
   .detail__right-part {
     display: none;
   }
-  .detail__right-part-rating-kinopoisk {
-    font-size: 26px;
-  }
-  .detail__additional-title {
-    font-size: 19px;
-  }
   .detail__container {
     padding-block-end: 40px;
   }
   .detail__bottom-part-description {
     font-size: 13px;
     margin-block-end: 40px;
-  }
-  .detail__bottom-part-rating-title {
-    font-size: 19px;
-  }
-  .detail__bottom-part-star {
-    width: 24px;
-    height: 24px;
-  }
-  .detail__bottom-part-stars-container {
-    margin-block-end: 40px;
-  }
-  .detail__additional_margin-bottom {
-    margin-block-end: 10px;
-  }
-  .detail__bottom-part-knows-title {
-    font-size: 19px;
-  }
-  .detail__bottom-part-knows-item {
-    font-size: 12px;
-    line-height: 1.5;
-    padding-block: 10px;
-  }
-  .detail__bottom-part-knows-attention {
-    font-size: 10px;
-    padding: 9px;
-  }
-  .detail__center-part-about-container {
-    font-size: 9px;
-    padding-block: 6px;
-    line-height: 1.67;
-  }
-  .detail__center-part-key {
-    min-width: 100px;
   }
   .detail__bottom-part-knows {
     margin-block-start: 50px;
@@ -823,11 +259,5 @@
   .detail__right-part {
     top: 364px;
     right: 60px;
-  }
-  .detail__right-part-rating-kinopoisk {
-    font-size: 26px;
-  }
-  .detail__center-part-about-container {
-    padding-block: 4px;
   }
 }
