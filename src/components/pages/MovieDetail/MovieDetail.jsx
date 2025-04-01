@@ -101,6 +101,12 @@ export default function MovieDetail() {
     };
   });
 
+  useEffect(() => {
+    setShowEndings(false);
+    setAlternativeEndings('');
+    setIsGeneratingEndings(false);
+  }, [id]);
+
   if (
     responseDataFilm.isLoading ||
     responseSequelsAndPrequels.isLoading ||
