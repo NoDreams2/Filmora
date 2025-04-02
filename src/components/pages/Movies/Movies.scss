@@ -8,30 +8,39 @@
 }
 
 .movies__wrap {
-  width: 1920px;
+  max-width: 1820px;
+  width: 100%;
   overflow: hidden;
   padding-top: 100px;
   padding-inline: 50px;
+  margin: 0 auto;
 }
 
 .movies__container {
   width: 100%;
-  padding-block-start: 10px;
+  padding-block-start: 20px;
   position: relative;
-  margin: 40px auto;
-  background-color: #1c232b;
+  margin: 30px auto 0;
   backdrop-filter: blur(20px);
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  &::before {
+  &::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    border: 1px solid rgba(0, 161, 231, 0.3);
-    pointer-events: none;
-    z-index: -1;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 161, 231, 0.5),
+      transparent
+    );
+  }
+  &:first-child {
+    &::after {
+      display: none;
+    }
   }
 }
 
@@ -60,23 +69,7 @@
   padding: 20px;
 }
 
-@media (max-width: 1920px) {
-  .movies__wrap {
-    width: 1720px;
-  }
-}
-
-@media (max-width: 1720px) {
-  .movies__wrap {
-    width: 1420px;
-  }
-}
-
 @media (max-width: 1420px) {
-  .movies__wrap {
-    width: 1120px;
-    padding-top: 80px;
-  }
   .movies__title {
     font-size: 27px;
   }
@@ -84,7 +77,7 @@
 
 @media (max-width: 1120px) {
   .movies__wrap {
-    width: 720px;
+    padding-inline: 20px;
   }
   .movies__title {
     font-size: 24px;
@@ -106,20 +99,12 @@
 }
 
 @media (max-width: 720px) {
-  .movies__wrap {
-    width: 420px;
-    padding-top: 70px;
-  }
   .movies__title {
     font-size: 20px;
   }
 }
 
 @media (max-width: 420px) {
-  .movies__wrap {
-    width: 300px;
-    padding-inline: 16px;
-  }
   :global {
     .bear-react-carousel__nav-button {
       padding: 20px !important;

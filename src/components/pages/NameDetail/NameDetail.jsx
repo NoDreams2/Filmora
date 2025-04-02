@@ -94,13 +94,13 @@ export default function NameDetail() {
                   </span>
                 </div>
               )}
-              {data.age && (
+              {data.age > 0 && (
                 <div className="name-detail__bio-item">
                   <span className="name-detail__bio-key">Возраст</span>
                   <span className="name-detail__bio-value">{data.age}</span>
                 </div>
               )}
-              {data.growth && (
+              {data.growth > 0 && (
                 <div className="name-detail__bio-item">
                   <span className="name-detail__bio-key">Рост</span>
                   <span className="name-detail__bio-value">
@@ -138,7 +138,7 @@ export default function NameDetail() {
                   </span>
                 </div>
               )}
-              {data.films && (
+              {data.films && data.films.length > 0 && (
                 <div className="name-detail__bio-item">
                   <span className="name-detail__bio-key">Всего фильмов</span>
                   <span className="name-detail__bio-value">
