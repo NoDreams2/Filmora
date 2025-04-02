@@ -11,7 +11,7 @@
   backdrop-filter: blur(20px);
   border: 1px solid rgba(0, 161, 231, 0.3);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  animation: slideIn 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slideIn 1s cubic-bezier(0.4, 0, 0.2, 1);
   text-transform: capitalize;
 }
 
@@ -71,7 +71,7 @@
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
