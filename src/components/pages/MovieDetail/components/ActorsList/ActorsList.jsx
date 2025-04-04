@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './actors-list.scss';
@@ -7,6 +7,12 @@ import { getDeclensionActorsText } from '../../../../../utils/format/text';
 import OscarWins from '../OscarWins/OscarWins';
 
 const ActorsList = ({ staffData, oscarWins }) => {
+  const [showAllActors, setShowAllActors] = useState(false);
+
+  const toggleActorsList = () => {
+    setShowAllActors(!showAllActors);
+  };
+
   const actors = staffData.filter(el => el.professionKey === 'ACTOR');
 
   return (
@@ -15,7 +21,7 @@ const ActorsList = ({ staffData, oscarWins }) => {
         <h3 className="detail__right-part-actors-title">В главных ролях</h3>
         {actors.length > 0 && (
           <div className="detail__right-part-actors-list">
-            {actors.slice(0, 10).map(actor => (
+            {actors.map(actor => (
               <Link
                 key={actor.staffId}
                 to={`/name/${actor.staffId}`}
@@ -27,7 +33,10 @@ const ActorsList = ({ staffData, oscarWins }) => {
           </div>
         )}
         {actors.length > 0 && (
-          <span className="detail__right-part-num-actors">
+          <span
+            className="detail__right-part-num-actors"
+            onClick={toggleActorsList}
+          >
             {actors.length} {getDeclensionActorsText(actors.length)}
           </span>
         )}
