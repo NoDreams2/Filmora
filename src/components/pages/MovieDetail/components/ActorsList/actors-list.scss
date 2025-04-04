@@ -20,12 +20,12 @@
   max-height: 200px;
   overflow: hidden;
   overflow-y: auto;
+  padding-inline-end: 10px;
 }
 
 .detail__right-part-actors-name {
   text-decoration: none;
   color: #cbd5e1;
-  padding-inline-end: 10px;
   transition: color 0.2s ease;
   &:hover {
     color: #00a1e7;

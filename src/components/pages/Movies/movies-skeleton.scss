@@ -9,25 +9,15 @@
   position: relative;
   margin: 40px 0;
   padding-block-start: 10px;
-  background-color: #1c232b;
   overflow: hidden;
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    pointer-events: none;
-  }
 }
 
 .movies-skeleton__title {
   width: 313px;
   height: 39px;
   background: #2a2e35;
-  margin: 0 0 10px 15px;
+  margin-block-end: 10px;
+  margin-inline-start: 10px;
   position: relative;
   overflow: hidden;
   &::after {
