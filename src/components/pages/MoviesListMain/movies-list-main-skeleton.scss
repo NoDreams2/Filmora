@@ -2,7 +2,9 @@
   padding-block-start: 100px;
   padding-block-end: 30px;
   padding-inline: 50px;
-  max-width: 1920px;
+  max-width: 1820px;
+  width: 100%;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,13 +16,15 @@
   gap: 20px;
   padding-block: 30px;
   padding-inline: 50px;
+  max-width: 1820px;
+  width: 100%;
 }
 
 .movies-list-main-skeleton__title {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
-  width: 1820px;
+  width: 100%;
   height: 58px;
   background-color: #1c232b;
   border-radius: 24px;
@@ -49,7 +53,7 @@
   justify-content: space-between;
   gap: 20px;
   align-items: center;
-  width: 1820px;
+  width: 100%;
   height: 70px;
   background-color: #1c232b;
   border-radius: 20px;
@@ -63,13 +67,6 @@
   align-self: center;
 }
 
-.movies-list-main-skeleton__formButton {
-  width: 400px;
-  height: 37px;
-  background-color: #2a2e35;
-  border-radius: 12px;
-}
-
 @keyframes shimmer {
   100% {
     left: 200%;
@@ -79,8 +76,7 @@
 .movies-list-main-skeleton__title,
 .movies-list-main-skeleton__button,
 .movies-list-main-skeleton__titleText,
-.movies-list-main-skeleton__form,
-.movies-list-main-skeleton__formButton {
+.movies-list-main-skeleton__form {
   position: relative;
   overflow: hidden;
   &::after {
@@ -100,84 +96,36 @@
   }
 }
 
-@media (max-width: 1920px) {
-  .movies-list-main-skeleton__container {
-    max-width: 1620px;
-  }
-  .movies-list-main-skeleton__title {
-    width: 1620px;
-  }
-  .movies-list-main-skeleton__forms {
-    width: 1620px;
-  }
-}
-
-@media (max-width: 1700px) {
-  .movies-list-main-skeleton__container {
-    max-width: 1320px;
-  }
-  .movies-list-main-skeleton__title {
-    width: 1320px;
-  }
-  .movies-list-main-skeleton__forms {
-    width: 1320px;
-  }
-}
-
-@media (max-width: 1430px) {
-  .movies-list-main-skeleton__container {
-    max-width: 1020px;
-  }
-  .movies-list-main-skeleton__title {
-    width: 1020px;
-  }
-  .movies-list-main-skeleton__forms {
-    width: 1020px;
-  }
-}
-
 @media (max-width: 1420px) {
   .movies-list-main-skeleton__container {
     padding-block-start: 80px;
   }
 }
 
-@media (max-width: 1020px) {
-  .movies-list-main-skeleton__container {
-    max-width: 720px;
-  }
-  .movies-list-main-skeleton__title {
-    width: 720px;
-  }
-  .movies-list-main-skeleton__forms {
-    width: 720px;
-  }
-}
-
 @media (max-width: 900px) {
+  .movies-list-main-skeleton__header {
+    padding-inline: 0px;
+    justify-content: space-between;
+  }
   .movies-list-main-skeleton__title {
     display: flex;
     justify-content: space-between;
-    width: 552px;
+    margin: 0 auto;
   }
   .movies-list-main-skeleton__titleText {
     width: 360px;
-    margin-right: 50px;
+    margin: 0 auto;
   }
   .movies-list-main-skeleton__forms {
-    width: 552px;
-    height: 306px;
+    height: 280px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: start;
     padding: 14px;
   }
   .movies-list-main-skeleton__form {
     align-self: start;
-    width: 522px;
-  }
-  .movies-list-main-skeleton__formButton {
-    width: 80px;
   }
 }
 
@@ -188,17 +136,8 @@
 }
 
 @media (max-width: 670px) {
-  .movies-list-main-skeleton__container {
-    max-width: 420px;
-  }
   .movies-list-main-skeleton__title {
     width: 420px;
-  }
-  .movies-list-main-skeleton__forms {
-    width: 420px;
-  }
-  .movies-list-main-skeleton__form {
-    width: 390px;
   }
   .movies-list-main-skeleton__titleText {
     width: 240px;
@@ -209,6 +148,7 @@
   .movies-list-main-skeleton__title {
     background-color: transparent;
     flex-direction: column;
+    border-radius: 0;
     gap: 10px;
     width: 100%;
     &::after {
@@ -219,40 +159,10 @@
     margin: 0;
     width: 300px;
   }
-  .movies-list-main-skeleton__forms {
-    margin-inline: auto;
-  }
-}
-
-@media (max-width: 482px) {
-  .movies-list-main-skeleton__forms {
-    width: 370px;
-    margin-inline: auto;
-  }
-  .movies-list-main-skeleton__form {
-    width: 340px;
-  }
-}
-
-@media (max-width: 400px) {
-  .movies-list-main-skeleton__forms {
-    width: 330px;
-    margin-inline: auto;
-  }
-  .movies-list-main-skeleton__form {
-    width: 300px;
-  }
 }
 
 @media (max-width: 375px) {
   .movies-list-main-skeleton__titleText {
     width: 240px;
-  }
-  .movies-list-main-skeleton__forms {
-    width: 280px;
-    margin-inline: auto;
-  }
-  .movies-list-main-skeleton__form {
-    width: 250px;
   }
 }

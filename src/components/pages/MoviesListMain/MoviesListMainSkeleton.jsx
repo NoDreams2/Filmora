@@ -17,7 +17,6 @@ export default function MoviesListMainSkeleton() {
           <div className="movies-list-main-skeleton__form"></div>
           <div className="movies-list-main-skeleton__form"></div>
           <div className="movies-list-main-skeleton__form"></div>
-          <div className="movies-list-main-skeleton__form-button"></div>
         </div>
       </div>
       <MoviesListSkeleton />
