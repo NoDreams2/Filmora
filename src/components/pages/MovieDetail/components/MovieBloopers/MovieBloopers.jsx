@@ -3,8 +3,15 @@ import React from 'react';
 
 import './movie-bloopers.scss';
 
+import { useState } from 'react';
+
 const MovieBloopers = ({ bloopers, visibleCount, onLoadMore }) => {
+  const [isShowBloopers, setIsShowBloopers] = useState(false);
   const visibleBloopers = bloopers.slice(0, visibleCount);
+
+  const showBloopers = () => {
+    setIsShowBloopers(true);
+  };
 
   return (
     <div className="detail__bottom-part-knows">
@@ -15,22 +22,31 @@ const MovieBloopers = ({ bloopers, visibleCount, onLoadMore }) => {
         Внимание! Список ошибок в фильме может содержать спойлеры. Будьте
         осторожны.
       </div>
-      <ul className="detail__bottom-part-knows-list">
-        {visibleBloopers.map((blooper, index) => (
-          <li
-            key={index}
-            className="detail__bottom-part-knows-item"
-            dangerouslySetInnerHTML={{ __html: blooper.text }}
-          />
-        ))}
-      </ul>
-      {bloopers.length > visibleCount && (
+      {!isShowBloopers && (
         <button
-          className="button detail__bottom-part-button"
-          onClick={onLoadMore}
+          className="button detail__bottom-part-button-show"
+          onClick={showBloopers}
         >
-          Показать еще
+          Показать
         </button>
+      )}
+      {isShowBloopers && (
+        <>
+          <ul className="detail__bottom-part-knows-list">
+            {visibleBloopers.map((blooper, index) => (
+              <li
+                key={index}
+                className="detail__bottom-part-knows-item"
+                dangerouslySetInnerHTML={{ __html: blooper.text }}
+              />
+            ))}
+          </ul>
+          {bloopers.length > visibleCount && (
+            <button className="button " onClick={onLoadMore}>
+              Показать еще
+            </button>
+          )}
+        </>
       )}
     </div>
   );

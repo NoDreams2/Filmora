@@ -58,7 +58,7 @@ export default function MoviesListMain() {
       <ErrorMessage message="Не удалось загрузить список фильмов. Проверьте интернет-соединение и попробуйте снова." />
     );
 
-  if (!responseFilms.isLoading && !responseGenresAndCountries.isLoading)
+  if (responseFilms.isLoading && responseGenresAndCountries.isLoading)
     return (
       <>
         <MoviesListMainSkeleton />
