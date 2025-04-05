@@ -2,16 +2,56 @@ import React from 'react';
 
 import './film-about.scss';
 
+import { Link } from 'react-router-dom';
+
 const FilmAbout = ({ filmData, staffData, budgetData }) => {
-  const staffSlice = staffs => {
-    const numberOfStaffs = staffs.map(staff =>
-      staff.nameRu ? staff.nameRu : staff.nameEn,
-    );
-    if (staffs.length > 3) {
-      return `${numberOfStaffs.slice(0, 3).join(', ')}, ...`;
-    }
-    return numberOfStaffs.join(', ');
+  const renderStaffWithLinks = staffs => {
+    if (staffs.lenght === 0) return null;
+
+    return staffs.map((staff, index) => (
+      <React.Fragment key={staff.staffId}>
+        <Link
+          to={`/name/${staff.staffId}`}
+          className="detail__center-part-value detail__center-part-value_link"
+        >
+          {staff.nameRu || staff.nameEn}
+        </Link>
+        {index < staffs.length - 1 ? ', ' : ''}
+      </React.Fragment>
+    ));
   };
+
+  const renderShortenedStaff = staffs => {
+    const displayedStaffs = staffs.slice(0, 3);
+    const remainingCount = staffs.length - 3;
+
+    return (
+      <span>
+        {renderStaffWithLinks(displayedStaffs)}
+        {remainingCount > 0 && `, ... ( и ещё ${remainingCount})`}
+      </span>
+    );
+  };
+
+  const renderStaffSection = (professionKey, title) => {
+    const filteredStaff = staffData.filter(
+      el => el.professionKey === professionKey,
+    );
+
+    if (filteredStaff.lenght === 0) return null;
+
+    return (
+      <div className="detail__center-part-about-container">
+        <span className="detail__center-part-key">{title}</span>
+        <span className="detail__center-part-value">
+          {filteredStaff.length > 3
+            ? renderShortenedStaff(filteredStaff)
+            : renderStaffWithLinks(filteredStaff)}
+        </span>
+      </div>
+    );
+  };
+
   return (
     <div className="detail__center-part-about-detail">
       <div className="detail__center-part-about-detail-container">
@@ -44,76 +84,13 @@ const FilmAbout = ({ filmData, staffData, budgetData }) => {
             <span className="detail__center-part-value">{filmData.slogan}</span>
           </div>
         )}
-        {staffData.some(el => el.professionKey === 'DIRECTOR') && (
-          <div className="detail__center-part-about-container">
-            <span className="detail__center-part-key">Режиссер</span>
-            <span className="detail__center-part-value">
-              {staffSlice(
-                staffData.filter(el => el.professionKey === 'DIRECTOR'),
-              )}
-            </span>
-          </div>
-        )}
-        {staffData.some(el => el.professionKey === 'WRITER') && (
-          <div className="detail__center-part-about-container">
-            <span className="detail__center-part-key">Сценарий</span>
-            <span className="detail__center-part-value">
-              {staffSlice(
-                staffData.filter(el => el.professionKey === 'WRITER'),
-              )}
-            </span>
-          </div>
-        )}
-        {staffData.some(el => el.professionKey === 'PRODUCER') && (
-          <div className="detail__center-part-about-container">
-            <span className="detail__center-part-key">Продюсер</span>
-            <span className="detail__center-part-value">
-              {staffSlice(
-                staffData.filter(el => el.professionKey === 'PRODUCER'),
-              )}
-            </span>
-          </div>
-        )}
-        {staffData.some(el => el.professionKey === 'OPERATOR') && (
-          <div className="detail__center-part-about-container">
-            <span className="detail__center-part-key">Оператор</span>
-            <span className="detail__center-part-value">
-              {staffSlice(
-                staffData.filter(el => el.professionKey === 'OPERATOR'),
-              )}
-            </span>
-          </div>
-        )}
-        {staffData.some(el => el.professionKey === 'COMPOSER') && (
-          <div className="detail__center-part-about-container">
-            <span className="detail__center-part-key">Композитор</span>
-            <span className="detail__center-part-value">
-              {staffSlice(
-                staffData.filter(el => el.professionKey === 'COMPOSER'),
-              )}
-            </span>
-          </div>
-        )}
-        {staffData.some(el => el.professionKey === 'DESIGN') && (
-          <div className="detail__center-part-about-container">
-            <span className="detail__center-part-key">Художник</span>
-            <span className="detail__center-part-value">
-              {staffSlice(
-                staffData.filter(el => el.professionKey === 'DESIGN'),
-              )}
-            </span>
-          </div>
-        )}
-        {staffData.some(el => el.professionKey === 'EDITOR') && (
-          <div className="detail__center-part-about-container">
-            <span className="detail__center-part-key">Монтаж</span>
-            <span className="detail__center-part-value">
-              {staffSlice(
-                staffData.filter(el => el.professionKey === 'EDITOR'),
-              )}
-            </span>
-          </div>
-        )}
+        {renderStaffSection('DIRECTOR', 'Режиссер')}
+        {renderStaffSection('WRITER', 'Сценарий')}
+        {renderStaffSection('PRODUCER', 'Продюсер')}
+        {renderStaffSection('OPERATOR', 'Оператор')}
+        {renderStaffSection('COMPOSER', 'Композитор')}
+        {renderStaffSection('DESIGN', 'Художник')}
+        {renderStaffSection('EDITOR', 'Монтаж')}
         {budgetData.items.some(el => el.type === 'BUDGET') && (
           <div className="detail__center-part-about-container">
             <span className="detail__center-part-key">Бюджет</span>

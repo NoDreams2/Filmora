@@ -31,6 +31,15 @@
   line-height: 18px;
 }
 
+.detail__center-part-value_link {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  &:hover {
+    color: #00a1e7;
+  }
+}
+
 @media (max-width: 1720px) {
   .detail__center-part-title-about {
     font-size: 26px;
