@@ -11,7 +11,7 @@ export default function MovieCard({ movie }) {
   const pathParts = location.pathname.split('/');
   const lastPathParts = pathParts[pathParts.length - 1];
   const isLastSegmentNumber =
-    !isNaN(lastPathParts) && lastPathParts.trim() !== '';
+    !isNaN(lastPathParts) && lastPathParts.trim() !== '/';
 
   return (
     <div
@@ -20,7 +20,7 @@ export default function MovieCard({ movie }) {
       })}
       key={movie.kinopoiskId}
     >
-      <Link to={`/movie/${movie.kinopoiskId}`}>
+      <Link to={`/film/${movie.kinopoiskId}`}>
         <div
           className={classNames('movie-card__img-container', {
             ['movie-card__img-container_darkened']: isLastSegmentNumber,

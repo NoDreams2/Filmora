@@ -9,7 +9,7 @@ import { CircularProgress } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export default function Search({ isMobileVisible, onClose }) {
-  const { countries, genreId, order, type, year, page, keyword } = useSelector(
+  const { countries, genreId, order, type, year, page } = useSelector(
     state => state.searchQuerySlice,
   );
 
@@ -132,13 +132,13 @@ export default function Search({ isMobileVisible, onClose }) {
                 <li className="search__item" key={film.kinopoiskId}>
                   <Link
                     className="search__link"
-                    to={`/movie/${film.kinopoiskId}`}
+                    to={`/film/${film.kinopoiskId}`}
                     onMouseDown={() => {
                       setShowResults(false);
                       setInputValue('');
                       setIsExpanded(false);
                       setTimeout(() => {
-                        window.location.href = `/movie/${film.kinopoiskId}`;
+                        window.location.href = `/film/${film.kinopoiskId}`;
                       }, 0);
                     }}
                   >

@@ -39,7 +39,7 @@ export default function Movies() {
   const serializeDataForCarousel = useMemo(
     () => data =>
       data.map(row => (
-        <RouterLink key={row.id} to={`/movie/${row.kinopoiskId}`}>
+        <RouterLink key={row.id} to={`/film/${row.kinopoiskId}`}>
           <BearSlideImage
             className="movies__image"
             imageUrl={row.posterUrlPreview}
