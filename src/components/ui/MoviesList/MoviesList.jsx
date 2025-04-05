@@ -10,7 +10,7 @@ import './movies-list.scss';
 
 export default function MoviesList({ movies, totalPages, page, setPage }) {
   const windowWidth = useWindowWidth();
-  const paginationSize = windowWidth <= 446 ? 'small' : 'large';
+  const paginationSize = windowWidth <= 490 ? 'small' : 'large';
 
   const location = useLocation();
 

@@ -32,6 +32,10 @@
   }
 }
 
+// .css-1c5o7vy-MuiPagination-ul {
+//   flex-direction: column;
+// }
+
 .movies-list__empty {
   position: relative;
   width: 100%;
@@ -211,5 +215,11 @@
   }
   .movies-list__empty-emoji {
     font-size: 30px;
+  }
+}
+
+@media (max-width: 354px) {
+  .movies-list__pagination .MuiPaginationItem-root {
+    margin-inline: 2.5px !important;
   }
 }

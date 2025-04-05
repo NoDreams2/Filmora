@@ -91,3 +91,9 @@
     align-items: start;
   }
 }
+
+@media (max-width: 644px) {
+  .select-movies__container {
+    margin-block-start: 14px;
+  }
+}
