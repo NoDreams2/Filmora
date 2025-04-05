@@ -1,0 +1,43 @@
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.back-to-top_visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top-button {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #cbd5e1;
+  transition: all 0.3s ease;
+  &::after {
+    content: '';
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    top: 40%;
+    transform: rotate(45deg);
+    border-top: 2px solid #333;
+    border-left: 2px solid #333;
+  }
+  &:hover {
+    transform: translateY(-6px);
+  }
+}

@@ -14,6 +14,7 @@ import ErrorMessage from '../../ui/ErrorMessage';
 
 import './detail.scss';
 
+import BackToTopButton from '../../ui/BackToTopButton/BackToTopButton';
 import Loader from '../../ui/Loader/Loader';
 import ActorsList from './components/ActorsList/ActorsList';
 import { AlternativeEndings } from './components/AlternativeEndings/AlternativeEndings';
@@ -244,7 +245,6 @@ export default function MovieDetail() {
           <ActorsList staffData={responseStaff.data} oscarWins={oscarWins} />
         </div>
       </div>
-
       <div className="detail__bottom-part">
         {responseDataFilm.data.description && (
           <p className="detail__bottom-part-description">
@@ -300,6 +300,7 @@ export default function MovieDetail() {
           }
         />
       </div>
+      <BackToTopButton />
     </div>
   );
 }

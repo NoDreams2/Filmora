@@ -21,7 +21,7 @@ export const routes = [
     element: <MoviesListMain />,
   })),
   {
-    path: '/movie/:id',
+    path: '/film/:id',
     element: <MovieDetail />,
   },
   {

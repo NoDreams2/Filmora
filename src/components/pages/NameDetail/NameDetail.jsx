@@ -7,6 +7,8 @@ import Loader from '../../ui/Loader/Loader';
 
 import './name-detail.scss';
 
+import BackToTopButton from '../../ui/BackToTopButton/BackToTopButton';
+
 export default function NameDetail() {
   const [filmsCount, setFilmsCount] = useState(20);
   const [factsCount, setFactsCount] = useState(3);
@@ -159,7 +161,7 @@ export default function NameDetail() {
               <Link
                 className="name-detail__film-link"
                 key={film.filmId}
-                to={`/movie/${film.filmId}`}
+                to={`/film/${film.filmId}`}
               >
                 <div className="name-detail__film-card">
                   <span className="name-detail__film-number">{index + 1}</span>
@@ -209,6 +211,7 @@ export default function NameDetail() {
           </section>
         )}
       </div>
+      <BackToTopButton />
     </div>
   );
 }
