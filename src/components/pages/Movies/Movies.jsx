@@ -115,9 +115,10 @@ export default function Movies() {
             spaceBetween={14}
             breakpoints={{
               0: { slidesPerView: 1 },
-              720: { slidesPerView: 2 },
-              1120: { slidesPerView: 3 },
-              1420: { slidesPerView: 4 },
+              540: { slidesPerView: 2 },
+              810: { slidesPerView: 3 },
+              1120: { slidesPerView: 4 },
+              1420: { slidesPerView: 5 },
               1720: { slidesPerView: 6 },
             }}
           />
