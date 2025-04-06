@@ -16,7 +16,7 @@ const FilmAbout = ({ filmData, staffData, budgetData }) => {
         >
           {staff.nameRu || staff.nameEn}
         </Link>
-        {index < staffs.length - 1 ? ', ' : ''}
+        {index < staffs.length - 1 ? ', ' : ', '}
       </React.Fragment>
     ));
   };
@@ -26,10 +26,14 @@ const FilmAbout = ({ filmData, staffData, budgetData }) => {
     const remainingCount = staffs.length - 3;
 
     return (
-      <span>
+      <>
         {renderStaffWithLinks(displayedStaffs)}
-        {remainingCount > 0 && `, ... ( и ещё ${remainingCount})`}
-      </span>
+        {remainingCount > 0 && (
+          <span className="detail__center-part-value_link">
+            ... ( и ещё {remainingCount})
+          </span>
+        )}
+      </>
     );
   };
 
