@@ -1,5 +1,6 @@
 .detail__center-part-about-detail {
   display: inline;
+  max-width: 760px;
 }
 
 .detail__center-part-about-detail-container {
@@ -39,6 +40,16 @@
   &:hover {
     color: #00a1e7;
   }
+}
+
+.detail__center-part-button-close-names {
+  display: block;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  font-size: 12px;
+  color: #00a1e7;
 }
 
 @media (max-width: 1720px) {
