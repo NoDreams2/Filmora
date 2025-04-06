@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './film-about.scss';
 
 import { Link } from 'react-router-dom';
 
 const FilmAbout = ({ filmData, staffData, budgetData }) => {
+  const [expandedProfession, setExpandedProfession] = useState([]);
+
+  const handleShowFullNames = professionKey => {
+    setExpandedProfession([...expandedProfession, professionKey]);
+  };
+
+  const handleCloseFullNames = professionKey => {
+    setExpandedProfession(
+      expandedProfession.filter(key => key !== professionKey),
+    );
+  };
+
   const renderStaffWithLinks = staffs => {
-    if (staffs.lenght === 0) return null;
+    if (staffs.length === 0) return null;
 
     return staffs.map((staff, index) => (
       <React.Fragment key={staff.staffId}>
@@ -21,17 +33,32 @@ const FilmAbout = ({ filmData, staffData, budgetData }) => {
     ));
   };
 
-  const renderShortenedStaff = staffs => {
+  const renderShortenedStaff = (staffs, professionKey) => {
     const displayedStaffs = staffs.slice(0, 3);
     const remainingCount = staffs.length - 3;
+    const isExpanded = expandedProfession.includes(professionKey);
 
     return (
       <>
         {renderStaffWithLinks(displayedStaffs)}
-        {remainingCount > 0 && (
-          <span className="detail__center-part-value_link">
+        {remainingCount > 0 && !isExpanded && (
+          <span
+            className="detail__center-part-value_link"
+            onClick={() => handleShowFullNames(professionKey)}
+          >
             ... ( и ещё {remainingCount})
           </span>
+        )}
+        {isExpanded && (
+          <>
+            {renderStaffWithLinks(staffs.slice(3))}
+            <button
+              className="detail__center-part-button-close-names"
+              onClick={() => handleCloseFullNames(professionKey)}
+            >
+              Скрыть
+            </button>
+          </>
         )}
       </>
     );
@@ -42,14 +69,14 @@ const FilmAbout = ({ filmData, staffData, budgetData }) => {
       el => el.professionKey === professionKey,
     );
 
-    if (filteredStaff.lenght === 0) return null;
+    if (filteredStaff.length === 0) return null;
 
     return (
       <div className="detail__center-part-about-container">
         <span className="detail__center-part-key">{title}</span>
         <span className="detail__center-part-value">
           {filteredStaff.length > 3
-            ? renderShortenedStaff(filteredStaff)
+            ? renderShortenedStaff(filteredStaff, professionKey)
             : renderStaffWithLinks(filteredStaff)}
         </span>
       </div>
