@@ -1,14 +1,17 @@
 import CircularProgress from '@mui/material/CircularProgress';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { generateAlternativeEnding } from '../../../../../services/openRouterApi';
 
 import './alternative-endings.scss';
 
+import { useParams } from 'react-router-dom';
+
 export const AlternativeEndings = ({ movieTitle, movieDescription }) => {
   const [alternativeEndings, setAlternativeEndings] = useState('');
   const [isGeneratingEndings, setIsGeneratingEndings] = useState(false);
   const [showEndings, setShowEndings] = useState(false);
+  const { id } = useParams();
 
   const handleGenerateEndings = async () => {
     setIsGeneratingEndings(true);
@@ -28,6 +31,10 @@ export const AlternativeEndings = ({ movieTitle, movieDescription }) => {
     setShowEndings(false);
     setAlternativeEndings('');
   };
+
+  useEffect(() => {
+    setAlternativeEndings('');
+  }, [id]);
 
   return (
     <div className="detail__bottom-part-alternative">

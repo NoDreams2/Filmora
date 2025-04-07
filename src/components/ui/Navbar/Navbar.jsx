@@ -129,7 +129,7 @@ export default function Navbar() {
                 alt="Поиск"
                 onClick={toggleSearch}
               />
-              <img src={imgPlug} alt="" />
+              <span></span>
             </div>
           </div>
         </div>
