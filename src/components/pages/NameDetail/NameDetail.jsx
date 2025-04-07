@@ -71,8 +71,8 @@ export default function NameDetail() {
 
         <div className="name-detail__info">
           <h1 className="name-detail__title">
-            {data.nameRu}
-            {data.nameEn && (
+            {data.nameRu || data.nameEn}
+            {data.nameRu && data.nameEn && (
               <span className="name-detail__subtitle">{data.nameEn}</span>
             )}
           </h1>
