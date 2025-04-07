@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './film-about.scss';
 
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const FilmAbout = ({ filmData, staffData, budgetData }) => {
   const [expandedProfession, setExpandedProfession] = useState([]);
+  const { id } = useParams();
 
   const handleShowFullNames = professionKey => {
     setExpandedProfession([...expandedProfession, professionKey]);
@@ -17,7 +18,11 @@ const FilmAbout = ({ filmData, staffData, budgetData }) => {
     );
   };
 
-  const renderStaffWithLinks = staffs => {
+  useEffect(() => {
+    setExpandedProfession([]);
+  }, [id]);
+
+  const renderStaffWithLinks = (staffs, isLastItemWithDot = false) => {
     if (staffs.length === 0) return null;
 
     return staffs.map((staff, index) => (
@@ -28,7 +33,7 @@ const FilmAbout = ({ filmData, staffData, budgetData }) => {
         >
           {staff.nameRu || staff.nameEn}
         </Link>
-        {index < staffs.length - 1 ? ', ' : ', '}
+        {index < staffs.length - 1 ? ', ' : isLastItemWithDot ? '.' : ', '}
       </React.Fragment>
     ));
   };
@@ -40,18 +45,24 @@ const FilmAbout = ({ filmData, staffData, budgetData }) => {
 
     return (
       <>
-        {renderStaffWithLinks(displayedStaffs)}
-        {remainingCount > 0 && !isExpanded && (
-          <span
-            className="detail__center-part-value_link"
-            onClick={() => handleShowFullNames(professionKey)}
-          >
-            ... ( и ещё {remainingCount})
-          </span>
+        {isExpanded ? (
+          renderStaffWithLinks(staffs, true)
+        ) : (
+          <>
+            {renderStaffWithLinks(displayedStaffs)}
+            {remainingCount > 0 && !isExpanded && (
+              <span
+                className="detail__center-part-value_link"
+                onClick={() => handleShowFullNames(professionKey)}
+              >
+                ... ( и ещё {remainingCount}).
+              </span>
+            )}
+          </>
         )}
+
         {isExpanded && (
           <>
-            {renderStaffWithLinks(staffs.slice(3))}
             <button
               className="detail__center-part-button-close-names"
               onClick={() => handleCloseFullNames(professionKey)}
@@ -77,7 +88,7 @@ const FilmAbout = ({ filmData, staffData, budgetData }) => {
         <span className="detail__center-part-value">
           {filteredStaff.length > 3
             ? renderShortenedStaff(filteredStaff, professionKey)
-            : renderStaffWithLinks(filteredStaff)}
+            : renderStaffWithLinks(filteredStaff, true)}
         </span>
       </div>
     );
